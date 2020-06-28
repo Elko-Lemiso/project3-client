@@ -6,27 +6,29 @@ body{
 }
 
 .green{
-  color: #F1F5F9;
+  background-color: #DAF0EE;
+  color: #999;
 }
 
 .red{
-  color: #FF8585;
+  background-color: #FF8585;
+  color: #999;
 }
 
 .grey{
-  color: #F1F5F9;
+  background-color: #F1F5F9;
 }
 
 .blue{
-  color: #4BC3EB;
+  background-color: #4BC3EB;
 }
 
 .title-blue{
- color: #3498DB;
+ background-color: #3498DB;
 }
 
 .purple{
-  color: #C5CBE7;
+  background-color: #C5CBE7;
 }
 
 h1, h2, h3, h4{ 
@@ -34,10 +36,16 @@ h1, h2, h3, h4{
   color: #3498DB;
 }
 
-h5, h6, p, span, a, li{
+h5, h6, p, span, a, li, input{
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   color: black;
+}
+
+label{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.8rem;
+  color: #999;
 }
 
 h1 {
@@ -60,8 +68,8 @@ button{
   border-radius: 5px;
   padding: 5px 10px;
   border: 1px solid #999999;
-  color: white;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .box{
@@ -69,3 +77,38 @@ button{
   border: 1px solid #999999;
 }
 
+.big-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.heartbeat {
+  animation: heartbeat 1.5s ease-in-out both;
+  animation-delay: 2s;
+}
+
+@keyframes heartbeat {
+  from {
+    transform: scale(1);
+    transform-origin: center center;
+    animation-timing-function: ease-out;
+  }
+  10% {
+    transform: scale(0.91);
+    animation-timing-function: ease-in;
+  }
+  17% {
+    transform: scale(0.98);
+    animation-timing-function: ease-out;
+  }
+  33% {
+    transform: scale(0.87);
+    animation-timing-function: ease-in;
+  }
+  45% {
+    transform: scale(1);
+    animation-timing-function: ease-out;
+  }
+}
