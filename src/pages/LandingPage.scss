@@ -1,12 +1,11 @@
 nav{
-    top: 0;
     z-index: 10;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
-    h1{
+    h2{
         font-size: 3rem;
         padding: 0 5rem;
         color: #3498db;
@@ -29,9 +28,6 @@ nav{
         }
     }
 }
-.landing{
-
-}
 .header{
     z-index: 0;
     top: 0;
@@ -39,9 +35,12 @@ nav{
     display: flex;
     justify-content: center;
     margin-bottom:2rem ;
-    img{
-        width: 40%;
+    .image{
+        width: 50%;
         justify-self: center;
+        img{
+            width: 70%;
+        }
     }
     h1{
         color: rgb(75, 195, 235);
@@ -54,90 +53,145 @@ nav{
         width: 50%;
     }
 }
+.section-1{
+    margin-top: 10rem;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    width: 100%;
+    h1{
+        margin-bottom: 5rem;
+        color: #3498db;
+        z-index: 2;
+        font-size: 3rem;
+    }
+    .picture-row{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        div{
+            width: 33%;
+            svg{
+                width: 100%;
+                height: 10rem;
+            }
+        }
+    }
+}
 .section-2{
+    margin-top: 3rem;
     width: 100%;
     display: flex;
     flex-direction: row;
     align-content: space-around;
-    justify-content: space-between;
+    justify-content: center;
     div{
-        width: 50%;
+        width: 40%;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
     }
     h1{
         color: #C5CBE7;
         z-index: 2;
-        font-size: 5rem;
+        font-size: 3rem;
     }
     p{
-        font-size: 1.5rem;
+        font-size: 1.1rem;
         color: #3498db;
-        width: 50%;
+        width: 100%;
     }
 }
 
-@media(max-width: 800px){
+@media(max-width: 600px){
     nav {
-        flex-direction: flex;
+        display: flex;
+        position: fixed;
+        flex-direction: row;
         width: 100%;
         justify-self: start;
         bottom: 0%;
-        left: 0px;
         z-index: 10;
-        position: fixed;
-        h1{
-            display: hidden;
+        h2{
+            position: absolute;
+            visibility: hidden;
+            z-index: -1;
             font-size: 3rem;
             padding: 0 5rem;
             color: #3498db;
         }
         ul{
+            padding: 0;
+            margin: 0 0 1rem 0;
+            width: 100%;
+            z-index: 1;
             display: flex;
             flex-direction: row;
             list-style: none;
-            width: 40%;
             justify-content: space-evenly;
             li{
                 border: 3px rgb(75, 195, 235) solid;
-                background-color: rgb(75, 195, 235);
+                background-color: #fff;
                 border-radius: 10px;
                 padding: 1rem;
-                color: #fff;
+                color: rgb(75, 195, 235);
                 font-weight: 500;
                 margin: 0 0rem;
-                font-size: 1rem;
+                font-size: 1.2rem;
             }
         }
     }
+    
     .header{
         z-index: 0;
         top: 0;
         width: 100%;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         margin-bottom:2rem ;
-        img{
-            width: 40%;
-            justify-self: center;
+        text-align: center;
+        .image{
+            order: 2;
+            height: auto;
+            width: 100%;
+            img{
+                width: 100%;
+            }
         }
-        h1{
-            color: rgb(75, 195, 235);
-            z-index: 2;
-            font-size: 5rem;
+        .info{
+            margin-top: 2rem;
+            order: 1;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            h1{
+                margin: 0;
+                color: rgb(75, 195, 235);
+                z-index: 2;
+                font-size: 5rem;
+            }
+            p{
+                align-self: center;
+                font-size: 1.5rem;
+                color: #3498db;
+                width: 80%;
+            }
         }
-        p{
-            font-size: 1.5rem;
-            color: #3498db;
-            width: 50%;
-        }
+        
     }
     .section-2{
         width: 100%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-content: space-around;
         justify-content: space-between;
         div{
-            width: 50%;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            text-align: center;
         }
         h1{
             color: #C5CBE7;
@@ -147,7 +201,7 @@ nav{
         p{
             font-size: 1.5rem;
             color: #3498db;
-            width: 50%;
+            width: 80%;
         }
     }
 }

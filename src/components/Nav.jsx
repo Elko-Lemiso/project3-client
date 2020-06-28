@@ -6,8 +6,8 @@ class Nav extends Component {
             <nav>
                 <h2>cleanR</h2>
                 <ul>
-                    <li>Log In</li>
                     <li>Sign Up</li>
+                    <li>Log In</li>
                 </ul>
             </nav>
         );
