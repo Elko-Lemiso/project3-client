@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import './App.scss'
+import {Nav} from './components/LandingPage/LandingPage'
+import {Body} from './components/LandingPage/LandingPage'
 class App extends Component {
   constructor(props) {
     super(props)
-
   }
   
   state = {
@@ -14,6 +15,7 @@ class App extends Component {
   componentDidMount(){
     axios.get(`${process.env.REACT_APP_BASE_URL}`)
     .then(response => {
+      console.log(response)
         this.setState({
           message: response.data.message
         })
@@ -22,12 +24,9 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        {
-          this.state.message === null ?
-          <h2>Loading..</h2> :
-          <h2>{this.state.message}</h2>
-        }
+      <div className="App">
+        <Nav/>
+        <Body/>
       </div>
     )
   }
