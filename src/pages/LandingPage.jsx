@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import clean1 from "./../clean.gif"
-
+import clean2 from "./../clean-2.gif"
+import clean3 from "./../clean3.gif"
 import './LandingPage.scss'
 
 class LandingPage extends Component {
@@ -16,10 +17,32 @@ class LandingPage extends Component {
                         <p>Find reliable professionals for all your cleaning jobs in and around the house.</p>
                     </div>
                 </section>
-                
+                <section className = "section-2">
+                    <div>
+                        <h1>Why Choose cleanR?</h1>
+                        <p>We understand your home is important to you. Thats why we focus on the quality of the clean, with our uniquely tailored algorithm to find you the best cleaners available in your area.</p>
+                        <p>We can promise:</p>
+                        <ol>
+                            <li>1. Quick responses from potential cleaners</li>
+                            <li>2. A full review of the cleaners portfolio</li>
+                            <li>3. A bless to the mess</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h1>Looking for work, be a cleanR</h1>
+                        <p>Are you a student, looking for work? We know work can sometimes be hard to find, and we here at cleanR beleive in working for ourselves, join us and make a few extra coins. Who knows what might happen.</p>
+                        <p>We can deliver:</p>
+                        <ol>
+                            <li>1. Quick and easy money, just a tap away</li>
+                            <li>2. Reviewed clients by other cleaners</li>
+                            <li>3. A job every day should you need one</li>
+                        </ol>
+                    </div>
+                </section>
+                                
                 <section className = "section-1">
                     <h1>How it works</h1> 
-                    <div className="picture-row">
+                    <div className="row">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="50px" height="50px"><linearGradient id="BchpD1ZNe2zSYgMqtimVEa" x1="46" x2="46" y1="9.916" y2="13.924" gradientUnits="userSpaceOnUse" spreadMethod="reflect"><stop offset="0" stop-color="#6dc7ff"/><stop offset="1" stop-color="#e6abff"/></linearGradient><path fill="url(#BchpD1ZNe2zSYgMqtimVEa)" d="M43 11H49V13H43z"/><linearGradient id="BchpD1ZNe2zSYgMqtimVEb" x1="18" x2="18" y1="9.916" y2="13.924" gradientUnits="userSpaceOnUse" spreadMethod="reflect"><stop offset="0" stop-color="#6dc7ff"/><stop offset="1" stop-color="#e6abff"/></linearGradient><path fill="url(#BchpD1ZNe2zSYgMqtimVEb)" d="M15 11H21V13H15z"/><linearGradient id="BchpD1ZNe2zSYgMqtimVEc" x1="32" x2="32" y1="25.667" y2="30.003" gradientUnits="userSpaceOnUse" spreadMethod="reflect"><stop offset="0" stop-color="#6dc7ff"/><stop offset="1" stop-color="#e6abff"/></linearGradient><path fill="url(#BchpD1ZNe2zSYgMqtimVEc)" d="M39,28c0,0.552-0.448,1-1,1H26c-0.552,0-1-0.448-1-1v0c0-0.552,0.448-1,1-1h12 C38.552,27,39,27.448,39,28L39,28z"/><linearGradient id="BchpD1ZNe2zSYgMqtimVEd" x1="32" x2="32" y1="8.667" y2="55.681" gradientUnits="userSpaceOnUse" spreadMethod="reflect"><stop offset="0" stop-color="#1a6dff"/><stop offset="1" stop-color="#c822ff"/></linearGradient><path fill="url(#BchpD1ZNe2zSYgMqtimVEd)" d="M55.945,41.167L54.13,15.78C54.02,14.22,52.7,13,51.14,13H51v-1c0-1.654-1.346-3-3-3h-4 c-1.654,0-3,1.346-3,3v1h-0.14c-1.56,0-2.88,1.22-2.99,2.79L37.352,23H26.648l-0.518-7.22C26.02,14.22,24.7,13,23.14,13H23v-1 c0-1.654-1.346-3-3-3h-4c-1.654,0-3,1.346-3,3v1h-0.14c-1.56,0-2.88,1.22-2.99,2.79L8.055,41.167C6.865,41.566,6,42.678,6,44v8 c0,1.654,1.346,3,3,3h18c1.654,0,3-1.346,3-3v-8c0-1.322-0.865-2.434-2.055-2.833L27.362,33h9.277l-0.584,8.167 C34.865,41.566,34,42.678,34,44v8c0,1.654,1.346,3,3,3h18c1.654,0,3-1.346,3-3v-8C58,42.678,57.135,41.566,55.945,41.167z M43,12 c0-0.551,0.448-1,1-1h4c0.552,0,1,0.449,1,1v1h-6V12z M40.86,15h10.28c0.52,0,0.96,0.41,1,0.93L52.216,17H39.784l0.076-1.07 C39.9,15.41,40.34,15,40.86,15z M40,25c0.552,0,1,0.448,1,1v4c0,0.552-0.448,1-1,1H24c-0.552,0-1-0.448-1-1v-4c0-0.552,0.448-1,1-1 H40z M15,12c0-0.551,0.448-1,1-1h4c0.552,0,1,0.449,1,1v1h-6V12z M12.86,15h10.28c0.52,0,0.96,0.41,1,0.93L24.216,17H11.784 l0.076-1.07C11.9,15.41,12.34,15,12.86,15z M28,52c0,0.552-0.448,1-1,1H9c-0.552,0-1-0.448-1-1v-1h10v-2H8v-2h6v-2H8v-1 c0-0.552,0.448-1,1-1h18c0.552,0,1,0.448,1,1V52z M25.924,41H10.076l1.565-22h12.716l0.282,4H24c-1.654,0-3,1.346-3,3v4 c0,1.654,1.346,3,3,3h1.352L25.924,41z M40,33c1.654,0,3-1.346,3-3v-4c0-1.654-1.346-3-3-3h-0.639l0.282-4h12.716l1.565,22H38.076 l0.572-8H40z M55,53H37c-0.552,0-1-0.448-1-1v-8c0-0.552,0.448-1,1-1h18c0.552,0,1,0.448,1,1v1h-6v2h6v2H46v2h10v1 C56,52.552,55.552,53,55,53z"/></svg>
                             <h3>Find a cleaner</h3>
@@ -35,12 +58,26 @@ class LandingPage extends Component {
                     </div>
                 </section>
 
-                <section className = "section-2">
-                    <div>
-                        <h1>Why Choose cleanR?</h1>
-                        <p>We understand your home is important to you. Thats why we focus on the quality of the clean, with our uniquely algorithm tailored to find you the best cleaners available in your area.</p>
+                <section className = "section-1">
+                <h1>What sets cleanR apart</h1>
+                    <div className="row">
+                        <div>
+                            <h2>Personal</h2>
+                            <p>Upfront conversations with the applicants for the job, giiving the client and the cleanR the liberty to choose.</p>
+                        </div>
+                        <div>
+                            <h2>Reliable</h2>
+                            <p>You pick the right professional for the job, based on their previous ratings, this ensures total transparency between a client and a cleanR.</p>
+                        </div>
+                        <div>
+                            <h2>Fair rates</h2>
+                            <p>You get to determine what a job is worth doing, but don't make it too low, you might just end up doing the dishes</p>
+                        </div>
                     </div>
                 </section>
+                <footer>
+
+                </footer>
             </div>
         );
     }
