@@ -4,7 +4,7 @@ class Nav extends Component {
     render() {
         return (
             <nav>
-                <h1>cleanR</h1>
+                <h2>cleanR</h2>
                 <ul>
                     <li>Log In</li>
                     <li>Sign Up</li>
