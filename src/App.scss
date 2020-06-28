@@ -3,7 +3,70 @@ body{
   margin: 0;
   padding: 0;
   background-color: #FEFCFF;
+  font-size: 16px;
 }
-h1, h2, h3, h4, h5, h6, p, span, li{
+
+.green{
+  color: #F1F5F9;
+}
+
+.red{
+  color: #FF8585;
+}
+
+.grey{
+  color: #F1F5F9;
+}
+
+.blue{
+  color: #4BC3EB;
+}
+
+.title-blue{
+ color: #3498DB;
+}
+
+.purple{
+  color: #C5CBE7;
+}
+
+h1, h2, h3, h4{ 
   font-family: 'Ubuntu', sans-serif;
+  color: #3498DB;
 }
+
+h5, h6, p, span, a, li{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  color: black;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.7rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+button{
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 1px solid #999999;
+  color: white;
+  font-weight: bold;
+}
+
+.box{
+  border-radius: 5px;
+  border: 1px solid #999999;
+}
+
