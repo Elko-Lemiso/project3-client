@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import clean1 from "../../clean.gif"
-import clean2 from "../../clean-2.gif"
-export class Body extends Component {
+import clean1 from "./../clean.gif"
+import clean2 from "./../clean-2.gif"
+import './LandingPage.scss'
+
+class LandingPage extends Component {
     render() {
         return (
             <div className = "landing">
@@ -24,10 +26,9 @@ export class Body extends Component {
                         <h1>Clean or Relax</h1>
                     </div>
                 </section>
-
             </div>
-            
-            
         );
     }
 }
+
+export default LandingPage
