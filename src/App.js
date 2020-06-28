@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Nav from './components/Nav'
+import LandingPage from './pages/LandingPage'
+
 import './App.scss'
-import {Nav} from './components/LandingPage/LandingPage'
-import {Body} from './components/LandingPage/LandingPage'
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -26,7 +28,7 @@ class App extends Component {
     return (
       <div className="App">
         <Nav/>
-        <Body/>
+        <LandingPage/>
       </div>
     )
   }
