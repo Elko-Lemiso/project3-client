@@ -25,9 +25,9 @@ class LandingPage extends Component {
                         <p>We understand your home is important to you. Thats why we focus on the quality of the clean, with our uniquely tailored algorithm to find you the best cleaners available in your area.</p>
                         <p>We can promise:</p>
                         <ol>
-                            <li>1. Quick responses from potential cleaners</li>
-                            <li>2. A full review of the cleaners portfolio</li>
-                            <li>3. A bless to the mess</li>
+                            <li>Quick responses from potential cleaners</li>
+                            <li>A full review of the cleaners portfolio</li>
+                            <li>A bless to the mess</li>
                         </ol>
                     </div>
                     <div>
@@ -35,9 +35,9 @@ class LandingPage extends Component {
                         <p>Are you a student, looking for work? We know work can sometimes be hard to find, and we here at cleanR beleive in working for ourselves, join us and make a few extra coins. Who knows what might happen.</p>
                         <p>We can deliver:</p>
                         <ol>
-                            <li>1. Quick and easy money, just a tap away</li>
-                            <li>2. Reviewed clients by other cleaners</li>
-                            <li>3. A job every day should you need one</li>
+                            <li>Quick and easy money, just a tap away</li>
+                            <li>Reviewed clients by other cleaners</li>
+                            <li>A job every day should you need one</li>
                         </ol>
                     </div>
                 </section>
