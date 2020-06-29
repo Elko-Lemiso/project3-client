@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import clean1 from "./../images/clean.gif"
 import clean2 from "./../images/clean-2.gif"
 import clean3 from "./../images/clean3.gif"
-import '../components/nav.scss'
+// import '../components/nav.scss'
+import './LandingPage.scss'
+
 
 class LandingPage extends Component {
     render() {
