@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Nav from './components/Nav'
 import LandingPage from './pages/LandingPage'
-import Signup from './pages/Signup'
+import SignupCleaner from './pages/SignupCleaner'
 import { Route } from 'react-router-dom';
 
 import './App.scss'
@@ -27,7 +27,7 @@ class App extends Component {
       <div className="App">
         <Nav/>
         <Route exact path='/' component={LandingPage}/>
-        <Route exact path='/signup' component={Signup}/>
+        <Route exact path='/signup' component={SignupCleaner}/>
       </div>
     )
   }
