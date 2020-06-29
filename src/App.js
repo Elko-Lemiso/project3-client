@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Nav from './components/Nav'
+import LandingNav from './components/LandingNav'
 import LandingPage from './pages/LandingPage'
 import SignupCleaner from './pages/SignupCleaner'
 import { Route } from 'react-router-dom';
 
-import './App.scss'
+import './App.scss';
 
 class App extends Component {
   state = {
@@ -25,7 +25,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Nav/>
+        <LandingNav/>
         <Route exact path='/' component={LandingPage}/>
         <Route exact path='/signup' component={SignupCleaner}/>
       </div>
