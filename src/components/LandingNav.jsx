@@ -37,7 +37,7 @@ class LandingNav extends Component {
   render() {
       return (
         <>
-          <nav>
+          <nav id="landing-nav">
               <h2>cleanR</h2>
               <ul>
                 <div onClick={this.toggleSignUpModal}><li>Sign Up</li></div>
