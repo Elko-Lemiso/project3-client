@@ -6,7 +6,7 @@ import list from '../images/list.svg'
 import users from '../images/users.svg'
 import Signup from '../pages/auth/Signup'
 import { Link } from 'react-router-dom';
-
+import '../pages/LandingPage.scss'
 class LandingNav extends Component {
   constructor(props){
     super(props);

@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 class Nav extends Component {
     render() {
         return (
-            <nav>
+            <nav id = 'main-nav'>
                 <h2>cleanR</h2>
                 <ul>
                     <li><img src={users} alt=""/></li>
