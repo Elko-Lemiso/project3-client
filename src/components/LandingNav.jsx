@@ -4,7 +4,7 @@ import messages from '../images/messages.svg'
 import profile from '../images/profile.svg'
 import list from '../images/list.svg'
 import users from '../images/users.svg'
-import Signup from '../pages/Signup'
+import Signup from '../pages/auth/Signup'
 import { Link } from 'react-router-dom';
 
 class LandingNav extends Component {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Signup.scss'
-import {login} from "../utils/auth";
+import {login} from "../../utils/auth";
 
 class Login extends Component {
     constructor(props){

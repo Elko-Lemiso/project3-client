@@ -13,7 +13,7 @@ export const login = (user)=>{
         url: 'users/login',
         data: qs.stringify(user) // using qs to put the js object into the right format
     })
-    .then((response)=> {  
+    .then((response)=> {
         console.log(response);      
         setUser(response.data);
     })
@@ -25,4 +25,5 @@ export const getUser = ()=> {
 export const setUser = (user)=> {
     window.localStorage.setItem('user', JSON.stringify(user));
 }
+
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {getUser} from '../utils/auth'
 import './Welcome.scss'
 class Welcome extends Component {
@@ -36,8 +37,8 @@ class Welcome extends Component {
                     }
                 </div>
                 <div className="buttons">
-                    <button>Skip for now</button>
-                    <button>Complete profile</button>
+                    <button><Link to  = "/profile">Skip for now</Link></button>
+                    <button><Link to = "/editProfile">Complete profile</Link></button>
                 </div>
             </div>
         );
