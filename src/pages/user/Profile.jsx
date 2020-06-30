@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {getUser} from '../utils/auth'
-import Nav from '../components/Nav'
+import {getUser} from '../../utils/auth'
+import Nav from '../../components/Nav'
 import {Redirect } from 'react-router-dom';
 
 class Profile extends Component {

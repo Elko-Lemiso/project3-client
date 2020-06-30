@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {getUser} from '../utils/auth'
+import {getUser} from '../../utils/auth'
 import './Welcome.scss'
 class Welcome extends Component {
     constructor(props){

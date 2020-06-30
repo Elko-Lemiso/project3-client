@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Auth.scss';
+import './../Form.scss';
 import {signup} from "../../utils/auth";
 import { Link, Redirect } from 'react-router-dom';
 

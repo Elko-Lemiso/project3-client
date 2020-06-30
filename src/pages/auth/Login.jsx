@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Auth.scss'
+import './../Form.scss';
 import {login} from "../../utils/auth";
 import { Link, Redirect } from 'react-router-dom';
 
@@ -13,7 +13,6 @@ class Login extends Component {
         }
     }
     componentDidMount() {
-      
         this._isMounted = true;
     }
 
