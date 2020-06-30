@@ -13,13 +13,13 @@ class Nav extends Component {
             <nav id="main-nav">
                 <h2>cleanR</h2>
                 <ul>
-                    <li><img src={users} alt=""/></li>
-                    <li><img src={list} alt=""/></li>
+                    <li><img src={users} alt=""/><span>users</span></li>
+                    <li><img src={list} alt=""/><span>list</span></li>
                     <div>
                         <img src={plus} alt=""/>
                     </div>
-                    <li><img src={messages} alt=""/></li>
-                    <li><img src={profile} alt=""/></li>
+                    <li><img src={messages} alt=""/><span>messages</span></li>
+                    <li><img src={profile} alt=""/><span>profile</span></li>
                 </ul>
             </nav>
         );
