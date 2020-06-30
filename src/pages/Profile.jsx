@@ -12,7 +12,6 @@ class Profile extends Component {
     }
     componentDidMount=()=>{
         let user = getUser()
-        console.log(this.state)
         user === null ? this.props.history.push("/login") : this.setState({user : user})
       }
 
@@ -23,7 +22,7 @@ class Profile extends Component {
                 <div className="top-section">
                     <div className ="user-details">
                         <div className ="profile-picture-box">
-                            <img src="" alt=""/>
+                            <img src = {this.state.user.sessionData.profilePicture.path}alt=""/>
                         </div>
                         <div className ="user-credentials capitalize">
                             <p className ="username capitalize">{this.state.user.sessionData.firstname} {this.state.user.sessionData.lastname}</p>
@@ -36,8 +35,19 @@ class Profile extends Component {
                         <a href="/logout"><button className ="logout-btn">Log out</button></a>
                     </div>
                 </div>
-                <div className ="bottom-section">
 
+                <div className ="bottom-section">
+                    <div className ="user-details">
+                        <div className ="user-credentials capitalize">
+                            <p className ="username capitalize">STATS</p>
+                            <p className ="capitalize">You have spent {this.state.user.sessionData.email}</p>
+                            <p className ="capitalize">{this.state.user.sessionData.email}</p>
+                        </div>
+                    </div>
+                    <div className ="profile-actions">
+                        <a href="/editprofile"><button className ="edit-profile-btn">Edit Profile</button></a>
+                        <a href="/logout"><button className ="logout-btn">Log out</button></a>
+                    </div>
                 </div>
             </div>
             );
