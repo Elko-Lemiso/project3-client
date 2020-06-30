@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './SignupCleaner.scss'
+import './Signup.scss'
 import {login} from "../utils/auth";
 
 class Login extends Component {
@@ -14,12 +14,13 @@ class Login extends Component {
     componentDidMount() {
         this._isMounted = true;
     }
+
     componentWillUnmount() {
-        // fix Warning: Can’t perform a React state update on an unmounted component
-            this.setState = (state,callback)=>{
-            return;
-            };
-        }
+          this.setState = (state,callback)=>{
+          return;
+          };
+      }
+
     handleChange = (event) =>{
         let newState = {...this.state.user}
         let { name, value } = event.target;
@@ -28,6 +29,7 @@ class Login extends Component {
             user: newState
       })
     }
+    
     loginSubmit(e){
         e.preventDefault()
         login(this.state.user)
@@ -63,7 +65,7 @@ class Login extends Component {
                     <label>Password</label>
                     <input type="password" name="password" onChange={this.handleChange}/>
                 </div>
-                <button onClick={this.postSignUp} type="submit" className="green heartbeat">Sign up</button>
+                <button type="submit" className="green heartbeat">Sign up</button>
                 {
                     this.state.error && <p>123</p>
                 }
