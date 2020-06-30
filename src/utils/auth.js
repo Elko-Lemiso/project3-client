@@ -7,7 +7,6 @@ const axios = Axios.create({
     headers: { 'content-type': 'application/x-www-form-urlencoded' }
 });
 
-
 export const login = (user)=>{
     return axios({
         method: 'POST',
