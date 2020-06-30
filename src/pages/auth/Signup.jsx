@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Auth.scss';
 import {signup} from "../../utils/auth";
-import { Route } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class Signup extends Component {
   constructor(props){
@@ -26,29 +26,24 @@ class Signup extends Component {
     }
 
   pushUserToDatabase(event){
+    debugger
     event.preventDefault();
     signup(this.state.user)
     .then((response)=> {
       this.setState({
           error: null
       }, ()=> {
-          // this.props.history.push("/profile") 
-          /* 
-              we're redirecting programatically using the history props that react-router adds to every
-              component rendered through <Route />
-          */
+        this.props.history.push("/welcome") 
       })
     })
     .catch((error)=>{
-      console.log(error);
       this.setState({
-        error: error.response.data.message
+        error: error.response && error.response.data
       })
     })
   }
 
-  handleChange(event){
-    debugger
+  handleChange(event){  
     let newUserObject = {...this.state.user};
     newUserObject[event.target.name] = event.target.value;
     this.setState({

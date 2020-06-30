@@ -12,6 +12,13 @@
   align-items: center;
   flex-direction: column;
 
+  .signup{
+    max-width: 700px;
+  }
+  .login{
+    max-width: 400px;
+  }
+
   .signup, .login{
     background-color: white;
     width: 60%;

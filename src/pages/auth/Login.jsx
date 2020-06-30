@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Auth.scss'
 import {login} from "../../utils/auth";
+import { Link, Redirect } from 'react-router-dom';
 
 class Login extends Component {
     constructor(props){
@@ -31,7 +32,8 @@ class Login extends Component {
     }
 
     loginSubmit(event){
-        event.preventDefault()
+      debugger
+        // event.preventDefault()
         login(this.state.user)
         .then((response)=> {
             this.setState({
@@ -54,7 +56,7 @@ class Login extends Component {
     render() {
       return (
         <div className="modal">
-          <div id="login" className="signup big-container">
+          <div className="login big-container">
             <div className="exit-box">
               <p className="exit-btn" onClick={(event)=>{this.props.toggleForm(event)}}>x</p>
             </div>
