@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Auth.scss';
-import {signup} from "../utils/auth";
+import {signup} from "../../utils/auth";
 import { Route } from 'react-router-dom';
 
 class Signup extends Component {
@@ -48,6 +48,7 @@ class Signup extends Component {
   }
 
   handleChange(event){
+    debugger
     let newUserObject = {...this.state.user};
     newUserObject[event.target.name] = event.target.value;
     this.setState({

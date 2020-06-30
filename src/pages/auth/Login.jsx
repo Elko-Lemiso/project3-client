@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Auth.scss'
-import {login} from "../utils/auth";
+import {login} from "../../utils/auth";
 
 class Login extends Component {
     constructor(props){
@@ -37,7 +37,7 @@ class Login extends Component {
             this.setState({
                 error: null
             }, ()=> {
-                this.props.history.push("/") 
+                this.props.history.push("/welcome") 
             })
         })
         .catch((error)=> {

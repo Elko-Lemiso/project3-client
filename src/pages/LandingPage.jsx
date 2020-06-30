@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import clean1 from "./../images/clean.gif"
+import LandingNav from '../components/LandingNav';
 // import '../components/nav.scss'
 import './LandingPage.scss'
 
@@ -7,6 +8,7 @@ class LandingPage extends Component {
   render() {
     return (
       <div className = "landing">
+          <LandingNav/>
           <section className = "header">
               <div className="image">
                   <img src={clean1} alt=""/>
@@ -58,9 +60,11 @@ class LandingPage extends Component {
                   </div>
               </div>
           </section>
-
+          <div>
+            <img src="" alt=""/>
+          </div>
           <section className = "section-row">
-          <h1>What sets cleanR apart</h1>
+          <h1 id = "heading">What sets cleanR apart</h1>
               <div className="row">
                   <div>
                       <h2>Personal</h2>
@@ -76,9 +80,7 @@ class LandingPage extends Component {
                   </div>
               </div>
           </section>
-          {
-
-          }
+          <footer></footer>
       </div>
     );
   }
