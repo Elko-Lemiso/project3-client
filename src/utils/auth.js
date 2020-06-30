@@ -4,13 +4,14 @@ import qs from 'qs';
 const axios = Axios.create({
     baseURL: `${process.env.REACT_APP_BASE_URL}`,
     withCredentials: true, // this prevents cors errors, they also could have called it 'withCors'
-    headers: { 'content-type': 'application/x-www-form-urlencoded' }
+    // headers: { 'content-type': 'application/x-www-form-urlencoded' }
 });
 
 export const signup = (user)=>{
   return axios({
-    method: "post",
+    method: "POST",
     url: "users/signup",
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
     data: qs.stringify(user) // using qs to put the js object into the right format
   })
   .then((response)=> {        
@@ -19,9 +20,11 @@ export const signup = (user)=>{
 }
 
 export const login = (user)=>{
+  debugger
   return axios({
       method: 'POST',
       url: 'users/login',
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
       data: qs.stringify(user) // using qs to put the js object into the right format
   })
   .then((response)=> {  
