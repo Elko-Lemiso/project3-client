@@ -5,14 +5,16 @@ import Nav from '../components/Nav'
 class Profile extends Component {
     constructor(props){
         super(props)
-        this.user = getUser()
         this.state={
-            user : this.user
+            user : getUser()
         }
     }
-    componentDidMount=()=>{
-        let user = getUser()
-        user === null ? this.props.history.push("/login") : this.setState({user : user})
+    protect(){
+        getUser() === null ? this.setState({loggedIn : false}): this.setState({loggedIn : true})
+    }
+    componentDidMount(){
+        this.protect()
+        this.state.loggedIn !== true && this.props.history.push("/") 
       }
 
     render() {

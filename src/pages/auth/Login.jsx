@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import './Auth.scss'
 import {login} from "../../utils/auth";
-import { Link, Redirect } from 'react-router-dom';
-
+import { Redirect } from 'react-router-dom';
 class Login extends Component {
     constructor(props){
         super(props)
@@ -32,15 +31,13 @@ class Login extends Component {
     }
 
     loginSubmit(event){
-      debugger
-        // event.preventDefault()
+        event.preventDefault()
         login(this.state.user)
         .then((response)=> {
             this.setState({
                 error: null
-            }, ()=> {
-                this.props.history.push("/profile") 
             })
+            return(<Redirect to= "/profile"/>) 
         })
         .catch((error)=> {
             this.setState({error: error.response && error.response.data})
@@ -56,7 +53,7 @@ class Login extends Component {
     render() {
       return (
         <div className="modal">
-          <div className="login big-container">
+          <div id="login" className="signup big-container">
             <div className="exit-box">
               <p className="exit-btn" onClick={(event)=>{this.props.toggleForm(event)}}>x</p>
             </div>
