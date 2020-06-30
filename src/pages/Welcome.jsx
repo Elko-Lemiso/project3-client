@@ -20,7 +20,7 @@ class Welcome extends Component {
 
     render() {
         return (
-            <div className="white big-container slide-in-right">
+            <div className="white big-container welcome-container slide-in-right">
                 <div className="content">
                     <h1>Welcome</h1>
                     {

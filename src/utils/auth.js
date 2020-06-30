@@ -7,21 +7,33 @@ const axios = Axios.create({
     headers: { 'content-type': 'application/x-www-form-urlencoded' }
 });
 
+export const signup = (user)=>{
+  return axios({
+    method: "post",
+    url: "users/signup",
+    data: qs.stringify(user) // using qs to put the js object into the right format
+  })
+  .then((response)=> {        
+      setUser(response.data);
+  })
+}
+
 export const login = (user)=>{
-    return axios({
-        method: 'POST',
-        url: 'users/login',
-        data: qs.stringify(user) // using qs to put the js object into the right format
-    })
-    .then((response)=> {
-        console.log(response);      
-        setUser(response.data);
-    })
+  return axios({
+      method: 'POST',
+      url: 'users/login',
+      data: qs.stringify(user) // using qs to put the js object into the right format
+  })
+  .then((response)=> {  
+      console.log(response);      
+      setUser(response.data);
+  })
 }
 
 export const getUser = ()=> {
     return JSON.parse(window.localStorage.getItem('user'));
 }
+
 export const setUser = (user)=> {
     window.localStorage.setItem('user', JSON.stringify(user));
 }

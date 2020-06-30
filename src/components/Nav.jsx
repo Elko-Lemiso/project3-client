@@ -10,7 +10,11 @@ import { Link } from 'react-router-dom';
 class Nav extends Component {
     render() {
         return (
+<<<<<<< HEAD
             <nav id = 'main-nav'>
+=======
+            <nav id="main-nav">
+>>>>>>> 733b9c32b93b254682add42820fa2d7da61bf51f
                 <h2>cleanR</h2>
                 <ul>
                     <li><img src={users} alt=""/></li>
