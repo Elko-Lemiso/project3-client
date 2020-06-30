@@ -4,7 +4,9 @@ body{
   padding: 0;
   background-color: #FEFCFF;
 }
-
+.white{
+  background-color: #FEFCFF;
+}
 .green{
   background-color: #DAF0EE;
   color: #999;
@@ -80,6 +82,7 @@ button{
 .big-container{
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: 100%;
 }

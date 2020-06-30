@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './SignupCleaner.scss'
-import {login} from "../utils/auth";
+import {login} from "../../utils/auth";
 
 class Login extends Component {
     constructor(props){
@@ -35,7 +35,7 @@ class Login extends Component {
             this.setState({
                 error: null
             }, ()=> {
-                this.props.history.push("/") 
+                this.props.history.push("/welcome") 
             })
         })
         .catch((error)=> {
@@ -67,7 +67,6 @@ class Login extends Component {
                 {
                     this.state.error && <p>123</p>
                 }
-                
             </form>
           </div>
         </div>
