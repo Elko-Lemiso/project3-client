@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import LandingNav from './components/LandingNav';
 import LandingPage from './pages/LandingPage';
 import Signup from './pages/auth/Signup';
 import Login from './pages/auth/Login';
@@ -31,8 +30,8 @@ class App extends Component {
         <Route exact path='/' component={LandingPage}/>
         <Route exact path='/signup' component={Signup}/>
         <Route exact path='/login' component={Login}/>
-        <Route exact path='/welcome' component = {Welcome}/>
-        <Route exact path='/profile' component = {Profile}/>
+        <Route exact path='/welcome' component={Welcome}/>
+        <Route exact path='/profile' component={Profile}/>
       </div>
     )
   }

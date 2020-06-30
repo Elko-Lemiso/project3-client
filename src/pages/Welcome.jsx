@@ -11,7 +11,6 @@ class Welcome extends Component {
         }
     }
     
-
     componentDidMount=()=>{
         let user = getUser()
         console.log(this.state)
@@ -19,6 +18,7 @@ class Welcome extends Component {
       }
 
     render() {
+      debugger
         return (
             <div className="white big-container welcome-container slide-in-right">
                 <div className="content">
