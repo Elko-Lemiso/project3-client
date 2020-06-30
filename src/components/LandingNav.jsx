@@ -4,13 +4,15 @@ import messages from '../images/messages.svg'
 import profile from '../images/profile.svg'
 import list from '../images/list.svg'
 import users from '../images/users.svg'
-class Nav extends Component {
+import { Link } from 'react-router-dom';
+
+class LandingNav extends Component {
     render() {
         return (
             <nav>
                 <h2>cleanR</h2>
                 <ul>
-                    <li>Sign Up</li>
+                   <Link to='/signup'><li>Sign Up</li></Link>  
                     <li>Log In</li>
                 </ul>
             </nav>
@@ -18,7 +20,7 @@ class Nav extends Component {
     }
 }
 
-export default Nav
+export default LandingNav
 
 // class Nav extends Component {
 //     render() {

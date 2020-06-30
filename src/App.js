@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Nav from './components/Nav'
+import LandingNav from './components/LandingNav'
 import LandingPage from './pages/LandingPage'
 import SignupCleaner from './pages/SignupCleaner'
 import Login from './pages/Login'
 import { Route } from 'react-router-dom';
+<<<<<<< HEAD
 import './App.scss'
+=======
+
+import './App.scss';
+>>>>>>> b7916d1e888730b902a8d682fbafdf3c2ec9a5fe
 
 class App extends Component {
   state = {
@@ -25,7 +30,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Nav/>
+        <LandingNav/>
         <Route exact path='/' component={LandingPage}/>
         <Route exact path='/signup' component={SignupCleaner}/>
         <Route exact path='/login' component={Login}/>

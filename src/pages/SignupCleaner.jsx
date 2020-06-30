@@ -1,22 +1,44 @@
-import React, { Component } from 'react'
-import './SignupCleaner.scss'
+import React, { Component } from 'react';
+import './SignupCleaner.scss';
+import axios from 'axios';
+import { Route } from 'react-router-dom';
 
 class SignupCleaner extends Component {
+  constructor(props){
+    super(props);
+    this.pushUserToDatabase = this.pushUserToDatabase.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
   state = {
-    formAdjusted: false
+    user: {},
+    error: null
   }
 
-  componentDidMount(){
+  pushUserToDatabase(event){
+    event.preventDefault();
+    var theUser = this.state.user;
 
+    axios.post(`${process.env.REACT_APP_BASE_URL}users/signup`, theUser)
+    .then((response)=>{
+      this.setState({
+        user: {}
+      })
+      this.props.history.push(`/`); 
+    })
+    .catch((error)=>{
+      console.log(error);
+      this.setState({
+        error: error.response.data.message
+      })
+    })
   }
 
-  handleChange(){
-
-  }
-
-  placeholderStyling(){
+  handleChange(event){
+    let newUserObject = {...this.state.user};
+    newUserObject[event.target.name] = event.target.value;
     this.setState({
-      formAdjusted: true
+      user: newUserObject
     })
   }
 
@@ -28,7 +50,7 @@ class SignupCleaner extends Component {
             <div className="row">
               <div className="column column-50">
                 <label>Firstname</label>
-                <input type="text" name="firstname" onChange={ ()=>{ this.handleChang(); this.placeholderStyling(); } }/>
+                <input type="text" name="firstname" onChange={this.handleChange}/>
               </div>
               <div className="column column-50">
                 <label>Lastname</label>
@@ -73,7 +95,7 @@ class SignupCleaner extends Component {
             </div>
             <input type="number" hidden name="lat" onChange={this.handleChange}/>
             <input type="number" hidden name="long" onChange={this.handleChange}/>
-            <button onClick={this.postSignUp} type="submit" className="green heartbeat">Sign up</button>
+            <button onClick={this.pushUserToDatabase} type="submit" className="green heartbeat">Sign up</button>
             <p>{this.state.error}</p>
           </form>
       </div>
