@@ -20,7 +20,6 @@ export const signup = (user)=>{
 }
 
 export const login = (user)=>{
-  debugger
   return axios({
       method: 'POST',
       url: 'users/login',

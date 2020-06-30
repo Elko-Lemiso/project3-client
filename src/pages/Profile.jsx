@@ -1,25 +1,29 @@
 import React, { Component } from 'react';
 import {getUser} from '../utils/auth'
 import Nav from '../components/Nav'
+import {Redirect } from 'react-router-dom';
 
 class Profile extends Component {
     constructor(props){
-        super(props)
-        this.state={
-            user : getUser()
-        }
-    }
-    protect(){
-        getUser() === null ? this.setState({loggedIn : false}): this.setState({loggedIn : true})
-    }
-    componentDidMount(){
-        this.protect()
-        this.state.loggedIn !== true && this.props.history.push("/") 
+      super(props)
+      this.user = getUser()
+      this.state={
+          user: this.user
       }
+    }
+    componentDidMount=()=>{
+      let user = getUser()
+      console.log(this.state)
+      user === null ? this.props.history.push("/") : this.setState({user : user})
+    }
 
     render() {
+      debugger
         return (
-            <div>
+          <>
+          { !this.state.user ?
+            <Redirect to="/" />:
+              <div>
                 <Nav/>
                 <div className="top-section">
                     <div className ="user-details">
@@ -51,8 +55,10 @@ class Profile extends Component {
                         <a href="/logout"><button className ="logout-btn">Log out</button></a>
                     </div>
                 </div>
-            </div>
-            );
+              </div>
+            }
+          </>
+        );
     }
 }
 

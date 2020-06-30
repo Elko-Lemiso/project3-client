@@ -12,6 +12,7 @@ class Login extends Component {
         }
     }
     componentDidMount() {
+      
         this._isMounted = true;
     }
 
@@ -31,11 +32,14 @@ class Login extends Component {
     }
 
     loginSubmit(event){
+      debugger
         event.preventDefault()
         login(this.state.user)
         .then((response)=> {
             this.setState({
                 error: null
+            }, ()=> {
+              this.props.history.push("/welcome") 
             })
             return(<Redirect to= "/profile"/>) 
         })
