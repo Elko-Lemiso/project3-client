@@ -5,22 +5,32 @@ import profile from '../images/profile.svg'
 import list from '../images/list.svg'
 import users from '../images/users.svg'
 import Signup from '../pages/Signup'
+import Login from '../pages/Login'
 import { Link } from 'react-router-dom';
 
 class LandingNav extends Component {
   constructor(props){
     super(props);
     this.toggleSignUpModal = this.toggleSignUpModal.bind(this);
+    this.toggleLoginModal = this.toggleLoginModal.bind(this);
   }
 
   state = {
-    toggleForm: false
+    toggleSignUpForm: false,
+    toggleLoginForm: false
   }
 
   toggleSignUpModal(event){
     event.preventDefault();
     this.setState({
-      toggleForm: !this.state.toggleForm
+      toggleSignUpForm: !this.state.toggleSignUpForm
+    })
+  }
+
+  toggleLoginModal(event){
+    event.preventDefault();
+    this.setState({
+      toggleLoginForm: !this.state.toggleLoginForm
     })
   }
 
@@ -31,11 +41,16 @@ class LandingNav extends Component {
               <h2>cleanR</h2>
               <ul>
                 <div onClick={this.toggleSignUpModal}><li>Sign Up</li></div>
-                <Link to='/'><li>Login</li></Link>
+                <div onClick={this.toggleLoginModal}><li>Login</li></div>
               </ul>
           </nav>
-          { this.state.toggleForm === true?
+          { this.state.toggleSignUpForm === true?
             <Signup toggleForm={this.toggleSignUpModal}/> :
+            <></>
+          }
+          {
+            this.state.toggleLoginForm === true?
+            <Login toggleForm={this.toggleLoginModal}/> :
             <></>
           }
           

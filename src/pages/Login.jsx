@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Signup.scss'
+import './Auth.scss'
 import {login} from "../utils/auth";
 
 class Login extends Component {
@@ -29,9 +29,9 @@ class Login extends Component {
             user: newState
       })
     }
-    
-    loginSubmit(e){
-        e.preventDefault()
+
+    loginSubmit(event){
+        event.preventDefault()
         login(this.state.user)
         .then((response)=> {
             this.setState({
@@ -53,23 +53,22 @@ class Login extends Component {
   
     render() {
       return (
-        <div id="signup" className="signup big-container">
-          <h1>LOGIN</h1>
-            <div>
-            <form onSubmit = {(e) => this.loginSubmit(e)} className="form-styling">
-                <div className="column column-60">
-                    <label>Email address</label>
-                    <input type="text" name="email" onChange={this.handleChange}/>
-                </div>
-                <div className="column column-40">
-                    <label>Password</label>
-                    <input type="password" name="password" onChange={this.handleChange}/>
-                </div>
-                <button type="submit" className="green heartbeat">Sign up</button>
-                {
-                    this.state.error && <p>123</p>
-                }
-                
+        <div className="modal">
+          <div id="login" className="signup big-container">
+            <div className="exit-box">
+              <p className="exit-btn" onClick={(event)=>{this.props.toggleForm(event)}}>x</p>
+            </div>
+            <h1>LOGIN</h1>
+            <form className="form-styling">
+              <label>Email address</label>
+              <input type="text" name="email" onChange={this.handleChange}/>
+              <label>Password</label>
+              <input type="password" name="password" onChange={this.handleChange}/>
+              <button type="submit" onClick={(event) => {
+                event.preventDefault();
+                this.loginSubmit(event);
+                this.props.toggleForm(event);
+                }} className="title-blue heartbeat">Login</button>
             </form>
           </div>
         </div>

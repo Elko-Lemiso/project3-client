@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './Signup.scss';
-import axios from 'axios';
+import './Auth.scss';
+import {signup} from "../utils/auth";
 import { Route } from 'react-router-dom';
 
 class Signup extends Component {
@@ -20,26 +20,35 @@ class Signup extends Component {
   }
 
   componentWillUnmount() {
-    // fix Warning: Can’t perform a React state update on an unmounted component
       this.setState = (state,callback)=>{
         return;
       };
     }
 
-  pushUserToDatabase(){
-    var theUser = this.state.user;
-    axios.post(`${process.env.REACT_APP_BASE_URL}users/signup`, theUser)
-    .then((response)=>{
+  pushUserToDatabase(event){
+    event.preventDefault();
+    signup(this.state.user)
+    .then((response)=> {
       this.setState({
-        user: {}
+          error: null
+      }, ()=> {
+          // this.props.history.push("/profile") 
+          /* 
+              we're redirecting programatically using the history props that react-router adds to every
+              component rendered through <Route />
+          */
       })
     })
-    .catch((error)=> {
-      this.setState({error: error.response && error.response.data});
+    .catch((error)=>{
+      console.log(error);
+      this.setState({
+        error: error.response.data.message
+      })
     })
   }
 
   handleChange(event){
+    debugger
     let newUserObject = {...this.state.user};
     newUserObject[event.target.name] = event.target.value;
     this.setState({
@@ -56,7 +65,6 @@ class Signup extends Component {
           </div>
           <h1>SIGNUP</h1>
           <form className="form-styling">
-          
               <div className="row">
                 <div className="column column-50">
                   <label>Firstname</label>
@@ -91,12 +99,16 @@ class Signup extends Component {
                   <input type="text" name="zipCode" onChange={this.handleChange}/>
                 </div>
               </div>
-              <label>User type</label>
-              <input type="text" name="userType" onChange={this.handleChange}/>
-              {/* <select name="userType" onChange={this.handleChange}>
-                <option value="client">Client</option>
-                <option value="cleaner">Cleaner</option>
-              </select> */}
+              <div className="row">
+                <div className="column column-50 radio">
+                  <label htmlFor="tourist">Client</label>
+                  <input className="boolean" type="radio" name="userType" value="client" onChange={this.handleChange}/>
+                </div>
+                <div className="column column-50 radio">
+                  <label htmlFor="artist">Cleaner</label>
+                  <input className="boolean" type="radio" name="userType" value="cleaner" onChange={this.handleChange}/>
+                </div>
+              </div>
               <div className="row">
                 <div className="column column-60">
                   <label>Email address</label>
@@ -111,9 +123,9 @@ class Signup extends Component {
               <input type="number" hidden name="long" onChange={this.handleChange}/>
               <button onClick={(event)=>{
                 event.preventDefault();
-                this.pushUserToDatabase();
+                this.pushUserToDatabase(event);
                 this.props.toggleForm(event);
-              }} type="submit" className="green heartbeat">Sign up</button>
+              }} type="submit" className="title-blue heartbeat">Sign up</button>
               <p>{this.state.error}</p>
             </form>
         </div>
