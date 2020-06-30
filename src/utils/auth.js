@@ -10,7 +10,7 @@ const axios = Axios.create({
 export const login = (user)=>{
     return axios({
         method: 'POST',
-        url: 'login',
+        url: 'users/login',
         data: qs.stringify(user) // using qs to put the js object into the right format
     })
     .then((response)=> {  
