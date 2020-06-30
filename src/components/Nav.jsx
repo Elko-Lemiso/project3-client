@@ -10,20 +10,16 @@ import { Link } from 'react-router-dom';
 class Nav extends Component {
     render() {
         return (
-<<<<<<< HEAD
-            <nav id = 'main-nav'>
-=======
             <nav id="main-nav">
->>>>>>> 733b9c32b93b254682add42820fa2d7da61bf51f
                 <h2>cleanR</h2>
                 <ul>
-                    <li><img src={users} alt=""/></li>
-                    <li><img src={list} alt=""/></li>
+                    <li><img src={users} alt=""/><span>users</span></li>
+                    <li><img src={list} alt=""/><span>list</span></li>
                     <div>
                         <img src={plus} alt=""/>
                     </div>
-                    <li><img src={messages} alt=""/></li>
-                    <li><img src={profile} alt=""/></li>
+                    <li><img src={messages} alt=""/><span>messages</span></li>
+                    <li><img src={profile} alt=""/><span>profile</span></li>
                 </ul>
             </nav>
         );
