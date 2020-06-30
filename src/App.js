@@ -5,12 +5,7 @@ import LandingPage from './pages/LandingPage'
 import SignupCleaner from './pages/SignupCleaner'
 import Login from './pages/Login'
 import { Route } from 'react-router-dom';
-<<<<<<< HEAD
 import './App.scss'
-=======
-
-import './App.scss';
->>>>>>> b7916d1e888730b902a8d682fbafdf3c2ec9a5fe
 
 class App extends Component {
   state = {
