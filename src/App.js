@@ -6,6 +6,7 @@ import Login from './pages/auth/Login';
 import Welcome from './pages/user/Welcome'
 import Logout from './pages/auth/Logout'
 import Profile from './pages/user/Profile'
+import EditProfile from './pages/user/EditProfile'
 import { Route } from 'react-router-dom';
 import './App.scss';
 
@@ -34,6 +35,7 @@ class App extends Component {
         <Route path='/welcome' component={Welcome}/>
         <Route path='/profile' component={Profile}/>
         <Route path='/logout' component={Logout}/>
+        <Route path='/editprofile' component={EditProfile}/>
       </div>
     )
   }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {getUser} from '../../utils/auth'
 import Nav from '../../components/Nav'
-import {Redirect, Link } from 'react-router-dom';
-import './Profile.scss'
+import {Redirect } from 'react-router-dom';
+
 class Profile extends Component {
     constructor(props){
       super(props)
@@ -18,38 +18,42 @@ class Profile extends Component {
     }
 
     render() {
+      debugger
         return (
           <>
           { !this.state.user ?
             <Redirect to="/" />:
               <div>
                 <Nav/>
-                <div className = "container">
-                  <div className="top-section">
-                      <div className ="user-details">
-                          <div className ="profile-picture-box">
-                              <img src = {this.state.user.sessionData.profilePicture.path}alt=""/>
-                          </div>
-                          <div className ="user-credentials">
-                              <p className ="username">{this.state.user.sessionData.firstname} {this.state.user.sessionData.lastname}</p>
-                              <span className ="capitalize">{this.state.user.sessionData.userType}</span>
-                          </div>
-                      </div>
-                      <div className ="profile-actions">
-                          <button className ="edit-profile-btn blue">Edit</button>
-                          <button className ="logout-btn red"><Link style={{ textDecoration: 'none', color : 'white' ,fontSize: '0.8rem'  }}  to = "/logout">Log out</Link></button>
-                      </div>
-                  </div>
+                <div className="top-section">
+                    <div className ="user-details">
+                        <div className ="profile-picture-box">
+                            <img src = {this.state.user.sessionData.profilePicture.path}alt=""/>
+                        </div>
+                        <div className ="user-credentials capitalize">
+                            <p className ="username capitalize">{this.state.user.sessionData.firstname} {this.state.user.sessionData.lastname}</p>
+                            <p className ="capitalize">{this.state.user.sessionData.userType}</p>
+                            <p className ="capitalize">{this.state.user.sessionData.email}</p>
+                        </div>
+                    </div>
+                    <div className ="profile-actions">
+                        <a href="/editprofile"><button className ="edit-profile-btn">Edit Profile</button></a>
+                        <a href="/logout"><button className ="logout-btn">Log out</button></a>
+                    </div>
+                </div>
 
-                  <div className ="bottom-section">
-                      <div className ="user-details">
-                          <div className ="user-credentials">
-                              <p className ="username">STATS</p>
-                              <p className ="capitalize">You have made 0</p>
-                              <p className ="capitalize">You have completed 0 jobs</p>
-                          </div>
-                      </div>
-                  </div>
+                <div className ="bottom-section">
+                    <div className ="user-details">
+                        <div className ="user-credentials capitalize">
+                            <p className ="username capitalize">STATS</p>
+                            <p className ="capitalize">You have spent {this.state.user.sessionData.email}</p>
+                            <p className ="capitalize">{this.state.user.sessionData.email}</p>
+                        </div>
+                    </div>
+                    <div className ="profile-actions">
+                        <a href="/editprofile"><button className ="edit-profile-btn">Edit Profile</button></a>
+                        <a href="/logout"><button className ="logout-btn">Log out</button></a>
+                    </div>
                 </div>
               </div>
             }
