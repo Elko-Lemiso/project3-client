@@ -8,10 +8,28 @@ const axios = Axios.create({
 });
 
 export const userData = (user)=>{
-  debugger
   return axios({
     method: "GET",
     url: `users/${user}`,
   })
 }
 
+export const updateUserData = (userProfileChange)=>{
+  debugger
+  return axios({
+    method: 'POST',
+    url: `users/editprofile`,
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    data: qs.stringify(userProfileChange) // using qs to put the js object into the right format
+  })
+}
+
+// export const updateProfilePicture = (profilePicture) =>{
+//   debugger
+//   return axios({
+//     method: 'POST',
+//     url: `users/editprofilepicture`,
+//     headers: { 'content-typ': 'multipart/form-data' },
+//     data: profilePicture 
+//   })
+// }
