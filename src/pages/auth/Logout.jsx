@@ -5,10 +5,8 @@ import { Link, Route, Redirect } from 'react-router-dom';
 class Logout extends Component {
 
   componentDidMount(){
-    debugger
     logout()
     .then(()=>{
-      debugger
       this.props.history.push("/");
     })
     .catch((error)=>{
