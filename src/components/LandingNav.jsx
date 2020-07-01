@@ -6,7 +6,7 @@ import list from '../images/list.svg';
 import users from '../images/users.svg';
 import Login from '../pages/auth/Login';
 import Signup from '../pages/auth/Signup';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import '../pages/LandingPage.scss'
 class LandingNav extends Component {
   constructor(props){
@@ -40,17 +40,21 @@ class LandingNav extends Component {
           <nav id="landing-nav">
               <h2>cleanR</h2>
               <ul>
-                <div onClick={this.toggleSignUpModal}><li>Sign Up</li></div>
-                <div onClick={this.toggleLoginModal}><li>Login</li></div>
+                {/* <div onClick={this.toggleSignUpModal}><li>Sign Up</li></div>
+                <div onClick={this.toggleLoginModal}><li>Login</li></div> */}
+                <li><Link to="/auth/login" >Login </Link></li>
+                <li><Link to="/auth/signup" >Sign Up </Link></li>
               </ul>
           </nav>
+          <Route path="/auth/login" component={Login} />
+          <Route path="/auth/signup" component={Signup} />
           { this.state.toggleSignUpForm === true?
-            <Signup toggleForm={this.toggleSignUpModal}/> :
+            <Signup {...this.props} toggleForm={this.toggleSignUpModal}/> :
             <></>
           }
           {
             this.state.toggleLoginForm === true?
-            <Login toggleForm={this.toggleLoginModal}/> :
+            <Login {...this.props} toggleForm={this.toggleLoginModal}/> :
             <></>
           }
           

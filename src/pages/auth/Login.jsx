@@ -35,6 +35,7 @@ class Login extends Component {
         event.preventDefault()
         login(this.state.user)
         .then((response)=> {
+            debugger
             this.setState({
                 error: null
             }, ()=> {
