@@ -1,19 +1,38 @@
 import React, { Component } from 'react'
 import {getUser} from '../../utils/auth'
+import {userData} from '../../utils/user'
 import './../Form.scss';
 
 class EditProfile extends Component {
-  constructor(props) {
-    super(props)
+  // constructor(props) {
+  //   super(props)
 
-  }
+  // }
 
   state = {
-    user: getUser()
+    user: getUser(),
+    userData: {},
+    error: null
+  }
+
+  componentDidMount(){
+    debugger
+    userData(this.state.user.sessionData.email)
+    .then((response)=>{
+      this.setState({
+        userData: response
+      })
+    })
+    .catch((error)=>{
+      this.setState({
+        error: error.response.data.message
+      })
+    })
   }
 
   render() {
     debugger
+    console.log("render");
     return (
       <div className="edit-profile big-container">
         <h1>EDIT PROFILE</h1>
