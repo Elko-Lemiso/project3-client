@@ -40,23 +40,12 @@ class LandingNav extends Component {
           <nav id="landing-nav">
               <h2>cleanR</h2>
               <ul>
-                {/* <div onClick={this.toggleSignUpModal}><li>Sign Up</li></div>
-                <div onClick={this.toggleLoginModal}><li>Login</li></div> */}
-                <li><Link to="/auth/login" >Login </Link></li>
-                <li><Link to="/auth/signup" >Sign Up </Link></li>
+              <Link className ="link" to="/auth/signup" ><li>Sign Up</li></Link>
+              <Link className ="link" to="/auth/login" ><li>Login</li></Link>
               </ul>
           </nav>
           <Route path="/auth/login" component={Login} />
           <Route path="/auth/signup" component={Signup} />
-          { this.state.toggleSignUpForm === true?
-            <Signup {...this.props} toggleForm={this.toggleSignUpModal}/> :
-            <></>
-          }
-          {
-            this.state.toggleLoginForm === true?
-            <Login {...this.props} toggleForm={this.toggleLoginModal}/> :
-            <></>
-          }
           
         </>
       );
@@ -64,24 +53,3 @@ class LandingNav extends Component {
 }
 
 export default LandingNav
-
-// class Nav extends Component {
-//     render() {
-//         return (
-//             <nav>
-//                 <h2>cleanR</h2>
-//                 <ul>
-//                     <li><img src={users} alt=""/></li>
-//                     <li><img src={list} alt=""/></li>
-//                     <div>
-//                         <img src={plus} alt=""/>
-//                     </div>
-//                     <li><img src={messages} alt=""/></li>
-//                     <li><img src={profile} alt=""/></li>
-//                 </ul>
-//             </nav>
-//         );
-//     }
-// }
-
-// export default Nav

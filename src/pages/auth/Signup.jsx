@@ -56,7 +56,7 @@ class Signup extends Component {
       <div className="modal">
         <div id="signup" className="signup big-container">
           <div className="exit-box">
-            <p className="exit-btn" onClick={(event)=>{this.props.toggleForm(event)}}>x</p>
+            <p className="exit-btn"><Link to = "/">X</Link></p>
           </div>
           <h1>SIGNUP</h1>
           <form className="form-styling">

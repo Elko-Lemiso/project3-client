@@ -25,9 +25,13 @@
       justify-content: flex-end;
       
       .exit-btn{
+        text-decoration: none;
         margin: 10px 10px 0px 0px;
-        color: #999;
         cursor: pointer;
+        a{
+          text-decoration: none;
+          color: #999;
+        }
       }
     }
 

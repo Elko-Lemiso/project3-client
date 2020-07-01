@@ -7,8 +7,8 @@ import './LandingPage.scss'
 class LandingPage extends Component {
   render() {
     return (
-      <div className="landing">
-          <LandingNav {...this.props}/>
+      <div className = "landing">
+          <LandingNav/>
           <section className = "header">
               <div className="image">
                   <img src={clean1} alt=""/>
