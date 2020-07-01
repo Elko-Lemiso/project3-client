@@ -36,13 +36,11 @@ class Login extends Component {
         event.preventDefault()
         login(this.state.user)
         .then((response)=> {
-            debugger
             this.setState({
                 error: null
             }, ()=> {
               this.props.history.push("/welcome") 
             })
-            return(<Redirect to= "/profile"/>) 
         })
         .catch((error)=> {
             this.setState({error: error.response && error.response.data})

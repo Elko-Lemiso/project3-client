@@ -16,7 +16,6 @@ class EditProfile extends Component {
   }
 
   componentDidMount(){
-    debugger
     userData(this.state.user.sessionData.id)
     .then((response)=>{
       this.setState({
@@ -43,7 +42,6 @@ class EditProfile extends Component {
   }
 
   render() {
-    debugger
     return (
       <div className="big-container">
         <div id="edit-profile" className="edit-profile">
