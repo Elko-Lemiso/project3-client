@@ -31,7 +31,16 @@ export const login = (user)=>{
       setUser(response.data);
   })
 }
+export const logout = () => {
+  return axios.get('users/logout')
+  .then((response)=> {        
+    clearUserSession(response.data);
+  })
+}
 
+export const clearUserSession = ()=> {
+  window.localStorage.removeItem("user");
+};
 export const getUser = ()=> {
     return JSON.parse(window.localStorage.getItem('user'));
 }

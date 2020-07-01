@@ -3,8 +3,9 @@ import axios from 'axios';
 import LandingPage from './pages/LandingPage';
 import Signup from './pages/auth/Signup';
 import Login from './pages/auth/Login';
-import Welcome from './pages/Welcome'
-import Profile from './pages/Profile'
+import Welcome from './pages/user/Welcome'
+import Logout from './pages/auth/Logout'
+import Profile from './pages/user/Profile'
 import { Route } from 'react-router-dom';
 import './App.scss';
 
@@ -27,11 +28,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route exact path='/' component={LandingPage}/>
-        <Route exact path='/signup' component={Signup}/>
-        <Route exact path='/login' component={Login}/>
-        <Route exact path='/welcome' component={Welcome}/>
-        <Route exact path='/profile' component={Profile}/>
+        <Route exact path={['/', '/auth/login', '/auth/signup']} component={LandingPage}/>
+        <Route path='/signup' component={Signup}/>
+        <Route path='/login' component={Login}/>
+        <Route path='/welcome' component={Welcome}/>
+        <Route path='/profile' component={Profile}/>
+        <Route path='/logout' component={Logout}/>
       </div>
     )
   }

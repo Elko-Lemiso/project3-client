@@ -8,7 +8,7 @@ class LandingPage extends Component {
   render() {
     return (
       <div className = "landing">
-          <LandingNav/>
+          <LandingNav {...this.props}/>
           <section className = "header">
               <div className="image">
                   <img src={clean1} alt=""/>
