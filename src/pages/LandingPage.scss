@@ -32,6 +32,7 @@ nav{
         }
         a{
           text-decoration: none;
+          color: white;
         }
     }
 
@@ -251,6 +252,9 @@ nav{
             list-style: none;
             justify-content: space-evenly;
             li{
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 border: 3px rgb(75, 195, 235) solid;
                 background-color: #fff;
                 border-radius: 10px;
@@ -259,6 +263,9 @@ nav{
                 font-weight: 500;
                 margin: 0 0rem;
                 font-size: 1.2rem;
+                a{
+                    color: #3498db;
+                }
             }
         }
     }

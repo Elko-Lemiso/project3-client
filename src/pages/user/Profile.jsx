@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {getUser} from '../../utils/auth'
 import Nav from '../../components/Nav'
 import {Redirect } from 'react-router-dom';
-
+import './Profile.scss'
+import profilePicture from '../../images/profile.svg'
 class Profile extends Component {
     constructor(props){
       super(props)
@@ -11,48 +12,51 @@ class Profile extends Component {
           user: this.user
       }
     }
-    componentDidMount=()=>{
-      let user = getUser()
-      console.log(this.state)
-      user === null ? this.props.history.push("/") : this.setState({user : user})
+    componentDidMount(){
+      debugger
+      userData(this.state.user.sessionData.id)
+      .then((response)=>{
+        this.setState({
+          userData: response.data.user
+        })
+      })
+      .catch((error)=>{
+        this.setState({
+          error: error.response.data.message
+        })
+      })
     }
 
     render() {
-      debugger
         return (
           <>
           { !this.state.user ?
-            <Redirect to="/" />:
+            <Redirect to="/auth/login" />:
               <div>
                 <Nav/>
                 <div className="top-section">
                     <div className ="user-details">
                         <div className ="profile-picture-box">
-                            <img src = {this.state.user.sessionData.profilePicture.path}alt=""/>
+                            <img src = {profilePicture}alt=""/>
                         </div>
-                        <div className ="user-credentials capitalize">
-                            <p className ="username capitalize">{this.state.user.sessionData.firstname} {this.state.user.sessionData.lastname}</p>
-                            <p className ="capitalize">{this.state.user.sessionData.userType}</p>
-                            <p className ="capitalize">{this.state.user.sessionData.email}</p>
+                        <div className ="user-credentials">
+                            <p className ="username">{this.state.user.sessionData.firstname} {this.state.user.sessionData.lastname}</p>
+                            <span className ="capitalize">{this.state.user.sessionData.userType}</span>
                         </div>
                     </div>
                     <div className ="profile-actions">
-                        <a href="/editprofile"><button className ="edit-profile-btn">Edit Profile</button></a>
-                        <a href="/logout"><button className ="logout-btn">Log out</button></a>
+                        <a href="/editprofile"><button className ="edit-profile-btn blue">Edit Profile</button></a>
+                        <a href="/logout"><button className ="logout-btn red">Log out</button></a>
                     </div>
                 </div>
 
                 <div className ="bottom-section">
                     <div className ="user-details">
-                        <div className ="user-credentials capitalize">
-                            <p className ="username capitalize">STATS</p>
+                        <div className ="user-credentials">
+                            <p className ="username">STATS</p>
                             <p className ="capitalize">You have spent {this.state.user.sessionData.email}</p>
                             <p className ="capitalize">{this.state.user.sessionData.email}</p>
                         </div>
-                    </div>
-                    <div className ="profile-actions">
-                        <a href="/editprofile"><button className ="edit-profile-btn">Edit Profile</button></a>
-                        <a href="/logout"><button className ="logout-btn">Log out</button></a>
                     </div>
                 </div>
               </div>

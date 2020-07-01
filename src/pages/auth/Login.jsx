@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './../Form.scss';
 import {login} from "../../utils/auth";
 import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 class Login extends Component {
     constructor(props){
         super(props)
@@ -59,7 +60,8 @@ class Login extends Component {
         <div className="modal">
           <div id="login" className="signup big-container">
             <div className="exit-box">
-              <p className="exit-btn" onClick={(event)=>{this.props.toggleForm(event)}}>x</p>
+              <p className="exit-btn"><Link to = "/">X</Link></p>
+              
             </div>
             <h1>LOGIN</h1>
             <form className="form-styling">
@@ -70,7 +72,6 @@ class Login extends Component {
               <button type="submit" onClick={(event) => {
                 event.preventDefault();
                 this.loginSubmit(event);
-                this.props.toggleForm(event);
                 }} className="title-blue heartbeat">Login</button>
             </form>
           </div>

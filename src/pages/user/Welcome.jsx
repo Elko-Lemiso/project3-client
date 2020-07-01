@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import {getUser} from '../../utils/auth'
 import './Welcome.scss'
 class Welcome extends Component {
@@ -10,16 +10,13 @@ class Welcome extends Component {
             user : this.user
         }
     }
-    
-    componentDidMount=()=>{
-        let user = getUser()
-        console.log(this.state)
-        user === null ? this.props.history.push("/login") : this.setState({user : user})
-      }
 
     render() {
       debugger
         return (
+            <>
+            { !this.state.user ?
+            <Redirect to="/auth/login" />:
             <div className="white big-container welcome-container slide-in-right">
                 <div className="content">
                     <h1>Welcome</h1>
@@ -39,10 +36,12 @@ class Welcome extends Component {
                     }
                 </div>
                 <div className="buttons">
-                    <button className="title-blue"><Link to  = "/profile">Explore platform</Link></button>
-                    <button className="title-blue heartbeat"><Link to = "/editProfile">Complete profile</Link></button>
+                <Link to  = "/profile"><button className="title-blue">Explore platform</button></Link>
+                <Link to = "/editProfile"><button className="title-blue heartbeat">Complete profile</button></Link>
                 </div>
             </div>
+    }
+            </>
         );
     }
 }
