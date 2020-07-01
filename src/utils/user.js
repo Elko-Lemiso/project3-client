@@ -8,8 +8,9 @@ const axios = Axios.create({
 });
 
 export const userData = (user)=>{
+  debugger
   return axios({
     method: "GET",
-    url: "users/userdata",
+    url: `users/${user}`,
   })
 }

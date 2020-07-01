@@ -11,13 +11,19 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
 
-  .signup{
-    max-width: 700px;
-  }
-  .login{
-    max-width: 400px;
-  }
+#signup, .signup{
+  max-width: 700px;
+}
+#login, .login{
+  max-width: 400px;
+}
+#edit-profile, .edit-profile{
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .signup, .login, .edit-profile{
@@ -48,6 +54,7 @@
     flex-direction: column;
     width: 90%;
     margin-bottom: 25px;
+    background-color: white;
 
     input, .radio{
       height: 50px;
@@ -56,8 +63,22 @@
       background-color: white;
     }
 
-    .radio{
-      
+    .profile-picture-label{
+      margin: 5px;
+    }
+
+    .profile-picture-input{
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .bio{
+      height: 100px;
+    }
+
+    .radio{ 
       .boolean{
         margin-left: 50%;
       }

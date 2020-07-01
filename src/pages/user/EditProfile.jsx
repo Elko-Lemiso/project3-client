@@ -4,10 +4,10 @@ import {userData} from '../../utils/user'
 import './../Form.scss';
 
 class EditProfile extends Component {
-  // constructor(props) {
-  //   super(props)
-
-  // }
+  constructor(props) {
+    super(props)
+    this.formRef = React.createRef();
+  }
 
   state = {
     user: getUser(),
@@ -17,10 +17,10 @@ class EditProfile extends Component {
 
   componentDidMount(){
     debugger
-    userData(this.state.user.sessionData.email)
+    userData(this.state.user.sessionData.id)
     .then((response)=>{
       this.setState({
-        userData: response
+        userData: response.data.user
       })
     })
     .catch((error)=>{
@@ -30,13 +30,25 @@ class EditProfile extends Component {
     })
   }
 
+  updateProfile(event){
+    var formData = new FormData(this.formRef.current);
+  }
+
+  handleChange(event){  
+    let newUserObject = {...this.state.userData};
+    newUserObject[event.target.name] = event.target.value;
+    this.setState({
+      userData: newUserObject
+    })
+  }
+
   render() {
     debugger
-    console.log("render");
     return (
-      <div className="edit-profile big-container">
-        <h1>EDIT PROFILE</h1>
-        <form className="form-styling">
+      <div className="big-container">
+        <div id="edit-profile" className="edit-profile">
+          <h1>EDIT PROFILE</h1>
+          <form className="form-styling" ref={this.formRef}>
             <div className="row">
               <div className="column column-50">
                 <label>Firstname</label>
@@ -71,6 +83,8 @@ class EditProfile extends Component {
                 <input type="text" name="zipCode" onChange={this.handleChange}/>
               </div>
             </div>
+            <label>Phone number</label>
+            <input type="number" name="telNr" onChange={this.handleChange}/>
             <div className="row">
               <div className="column column-50 radio">
                 <label htmlFor="tourist">Client</label>
@@ -81,6 +95,10 @@ class EditProfile extends Component {
                 <input className="boolean" type="radio" name="userType" value="cleaner" onChange={this.handleChange}/>
               </div>
             </div>
+            <label>Your Bio: Shortly tell something about yourself</label>
+            <input className="bio" type="text" name="bio" onChange={this.handleChange}/>
+            <label>Chamber of Commerce number</label>
+            <input type="number" name="chamberOfCommerceNr" onChange={this.handleChange}/>
             <div className="row">
               <div className="column column-60">
                 <label>Email address</label>
@@ -93,13 +111,15 @@ class EditProfile extends Component {
             </div>
             <input type="number" hidden name="lat" onChange={this.handleChange}/>
             <input type="number" hidden name="long" onChange={this.handleChange}/>
+            <label className="profile-picture-label">Upload your profile picture</label>
+            <input type="file" className="profile-picture-input" name="profilePicture" onChange={this.handleChange}/> 
             <button onClick={(event)=>{
               event.preventDefault();
-              this.pushUserToDatabase(event);
-              this.props.toggleForm(event);
+              this.updateProfile(event);
             }} type="submit" className="title-blue heartbeat">Submit changes</button>
             <p>{this.state.error}</p>
           </form>
+        </div>
       </div>
     )
   }
