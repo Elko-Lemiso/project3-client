@@ -14,3 +14,4 @@ export const userData = (user)=>{
     url: `users/${user}`,
   })
 }
+
