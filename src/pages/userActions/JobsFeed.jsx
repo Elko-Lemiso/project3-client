@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import './JobsFeed.scss'
+import React, { Component } from 'react';
+import Nav from '../../components/Nav';
+import './JobsFeed.scss';
 
 class JobsFeed extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class JobsFeed extends Component {
   render() {
     return (
       <div className="big-container jobs-feed">
+        <Nav/>
         <h1>JOBS FEED</h1>
         <div className="jobs-container">
           <div className="jobs-card">
@@ -24,7 +26,7 @@ class JobsFeed extends Component {
               <div className="hl"></div>
               <p className="job-price"><strong>Job price:</strong><pre> € </pre>17<span>,-</span><pre> </pre>an hour.</p>
             </div>
-            <p className="job-description">Bio: I am a passionate cleaner, and I love automation. I will bring my robot cleaner too. To double the productivity.</p>
+            <p className="job-description">I am a very busy sales man and I am willing to pay good for a loyal cleaner. Hook me up!</p>
             <div className="job-footer">
               <span className="job-owner">Posted by: Elko</span>
               <span className="job-applications">Running applications: 25</span>
@@ -41,7 +43,7 @@ class JobsFeed extends Component {
               <div className="hl"></div>
               <p className="job-price"><strong>Job price:</strong><pre> € </pre>17<span>,-</span><pre> </pre>an hour.</p>
             </div>
-            <p className="job-description">Bio: I am a passionate cleaner, and I love automation. I will bring my robot cleaner too. To double the productivity.</p>
+            <p className="job-description">I am a very busy sales man and I am willing to pay good for a loyal cleaner. Hook me up!</p>
             <div className="job-footer">
               <span className="job-owner">Posted by: Elko</span>
               <span className="job-applications">Running applications: 25</span>
@@ -58,7 +60,7 @@ class JobsFeed extends Component {
               <div className="hl"></div>
               <p className="job-price"><strong>Job price:</strong><pre> € </pre>17<span>,-</span><pre> </pre>an hour.</p>
             </div>
-            <p className="job-description">Bio: I am a passionate cleaner, and I love automation. I will bring my robot cleaner too. To double the productivity.</p>
+            <p className="job-description">I am a very busy sales man and I am willing to pay good for a loyal cleaner. Hook me up!</p>
             <div className="job-footer">
               <span className="job-owner">Posted by: Elko</span>
               <span className="job-applications">Running applications: 25</span>
@@ -75,7 +77,7 @@ class JobsFeed extends Component {
               <div className="hl"></div>
               <p className="job-price"><strong>Job price:</strong><pre> € </pre>17<span>,-</span><pre> </pre>an hour.</p>
             </div>
-            <p className="job-description">Bio: I am a passionate cleaner, and I love automation. I will bring my robot cleaner too. To double the productivity.</p>
+            <p className="job-description">I am a very busy sales man and I am willing to pay good for a loyal cleaner. Hook me up!</p>
             <div className="job-footer">
               <span className="job-owner">Posted by: Elko</span>
               <span className="job-applications">Running applications: 25</span>

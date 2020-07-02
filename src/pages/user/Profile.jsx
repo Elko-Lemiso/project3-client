@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {getUser} from '../../utils/auth'
-import Nav from '../../components/Nav'
+import {getUser} from '../../utils/auth';
+import Nav from '../../components/Nav';
 import {Redirect , Link} from 'react-router-dom';
-import './Profile.scss'
-import {userData} from '../../utils/user'
+import './Profile.scss';
+import {userData} from '../../utils/user';
 
 class Profile extends Component {
     constructor(props){

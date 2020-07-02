@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
-import {getUser} from '../../utils/auth'
-import {userData} from '../../utils/user'
-import {updateUserDataRequest} from '../../utils/user'
-import {updateProfilePictureRequest} from '../../utils/user'
+import React, { Component } from 'react';
+import {getUser} from '../../utils/auth';
+import {userData} from '../../utils/user';
+import {updateUserDataRequest} from '../../utils/user';
+import {updateProfilePictureRequest} from '../../utils/user';
 import {Redirect } from 'react-router-dom';
+import Nav from '../../components/Nav';
 import './../Form.scss';
 
 class EditProfile extends Component {
@@ -101,6 +102,7 @@ class EditProfile extends Component {
     } else{
       return(
         <div className="big-container">
+          <Nav/>
           <div id="edit-profile" className="edit-profile">
             <h1>EDIT PROFILE</h1>
             <p>We advise you to professionalize your profile and gain more trust by uploading your profile picture and updating your bio and phone number!</p>
