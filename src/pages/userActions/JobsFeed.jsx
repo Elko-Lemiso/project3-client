@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Nav from '../../components/Nav';
+import { Link } from 'react-router-dom';
 import './JobsFeed.scss';
 
 class JobsFeed extends Component {
@@ -31,7 +32,7 @@ class JobsFeed extends Component {
               <span className="job-owner">Posted by: Elko</span>
               <span className="job-applications">Running applications: 25</span>
             </div>
-            <button className="title-blue heartbeat">View job</button>
+            <button className="title-blue heartbeat"><Link to="/JobsDetailPage">View job</Link></button>
           </div>
 
           <div className="jobs-card">
@@ -48,7 +49,7 @@ class JobsFeed extends Component {
               <span className="job-owner">Posted by: Elko</span>
               <span className="job-applications">Running applications: 25</span>
             </div>
-            <button className="title-blue heartbeat">View job</button>
+            <button className="title-blue heartbeat"><Link to="/JobsDetailPage">View job</Link></button>
           </div>
 
           <div className="jobs-card">
@@ -65,7 +66,7 @@ class JobsFeed extends Component {
               <span className="job-owner">Posted by: Elko</span>
               <span className="job-applications">Running applications: 25</span>
             </div>
-            <button className="title-blue heartbeat">View job</button>
+            <button className="title-blue heartbeat"><Link to="/JobsDetailPage">View job</Link></button>
           </div>
 
           <div className="jobs-card">
@@ -82,7 +83,7 @@ class JobsFeed extends Component {
               <span className="job-owner">Posted by: Elko</span>
               <span className="job-applications">Running applications: 25</span>
             </div>
-            <button className="title-blue heartbeat">View job</button>
+            <button className="title-blue heartbeat"><Link to="/JobsDetailPage">View job</Link></button>
           </div>
         </div>
 
