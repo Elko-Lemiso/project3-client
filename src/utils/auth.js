@@ -30,6 +30,7 @@ export const login = (user)=>{
       setUser(response.data);
   })
 }
+
 export const logout = () => {
   return axios({
     method : 'GET',
