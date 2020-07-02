@@ -63,9 +63,14 @@
     input, .radio, textarea{
       height: 50px;
       border: 1px solid #999;
-      padding: 5px 10px;
+      padding: 3px 10px;
       background-color: white;
       word-wrap: break-word;
+      resize: none;
+    }
+
+    textarea{
+      padding-top: 20px;
     }
 
     .profile-picture-label{
