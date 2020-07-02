@@ -15,9 +15,11 @@ class Nav extends Component {
                 <ul>
                     <li><img src={users} alt=""/><span>users</span></li>
                     <li><img src={list} alt=""/><span>list</span></li>
+                    <Link id = "" className ="rotate-center" to ="/addjob">
                     <div>
                         <img src={plus} alt=""/>
                     </div>
+                    </Link>
                     <li><img src={messages} alt=""/><span>messages</span></li>
                     <li><img src={profile} alt=""/><span>profile</span></li>
                 </ul>
