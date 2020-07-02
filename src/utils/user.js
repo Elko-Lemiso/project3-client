@@ -14,23 +14,21 @@ export const userData = (user)=>{
   })
 }
 
-export const updateUserData = (userProfileChange)=>{
-  debugger
-  var stringifiedUserProfileChange = JSON.stringify(userProfileChange);
+export const updateUserDataRequest = (userProfileChange)=>{
   return axios({
     method: 'POST',
     url: `users/editprofile`,
     headers:  { 'content-type': 'application/x-www-form-urlencoded' },
-    data: qs.stringify(stringifiedUserProfileChange) // using qs to put the js object into the right format
+    data: qs.stringify(userProfileChange)
   })
 }
 
-// export const updateProfilePicture = (profilePicture) =>{
-//   debugger
-//   return axios({
-//     method: 'POST',
-//     url: `users/editprofilepicture`,
-//     headers: { 'content-typ': 'multipart/form-data' },
-//     data: profilePicture 
-//   })
-// }
+export const updateProfilePictureRequest = (profilePicture, user) =>{
+  debugger
+  return axios({
+    method: 'POST',
+    url: `users/editprofilepicture/${user}`,
+    headers: { 'content-typ': 'multipart/form-data' },
+    data: profilePicture 
+  })
+}

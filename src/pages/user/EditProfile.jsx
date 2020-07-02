@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import {getUser} from '../../utils/auth'
 import {userData} from '../../utils/user'
-import {updateUserData} from '../../utils/user'
+import {updateUserDataRequest} from '../../utils/user'
+import {updateProfilePictureRequest} from '../../utils/user'
 import {Redirect } from 'react-router-dom';
 import './../Form.scss';
 
@@ -11,8 +12,10 @@ class EditProfile extends Component {
     this.formRef = React.createRef();
     this.handleChange = this.handleChange.bind(this);
     this.handleAddressChange = this.handleAddressChange.bind(this);
+    this.handlePictureChange = this.handlePictureChange.bind(this);
     this.updateProfilePicture = this.updateProfilePicture.bind(this);
     this.updateProfile = this.updateProfile.bind(this);
+    this.updateProfilePicture = this.updateProfilePicture.bind(this);
   }
 
   state = {
@@ -21,6 +24,7 @@ class EditProfile extends Component {
       address: {},
       userType: 'client'
     },
+    profilePicture: undefined,
     error: null
   }
 
@@ -40,8 +44,7 @@ class EditProfile extends Component {
   }
 
   updateProfile(){
-    debugger
-    updateUserData(this.state.userData)
+    updateUserDataRequest(this.state.userData)
     .then((response)=>{
       this.props.history.push("/profile");
     })
@@ -52,12 +55,21 @@ class EditProfile extends Component {
     })
   }
 
-  updateProfilePicture(event){
+  updateProfilePicture(){
+    debugger
     var profilePicture = new FormData(this.formRef.current);
+    updateProfilePictureRequest(profilePicture, this.state.user.sessionData.id)
+    .then((response)=>{
+      this.props.history.push("/profile");
+    })
+    .catch((error)=>{
+      this.setState({
+        error: error.response.data.message
+      })
+    })
   }
 
   handleChange(event){
-    debugger
     let newUserObject = {...this.state.userData};
     newUserObject[event.target.name] = event.target.value;
     this.setState({
@@ -65,8 +77,15 @@ class EditProfile extends Component {
     })
   }
 
+  handlePictureChange(event){
+    let newPictureObject = {...this.state.profilePicture};
+    newPictureObject[event.target.name] = event.target.value;
+    this.setState({
+      profilePicture: newPictureObject
+    })
+  }
+
   handleAddressChange(event){
-    debugger
     let newUserObject = {...this.state.userData};
     newUserObject.address[event.target.name] = event.target.value;
     this.setState({
@@ -87,7 +106,7 @@ class EditProfile extends Component {
             <p>We advise you to professionalize your profile and gain more trust by uploading your profile picture and updating your bio and phone number!</p>
             <form ref={this.formRef} className="form-styling">
               <label className="profile-picture-label">Upload your profile picture</label>
-              <input type="file" className="profile-picture-input" name="profilePicture" onChange={this.handleChange}/> 
+              <input type="file" className="profile-picture-input" name="profilePicture" onChange={this.handlePictureChange}/> 
               <button onClick={(event)=>{
                   event.preventDefault();
                   this.updateProfilePicture(event);
