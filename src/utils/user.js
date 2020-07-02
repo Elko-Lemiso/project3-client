@@ -16,11 +16,12 @@ export const userData = (user)=>{
 
 export const updateUserData = (userProfileChange)=>{
   debugger
+  var stringifiedUserProfileChange = JSON.stringify(userProfileChange);
   return axios({
     method: 'POST',
     url: `users/editprofile`,
-    headers: { 'content-type': 'application/x-www-form-urlencoded' },
-    data: qs.stringify(userProfileChange) // using qs to put the js object into the right format
+    headers:  { 'content-type': 'application/x-www-form-urlencoded' },
+    data: qs.stringify(stringifiedUserProfileChange) // using qs to put the js object into the right format
   })
 }
 

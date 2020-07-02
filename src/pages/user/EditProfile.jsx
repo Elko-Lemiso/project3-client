@@ -75,7 +75,7 @@ class EditProfile extends Component {
   }
 
   render() {
-    if(!this.state.userData){
+    if(!this.state.user && !this.state.userData){
       return(
         <Redirect to="/" />
       )

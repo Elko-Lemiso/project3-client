@@ -23,14 +23,14 @@ export const login = (user)=>{
   return axios({
       method: 'POST',
       url: 'users/login',
-      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      headers: { 'content-type': 'application/x-www-form-urlencoded' }, 
       data: qs.stringify(user) // using qs to put the js object into the right format
   })
   .then((response)=> {  
       console.log(response);      
       setUser(response.data);
-  })
-}
+    })
+  }
 
 export const logout = () => {
   return axios.get('users/logout')
