@@ -7,6 +7,7 @@ import Welcome from './pages/user/Welcome'
 import Logout from './pages/auth/Logout'
 import Profile from './pages/user/Profile'
 import EditProfile from './pages/user/EditProfile'
+import PostJob from './pages/userActions/PostJob'
 import { Route } from 'react-router-dom';
 import './App.scss';
 
@@ -36,6 +37,7 @@ class App extends Component {
         <Route path='/profile' component={Profile}/>
         <Route path='/logout' component={Logout}/>
         <Route path='/editprofile' component={EditProfile}/>
+        <Route path='/postjob' component={PostJob}/>
       </div>
     )
   }
