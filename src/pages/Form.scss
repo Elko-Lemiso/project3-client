@@ -16,9 +16,11 @@
 #signup, .signup{
   max-width: 700px;
 }
+
 #login, .login{
   max-width: 400px;
 }
+
 #edit-profile, .edit-profile{
   max-width: 700px;
   display: flex;
@@ -46,6 +48,12 @@
       margin: 10px 10px 0px 0px;
       color: #999;
       cursor: pointer;
+      text-align: right;
+      text-decoration: none;
+    }
+    a{
+      text-decoration: none;
+      color: #999;
     }
   }
 

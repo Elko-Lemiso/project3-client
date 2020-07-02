@@ -57,7 +57,6 @@ class EditProfile extends Component {
   }
 
   updateProfilePicture(){
-    debugger
     var profilePicture = new FormData(this.formRef.current);
     updateProfilePictureRequest(profilePicture, this.state.user.sessionData.id)
     .then((response)=>{

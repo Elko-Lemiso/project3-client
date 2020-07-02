@@ -13,7 +13,7 @@ class JobsFeed extends Component {
 
   render() {
     return (
-      <div className="big-container jobs-feed">
+      <div className="big-container" id="jobs-feed">
         <Nav/>
         <h1>JOBS FEED</h1>
         <div className="jobs-container">
