@@ -26,22 +26,26 @@ export const login = (user)=>{
       headers: { 'content-type': 'application/x-www-form-urlencoded' }, 
       data: qs.stringify(user) // using qs to put the js object into the right format
   })
-  .then((response)=> {  
-      console.log(response);      
+  .then((response)=> {   
       setUser(response.data);
     })
   }
 
 export const logout = () => {
-  return axios.get('users/logout')
-  .then((response)=> {        
-    clearUserSession(response.data);
+  return axios({
+    method : 'GET',
+    url : 'users/logout',
+  })
+  .then((response)=> { 
+    console.log(response);     
+    clearUserSession();
   })
 }
 
 export const clearUserSession = ()=> {
   window.localStorage.removeItem("user");
 };
+
 export const getUser = ()=> {
     return JSON.parse(window.localStorage.getItem('user'));
 }

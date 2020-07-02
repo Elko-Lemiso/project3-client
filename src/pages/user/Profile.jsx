@@ -24,13 +24,13 @@ class Profile extends Component {
           profilePicture : response.data.user.profilePicture.path,
           error : null
         })
-        console.log("lalalalala", response.data.user.profilePicture.path);
       })
       .catch((error)=>{   
         this.setState({
-          error: error.response && error.response.data
+          error: error.response
         })
       })
+      console.log("Jigaboo",this.state);
     }
 
     render() {
@@ -60,7 +60,7 @@ class Profile extends Component {
                     <div className ="user-details">
                         <div className ="user-credentials">
                             <p className ="username">STATS</p>
-                            <p className ="capitalize">You have spent {this.state.user.email}</p>
+                            <p className ="capitalize">You have spent 0</p>
                             <p className ="capitalize">{this.state.user.email}</p>
                         </div>
                     </div>
