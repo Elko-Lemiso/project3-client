@@ -14,6 +14,15 @@ export const addJob = (job)=>{
     headers: { 'content-type': 'application/x-www-form-urlencoded' }, 
     data: qs.stringify(job)
   }).then((response=>{
-      console.log(response);
+      return response
   }))
+}
+
+export const editJob = (change) =>{
+  return axios({
+    method: 'POST',
+    url: `jobs/editJob`,
+    headers: { 'content-typ': 'multipart/form-data' },
+    data: change 
+  })
 }
