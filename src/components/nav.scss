@@ -6,24 +6,24 @@
     align-items: center;
     padding: 0rem 0;
     background-color: #fff;
-    a{
-        padding: 1rem;
+    #add-jobs{
+      padding: 1rem;
+      cursor: pointer;
+      order: 3;
+      div{
         cursor: pointer;
-        order: 3;
-        div{
-            cursor: pointer;
-            background-color: rgb(255, 255, 255);
-            border-radius: 30px;
-            display: flex;
-            align-self: center;
-            justify-content: center;
-            align-content: flex-end;
-            height: 4rem;
-            width: 4rem;
-            padding: 0;
-            margin: 0;
-            border: 0;
-        }
+        background-color: rgb(255, 255, 255);
+        border-radius: 30px;
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        align-content: flex-end;
+        height: 4rem;
+        width: 4rem;
+        padding: 0;
+        margin: 0;
+        border: 0;
+      }
     }
 
     h2{
@@ -37,6 +37,7 @@
         list-style: none;
         justify-content: space-evenly;
         margin: 5px 0px 2px;
+
         li{
             background-color: #fff;
             display: flex;
@@ -71,7 +72,7 @@
         justify-self: start;
         bottom: 0%;
         z-index: 3;
-        a{
+        #add-jobs{
             display: flex;
             position: absolute;
             bottom: 2.8rem;
@@ -87,7 +88,6 @@
                 border-radius: 30px;
                 height: 4rem;
                 width: 4rem;
-                
             }
         }
         h2{
@@ -108,8 +108,8 @@
             flex-direction: row;
             list-style: none;
             justify-content: space-evenly;
-            li{
-                padding: 1rem;
+            a{
+                padding: 0rem;
                 border: 0;
                 display: flex;
                 flex-direction: column;

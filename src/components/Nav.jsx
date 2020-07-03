@@ -13,15 +13,15 @@ class Nav extends Component {
             <nav id="main-nav">
                 <h2>cleanR</h2>
                 <ul>
-                    <li><img src={users} alt=""/><span>users</span></li>
-                    <li><img src={list} alt=""/><span>list</span></li>
-                    <Link id = "" className ="rotate-center" to ="/postjob">
-                    <div>
-                        <img src={plus} alt=""/>
-                    </div>
+                    <Link id="nav-users" to ="/"><li><img src={users} alt=""/><span>users</span></li></Link>
+                    <Link id="nav-jobs" to ="/jobsfeed"><li><img src={list} alt=""/><span>jobs</span></li></Link>
+                    <Link id="add-jobs" className="rotate-center" to ="/postjob">
+                      <div>
+                          <img src={plus} alt=""/>
+                      </div>
                     </Link>
-                    <li><img src={messages} alt=""/><span>messages</span></li>
-                    <li><img src={profile} alt=""/><span>profile</span></li>
+                    <Link id="nav-chat" to="/chat"><li><img src={messages} alt=""/><span>chat</span></li></Link>
+                    <Link id="nav-profile" to="/profile"><li><img src={profile} alt=""/><span>profile</span></li></Link>
                 </ul>
             </nav>
         );
