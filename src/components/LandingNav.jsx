@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import plus from '../images/plus.svg';
-import messages from '../images/messages.svg';
-import profile from '../images/profile.svg';
-import list from '../images/list.svg';
-import users from '../images/users.svg';
 import Login from '../pages/auth/Login';
 import Signup from '../pages/auth/Signup';
 import { Link, Route } from 'react-router-dom';
 import '../pages/LandingPage.scss'
+
 class LandingNav extends Component {
   constructor(props){
     super(props);

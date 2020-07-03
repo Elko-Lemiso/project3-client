@@ -16,8 +16,7 @@ class Profile extends Component {
       }
     }
     componentDidMount(){
-      debugger
-      userData(this.state.user.sessionData.id)
+      userData(this.state.user.id)
       .then((response)=>{
         this.setState({
           user: response.data.user,
@@ -30,7 +29,6 @@ class Profile extends Component {
           error: error.response
         })
       })
-      console.log("Jigaboo",this.state);
     }
 
     render() {

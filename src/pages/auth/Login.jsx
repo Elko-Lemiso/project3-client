@@ -32,14 +32,13 @@ class Login extends Component {
     }
 
     loginSubmit(event){
-      debugger
         event.preventDefault()
         login(this.state.user)
         .then((response)=> {
             this.setState({
                 error: null
             }, ()=> {
-              this.props.history.push("/welcome") 
+              this.props.history.push("/profile") 
             })
         })
         .catch((error)=> {

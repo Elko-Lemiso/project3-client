@@ -26,8 +26,8 @@ export const login = (user)=>{
       headers: { 'content-type': 'application/x-www-form-urlencoded' }, 
       data: qs.stringify(user) // using qs to put the js object into the right format
   })
-  .then((response)=> {   
-      setUser(response.data);
+  .then((response)=> { 
+      setUser(response.data.sessionData);
     })
   }
 

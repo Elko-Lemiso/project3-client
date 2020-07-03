@@ -24,7 +24,6 @@ export const updateUserDataRequest = (userProfileChange)=>{
 }
 
 export const updateProfilePictureRequest = (profilePicture, user) =>{
-  debugger
   return axios({
     method: 'POST',
     url: `users/editprofilepicture/${user}`,
