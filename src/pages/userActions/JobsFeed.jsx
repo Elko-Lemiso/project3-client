@@ -32,7 +32,7 @@ class JobsFeed extends Component {
               <span className="job-owner">Posted by: Elko</span>
               <span className="job-applications">Running applications: 25</span>
             </div>
-            <button className="title-blue heartbeat"><Link to="/JobsDetailPage">View job</Link></button>
+            <button className="title-blue heartbeat"><Link to="/jobsdetailpage">View job</Link></button>
           </div>
 
           <div className="jobs-card">
@@ -49,7 +49,7 @@ class JobsFeed extends Component {
               <span className="job-owner">Posted by: Elko</span>
               <span className="job-applications">Running applications: 25</span>
             </div>
-            <button className="title-blue heartbeat"><Link to="/JobsDetailPage">View job</Link></button>
+            <button className="title-blue heartbeat"><Link to="/jobsdetailpage">View job</Link></button>
           </div>
 
           <div className="jobs-card">
@@ -66,7 +66,7 @@ class JobsFeed extends Component {
               <span className="job-owner">Posted by: Elko</span>
               <span className="job-applications">Running applications: 25</span>
             </div>
-            <button className="title-blue heartbeat"><Link to="/JobsDetailPage">View job</Link></button>
+            <button className="title-blue heartbeat"><Link to="/jobsdetailpage">View job</Link></button>
           </div>
 
           <div className="jobs-card">
@@ -83,7 +83,7 @@ class JobsFeed extends Component {
               <span className="job-owner">Posted by: Elko</span>
               <span className="job-applications">Running applications: 25</span>
             </div>
-            <button className="title-blue heartbeat"><Link to="/JobsDetailPage">View job</Link></button>
+            <button className="title-blue heartbeat"><Link to="/jobsdetailpage">View job</Link></button>
           </div>
         </div>
 
