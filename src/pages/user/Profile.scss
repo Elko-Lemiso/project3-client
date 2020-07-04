@@ -99,11 +99,11 @@
             display: flex;
 
             .designation{
-              width: 60%;
+              width: 40%;
             }
 
             .details{
-              width: 40%;
+              width: 60%;
               p{
                 color: grey;
               }
@@ -168,6 +168,9 @@
   @media (max-width: 600px) {
     .profile-container{
       width: 100%;
+    }
+    .action{
+      margin-left: 50%;
     }
   } 
 
