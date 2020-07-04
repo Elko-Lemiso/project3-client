@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 import {getUser} from '../../utils/auth'
 import {addJob} from '../../utils/postJob'
 import {editJob} from '../../utils/postJob'
+import {editJobImage} from '../../utils/postJob'
 import {Redirect } from 'react-router-dom';
 import './../Form.scss';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
 class PostJob extends Component {
   constructor(props) {
     super(props)
-    this.formRef = React.createRef();
+    this.inputRef = React.createRef();
     this.handleChange = this.handleChange.bind(this);
     this.handleAddressChange = this.handleAddressChange.bind(this);
     this.handleChangeImages = this.handleChangeImages.bind(this);
@@ -63,7 +65,6 @@ class PostJob extends Component {
     })
   }
   handleAddressChange(event){
-    debugger
     let newJobData = {...this.state.jobData};
     newJobData.address[event.target.name] = event.target.value;
     this.setState({
@@ -71,16 +72,17 @@ class PostJob extends Component {
     })
   }
   handleChangeImages(event){
+    debugger
     let formData = new FormData();
     formData.append("images", event.target.files[0])
-    let newJobData ={...this.state.jobData};
-    newJobData.images.push(formData)
+    formData.append("jobId", this.state.jobData.jobId)
     this.setState({
-      jobData : newJobData,
       uploading: true
     })
-    editJob(this.state.jobData)
+    editJobImage(formData)
     .then((response)=>{
+      debugger
+      console.log()
       this.setState({
         uploadedImages: this.state.uploadedImages + 1,
         uploading: false
@@ -88,16 +90,15 @@ class PostJob extends Component {
     })
   }
 
-
   render() {
-    if(!getUser()){return(<Redirect to="/" />)} else{
+    if(!getUser()){return(<Redirect to="/"/>)} else{
       return(
         <div>
         {
         this.state.stage===1 &&
         <div className="stage-1">
           <div id="edit-profile" className="edit-profile">
-            <form encType="multipart/form-data" ref={this.formRef} className="form-styling">
+            <form encType="multipart/form-data"  className="form-styling">
               <h1>WHAT DO YOU NEED DONE?</h1>
               <label>Give your job a title</label>
               <input className="title" type="text" value={this.state.jobData.title} name="title" onChange={this.handleChange}/>
@@ -120,8 +121,8 @@ class PostJob extends Component {
             this.state.stage === 2 &&
             <div className="stage-2">
               <div id="edit-profile" className="edit-profile">
-                <form encType="multipart/form-data" ref={this.formRef} className="form-styling">
-                  <div className="row">
+                <form encType="multipart/form-data"  className="form-styling">
+                  <div className="column">
                       <h3>What is the location of the job?</h3>
                     <div className="column column-60">
                       <label>Street</label>
@@ -161,11 +162,8 @@ class PostJob extends Component {
               this.state.stage === 3 &&
               <div className="stage-2">
                 <div id="edit-profile" className="edit-profile">
-                <form encType="multipart/form-data" ref={this.formRef} className="form-styling">
+                <form encType="multipart/form-data"  className="form-styling">
                   <div className="row">
-                    <div className="column column-50">
-                      
-                    </div>
                     <div className="column column-50">
                       <label>When does the cleaner need to be complete?</label>
                       <input type="date" name="dueDate" value={this.state.jobData.dueDate} onChange={this.handleChange}/>
@@ -183,18 +181,17 @@ class PostJob extends Component {
                 </div>
             }
             {
-              this.state.stage === 4 &&
-              <div className="stage-2">
-                <div id="edit-profile" className="edit-profile">
-                  <form encType="multipart/form-data" ref={this.formRef} className="form-styling">
-                    <label className="">Lets see what it looks like</label>
-                    <input type="file" onChange={(event)=>{ this.handleChangeImages(event);}} className="images-input" name="images" />
-                    <button  type="submit" className="title-blue">Done</button>
-                    <p>{this.state.error}</p>
-            </form>
-          </div>
-      </div>
-    }
+            this.state.stage === 4 &&
+            <div className="stage-2">
+              <div id="edit-profile" className="edit-profile">
+                <form encType="multipart/form-data" className="form-styling">
+                  <label className="">Lets see what it looks like</label>
+                  <input ref={this.inputRef} type="file" onChange={(event)=>{ this.handleChangeImages(event);}} className="images-input" name="images"/>
+                  <Link to= "/profile"><button type="submit" className="title-blue">Done</button></Link>
+                </form>
+              </div>
+            </div>
+            }
       </div>
       )
     }
