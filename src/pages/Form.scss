@@ -15,6 +15,7 @@
 
 #signup, .signup{
   max-width: 700px;
+  border-radius: 30px;
 }
 
 #login, .login{
@@ -31,7 +32,7 @@
 .signup, .login, .edit-profile{
   background-color: white;
   width: 60%;
-  border-radius: 5px;
+  border-radius: 30px;
 
   p{
     width: 90%;
@@ -45,7 +46,7 @@
     justify-content: flex-end;
     
     .exit-btn{
-      margin: 10px 10px 0px 0px;
+      margin: 20px 20px 0px 0px;
       color: #999;
       cursor: pointer;
       text-align: right;

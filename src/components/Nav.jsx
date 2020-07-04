@@ -24,7 +24,7 @@ class Nav extends Component {
             <nav id="main-nav">
                 <h2>cleanR</h2>
                 <ul>
-                    <Link id="nav-users" to ="/"><li><img src={users} alt=""/><span>users</span></li></Link>
+                    <Link id="nav-users" to ="/"><li><img src={users} alt=""/><span>cleaners</span></li></Link>
                     <Link id="nav-jobs" to ="/jobsfeed"><li><img src={list} alt=""/><span>jobs</span></li></Link>
                     <Link ref = {this.buttonRef} id="add-jobs" onClick={() =>{this.handleClick()}} to ="/postjob">
                       <div>

@@ -1,0 +1,62 @@
+.big-container, #jobs-detail-page{
+
+  .cleaners-list{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 20px 20px;
+    box-shadow: 0px 10px 20px 0px #bfbfbf;
+    border-radius: 30px;
+
+
+    .cleaner{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px lightgrey solid;
+
+      .cleaner-image-box{
+        width: 100px;
+        min-width: 100px;
+        height: 100px;
+        min-height: 100px;
+        object-fit: cover;
+        overflow: hidden;
+        border-radius: 50px;
+        background-color: lightblue;
+
+        img{
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+          border-radius: 50px;
+        }
+      }
+
+      @media (max-width: 550px) {
+        .cleaner-image-box{
+          display: none;
+        }
+      }
+
+      .cleaner-details{
+        margin: 0px 10px;
+        text-align: left;
+        width: 70%;
+
+        h4{
+          margin: 0px;
+        }
+
+        .jobs-done, .rating{
+          display: flex;
+        }
+      }
+    }
+
+  }
+
+}
+

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {getUser} from '../../utils/auth';
 import Nav from '../../components/Nav';
+import logout from '../../images/logout.svg'
+import edit from '../../images/pencil.svg'
 import {Redirect , Link} from 'react-router-dom';
 import './Profile.scss';
 import {userData} from '../../utils/user';
@@ -34,9 +36,6 @@ class Profile extends Component {
       })
     }
 
-/* <Link to="/editprofile"><button className ="edit-profile-btn blue">Edit Profile</button></Link>
-              <Link to="/logout"><button className ="logout-btn red">Log out</button></Link> */
-
   render() {
     return (
       <>
@@ -49,16 +48,22 @@ class Profile extends Component {
           <div className="profile-container">
             <div className="profile-card">
               <div className="top-section">
+
                 <div className="image-box">
                   <img src={this.state.profilePicture} alt=""/>
                 </div>
+                  <div className="action">
+                  <Link to="/editprofile"><img src={edit} alt=""/></Link>
+                  <Link to="/logout"><img src={logout} alt=""/></Link>
+                  </div>
                 <div className="personal-details">
-                  <h4 className="username"> {this.state.userData.firstname} {this.state.userData.lastname}</h4>
+                  <h4 className="username uppercase-font"> {this.state.userData.firstname} {this.state.userData.lastname}</h4>
+                  <p className="usertype">{this.state.userData.userType}</p>
                   <div className="details-columns">
                     <div className="designation">
-                      <p>E-mail address:</p>
-                      <p>Mobile number:</p>
-                      <p>Chamber of Commerce number:</p>
+                      <p>E-mail address</p>
+                      <p>Mobile number</p>
+                      <p>Chamber of Commerce number</p>
                     </div>
                     <div className="details">
                       <p>{this.state.userData.email}</p>
@@ -68,28 +73,26 @@ class Profile extends Component {
                   </div>
                 </div>
               </div>
-              <div className="line">
-                <hr/>
-              </div>
               <div className="bottom-section">
                 <div className="user-content">
-                  <p>{this.state.userData.userType}</p>
-                  <p>{this.state.userData.bio}</p>
+                  <p className="profile-sub-title uppercase-font">User bio</p>
+                  <p className="content-lines">{this.state.userData.bio}</p>
                 </div>
                 <div className="perf-address">
                   <div className="perf">
                     <div className="jobs">
-                      <p className="big-numbers">115</p>
-                      <p>JOBS DONE</p>
+                      <p className="big-numbers uppercase-font">115</p>
+                      <p className="content-lines">#jobs</p>
                     </div>
                     <div className="earn">
-                      <p className="big-numbers">2215</p>
-                      <p>EURO</p>
+                      <p className="big-numbers uppercase-font">2215</p>
+                      <p className="content-lines">euro</p>
                     </div>
                   </div>
                   <div className="address">
-                    <p>{this.state.userData.address.street} {this.state.userData.address.houseNr} {this.state.userData.address.houseNrAddition}</p>
-                    <p>{this.state.userData.address.city} {this.state.userData.address.zip}</p>
+                  <p className="profile-sub-title uppercase-font">Address details</p>
+                    <p className="content-lines">{this.state.userData.address.street} {this.state.userData.address.houseNr} {this.state.userData.address.houseNrAddition}</p>
+                    <p className="content-lines">{this.state.userData.address.city}, {this.state.userData.address.zipCode}</p>
                   </div>
                 </div>
               </div>
