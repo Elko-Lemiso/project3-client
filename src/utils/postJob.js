@@ -26,3 +26,13 @@ export const editJob = (change) =>{
     data: change 
   })
 }
+
+
+export const editJobImage = (change) =>{
+  return axios({
+    method: 'POST',
+    url: `jobs/editJob/images`,
+    headers: { 'content-typ': 'multipart/form-data' },
+    data: change
+  })
+}
