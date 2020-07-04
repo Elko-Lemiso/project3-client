@@ -17,6 +17,8 @@ class CleanersFeed extends Component {
 
   componentDidMount(){
     !this.state.user? this.props.history.push("/"):
+
+    // left here, test if data comes in correctly
     allCleanersData()
     .then((response)=>{
       this.setState({
