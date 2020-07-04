@@ -128,12 +128,10 @@ class PostJob extends Component {
                 <form encType="multipart/form-data"  className="form-styling">
                   <div className="column">
                       <h3>What is the location of the job?</h3>
-
                     <div id = "col-100" className="column column-100">
                       <label>Street</label>
                       <input type="text" name="street" value={this.state.jobData.address.street} onChange={this.handleAddressChange}/>
                     </div>
-
                     <div className="row">
                       <div className="column column-50">
                         <label>Nr. </label>
@@ -144,8 +142,6 @@ class PostJob extends Component {
                         <input type="text" name="houseNrAddition" value={this.state.jobData.address.houseNrAddition} onChange={this.handleAddressChange}/>
                       </div>
                     </div>
-                    
-
                     <div className="row">
                       <div className="column column-60">
                         <label>City</label>
@@ -163,7 +159,7 @@ class PostJob extends Component {
                       this.setState({
                         stage : 3
                       })
-                    }} type="submit" className="title-blue">Next</button>
+                    }} type="submit" id = "buttonAddress" className="title-blue">Next</button>
                 </form>
             </div>
           </div>
