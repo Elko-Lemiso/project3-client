@@ -8,6 +8,17 @@ import './nav.scss'
 import { Link } from 'react-router-dom';
 
 class Nav extends Component {
+    constructor(props){
+        super(props)
+        this.buttonRef = React.createRef();
+        
+    }
+
+
+    handleClick(){
+        const plus = this.buttonRef.current
+        plus.classList.toggle('rotate-center')
+    }
     render() {
         return (
             <nav id="main-nav">
@@ -15,7 +26,7 @@ class Nav extends Component {
                 <ul>
                     <Link id="nav-users" to ="/"><li><img src={users} alt=""/><span>cleaners</span></li></Link>
                     <Link id="nav-jobs" to ="/jobsfeed"><li><img src={list} alt=""/><span>jobs</span></li></Link>
-                    <Link id="add-jobs" className="rotate-center" to ="/postjob">
+                    <Link ref = {this.buttonRef} id="add-jobs" onClick={() =>{this.handleClick()}} to ="/postjob">
                       <div>
                           <img src={plus} alt=""/>
                       </div>

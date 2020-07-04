@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
+import Nav from '../../components/Nav';
 import {getUser} from '../../utils/auth'
 import {addJob} from '../../utils/postJob'
 import {editJob} from '../../utils/postJob'
 import {editJobImage} from '../../utils/postJob'
 import {Redirect } from 'react-router-dom';
+import './PostJob.scss'
 import './../Form.scss';
+
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
 class PostJob extends Component {
@@ -93,11 +96,12 @@ class PostJob extends Component {
   render() {
     if(!getUser()){return(<Redirect to="/"/>)} else{
       return(
-        <div>
+        <div className="wrapper">
+          <Nav/>
         {
         this.state.stage===1 &&
-        <div className="stage-1">
-          <div id="edit-profile" className="edit-profile">
+        <div className="container stage-1">
+          <div className="edit-profile">
             <form encType="multipart/form-data"  className="form-styling">
               <h1>WHAT DO YOU NEED DONE?</h1>
               <label>Give your job a title</label>
@@ -119,23 +123,29 @@ class PostJob extends Component {
             }
             {
             this.state.stage === 2 &&
-            <div className="stage-2">
+            <div className="container stage-2">
               <div id="edit-profile" className="edit-profile">
                 <form encType="multipart/form-data"  className="form-styling">
                   <div className="column">
                       <h3>What is the location of the job?</h3>
-                    <div className="column column-60">
+
+                    <div id = "col-100" className="column column-100">
                       <label>Street</label>
                       <input type="text" name="street" value={this.state.jobData.address.street} onChange={this.handleAddressChange}/>
                     </div>
-                    <div className="column column-20">
-                      <label>Nr. </label>
-                      <input type="number" name="houseNr" value={this.state.jobData.address.houseNr} onChange={this.handleAddressChange}/>
+
+                    <div className="row">
+                      <div className="column column-50">
+                        <label>Nr. </label>
+                        <input type="number" name="houseNr" value={this.state.jobData.address.houseNr} onChange={this.handleAddressChange}/>
+                      </div>
+                      <div className="column column-50">
+                        <label>Add.</label>
+                        <input type="text" name="houseNrAddition" value={this.state.jobData.address.houseNrAddition} onChange={this.handleAddressChange}/>
+                      </div>
                     </div>
-                    <div className="column column-20">
-                      <label>Add.</label>
-                      <input type="text" name="houseNrAddition" value={this.state.jobData.address.houseNrAddition} onChange={this.handleAddressChange}/>
-                    </div>
+                    
+
                     <div className="row">
                       <div className="column column-60">
                         <label>City</label>
@@ -160,36 +170,30 @@ class PostJob extends Component {
             }
             {
               this.state.stage === 3 &&
-              <div className="stage-2">
-                <div id="edit-profile" className="edit-profile">
-                <form encType="multipart/form-data"  className="form-styling">
-                  <div className="row">
-                    <div className="column column-50">
-                      <label>When does the cleaner need to be complete?</label>
-                      <input type="date" name="dueDate" value={this.state.jobData.dueDate} onChange={this.handleChange}/>
-                    </div>
-                  </div>
-                  <button onClick={(event)=>{
+              <div id = "stage-3" className="container ">
+                <form encType="multipart/form-data">
+                    <label>When does the cleaner need to be complete?</label>
+                    <input type="date" name="dueDate" value={this.state.jobData.dueDate} onChange={this.handleChange}/>
+                    <button onClick={(event)=>{
                     event.preventDefault();
                     this.jobStructure();
                     this.setState({
                       stage : 4
                     })
-                  }} type="submit" className="title-blue">Next</button>
+                  }} type="submit" id = "button-calendar"className="title-blue">Next</button>
                 </form>
-                  </div>
                 </div>
             }
             {
             this.state.stage === 4 &&
-            <div className="stage-2">
-              <div id="edit-profile" className="edit-profile">
+            <div id="stage-4" className="container">
+              <h6>You have selected {this.state.uploadedImages} images</h6>
                 <form encType="multipart/form-data" className="form-styling">
                   <label className="">Lets see what it looks like</label>
                   <input ref={this.inputRef} type="file" onChange={(event)=>{ this.handleChangeImages(event);}} className="images-input" name="images"/>
                   <Link to= "/profile"><button type="submit" className="title-blue">Done</button></Link>
                 </form>
-              </div>
+                <img src="" alt=""/>
             </div>
             }
       </div>
