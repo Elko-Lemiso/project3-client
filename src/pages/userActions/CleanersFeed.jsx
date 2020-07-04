@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import Nav from '../../components/Nav';
+import {getUser} from '../../utils/auth';
 import {allCleanersData} from '../../utils/user';
+import Nav from '../../components/Nav';
 import { Link , Redirect } from 'react-router-dom';
 import './CleanersFeed.scss';
 
@@ -11,18 +12,18 @@ class CleanersFeed extends Component {
   }
 
   state = {
-    allUserData: {},
+    user: getUser(),
+    allUserData: [],
     error: null  
   }
 
   componentDidMount(){
     !this.state.user? this.props.history.push("/"):
-
     // left here, test if data comes in correctly
     allCleanersData()
     .then((response)=>{
       this.setState({
-        allUserData: response.data.user,
+        allUserData: response.data.users,
       })
     })
     .catch((error)=>{
