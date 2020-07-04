@@ -14,10 +14,10 @@ export const userData = (user)=>{
   })
 }
 
-export const allUsersData = ()=>{
+export const allCleanersData = ()=>{
   return axios({
     method: "GET",
-    url: `users/allusers`,
+    url: `users/allcleaners`,
   })
 }
 
