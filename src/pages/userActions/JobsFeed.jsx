@@ -27,6 +27,7 @@ class JobsFeed extends Component {
         <div className="jobs-container">
         {
           this.state.jobs.map((oneJob, index) =>{
+            debugger
             return(
               <div>
                     <div className="jobs-card">
