@@ -10,6 +10,7 @@ import EditProfile from './pages/user/EditProfile'
 import PostJob from './pages/userActions/PostJob'
 import JobsFeed from './pages/userActions/JobsFeed.jsx'
 import JobsDetailPage from './pages/userActions/JobsDetailPage';
+import CleanersFeed from './pages/userActions/CleanersFeed'
 import { Route } from 'react-router-dom';
 import './App.scss';
 
@@ -42,6 +43,7 @@ class App extends Component {
         <Route path='/postjob' component={PostJob}/>
         <Route path='/jobsfeed' component={JobsFeed}/>
         <Route path='/jobsdetailpage' component={JobsDetailPage}/>
+        <Route path='/cleaners' component={CleanersFeed}/>
       </div>
     )
   }

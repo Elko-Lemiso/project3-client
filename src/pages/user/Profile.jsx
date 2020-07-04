@@ -61,9 +61,9 @@ class Profile extends Component {
                   <p className="usertype">{this.state.userData.userType}</p>
                   <div className="details-columns">
                     <div className="designation">
-                      <p>E-mail address:</p>
-                      <p>Mobile number:</p>
-                      <p>Chamber of Commerce number:</p>
+                      <p>E-mail address</p>
+                      <p>Mobile number</p>
+                      <p>Chamber of Commerce number</p>
                     </div>
                     <div className="details">
                       <p>{this.state.userData.email}</p>
@@ -75,7 +75,7 @@ class Profile extends Component {
               </div>
               <div className="bottom-section">
                 <div className="user-content">
-                  <p className="profile-sub-title uppercase-font">User bio:</p>
+                  <p className="profile-sub-title uppercase-font">User bio</p>
                   <p className="content-lines">{this.state.userData.bio}</p>
                 </div>
                 <div className="perf-address">
@@ -90,7 +90,7 @@ class Profile extends Component {
                     </div>
                   </div>
                   <div className="address">
-                  <p className="profile-sub-title uppercase-font">Address details:</p>
+                  <p className="profile-sub-title uppercase-font">Address details</p>
                     <p className="content-lines">{this.state.userData.address.street} {this.state.userData.address.houseNr} {this.state.userData.address.houseNrAddition}</p>
                     <p className="content-lines">{this.state.userData.address.city}, {this.state.userData.address.zipCode}</p>
                   </div>

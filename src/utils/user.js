@@ -14,6 +14,14 @@ export const userData = (user)=>{
   })
 }
 
+export const allUsersData = ()=>{
+  return axios({
+    method: "GET",
+    url: `users/allusers`,
+  })
+}
+
+
 export const updateUserDataRequest = (userProfileChange)=>{
   return axios({
     method: 'POST',

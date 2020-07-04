@@ -16,7 +16,7 @@ class JobsFeed extends Component {
     return (
       <div className="big-container" id="jobs-feed">
         <Nav/>
-        <h1>JOBS FEED</h1>
+        <h1>JOBS</h1>
         <div className="jobs-container">
           <div className="jobs-card">
             <div className="profile-image-box">
@@ -86,8 +86,6 @@ class JobsFeed extends Component {
             <button className="title-blue heartbeat"><Link to="/jobsdetailpage">View job</Link></button>
           </div>
         </div>
-
-        
       </div>
     )
   }
