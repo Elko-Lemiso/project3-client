@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Nav from '../../components/Nav';
-import {allUsersData} from '../../utils/user';
+import {allCleanersData} from '../../utils/user';
 import { Link , Redirect } from 'react-router-dom';
 import './CleanersFeed.scss';
 
@@ -17,7 +17,7 @@ class CleanersFeed extends Component {
 
   componentDidMount(){
     !this.state.user? this.props.history.push("/"):
-    allUsersData()
+    allCleanersData()
     .then((response)=>{
       this.setState({
         allUserData: response.data.user,
