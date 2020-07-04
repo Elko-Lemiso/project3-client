@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {getUser} from '../../utils/auth';
 import {userData} from '../../utils/user';
+import {geocode} from "../../utils/googleMaps";
 import {updateUserDataRequest} from '../../utils/user';
 import {updateProfilePictureRequest} from '../../utils/user';
 import {Redirect } from 'react-router-dom';
@@ -31,7 +32,7 @@ class EditProfile extends Component {
 
   componentDidMount(){
     !this.state.user? this.props.history.push("/"):
-    userData(this.state.user.sessionData.id)
+    userData(this.state.user.id)
     .then((response)=>{
       this.setState({
         userData: response.data.user,
@@ -42,6 +43,47 @@ class EditProfile extends Component {
         error: error.response.data.message
       })
     })
+  }
+
+  getGeoCoordinates(){
+    let addressLine = '';
+    if(this.state.userData.address.street && this.state.userData.address.city && this.state.userData.address.houseNr){
+      addressLine = `${this.state.userData.address.street} ${this.state.userData.address.houseNr} ${this.state.userData.address.city}`;
+      geocode(addressLine)
+      .then((response)=>{
+        console.log(response);
+        let newUserObject = {...this.state.userData};
+        newUserObject.address['lat'] = response.data.geoLocation.lat;
+        newUserObject.address['long'] = response.data.geoLocation.lng;
+        this.setState({
+          userData: newUserObject
+        })
+        console.log(this.state.userData);
+      })
+      .then(()=>{
+        this.updateProfile();
+      })
+    } else if(this.state.userData.address.street && this.state.userData.address.city){
+      addressLine = `${this.state.userData.address.street} ${this.state.userData.address.city}`;
+      geocode(addressLine)
+      .then((response)=>{
+        console.log(response);
+        let newUserObject = {...this.state.userData};
+        newUserObject.address['lat'] = response.data.geoLocation.lat;
+        newUserObject.address['long'] = response.data.geoLocation.lng;
+        this.setState({
+          userData: newUserObject
+        })
+        console.log(this.state.userData);
+      })
+      .then(()=>{
+        this.updateProfile();
+      })
+    }
+    else {
+      console.log('No valid address to get the geo location codes.');
+      this.updateProfile();
+    }
   }
 
   updateProfile(){
@@ -58,7 +100,7 @@ class EditProfile extends Component {
 
   updateProfilePicture(){
     var profilePicture = new FormData(this.formRef.current);
-    updateProfilePictureRequest(profilePicture, this.state.user.sessionData.id)
+    updateProfilePictureRequest(profilePicture, this.state.user.id)
     .then((response)=>{
       this.props.history.push("/profile");
     })
@@ -187,7 +229,7 @@ class EditProfile extends Component {
               <input type="number" hidden name="long" value={this.state.userData.address.long} onChange={this.handleAddressChange}/>
               <button onClick={(event)=>{
                 event.preventDefault();
-                this.updateProfile();
+                this.getGeoCoordinates();
               }} type="submit" className="title-blue">Submit changes</button>
               <p>{this.state.error}</p>
             </form>

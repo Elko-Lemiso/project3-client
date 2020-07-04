@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import {getUser} from '../../utils/auth'
 import './Welcome.scss'
+
 class Welcome extends Component {
     constructor(props){
         super(props)
@@ -12,7 +13,6 @@ class Welcome extends Component {
     }
 
     render() {
-      debugger
         return (
             <>
             { !this.state.user ?
@@ -21,7 +21,7 @@ class Welcome extends Component {
                 <div className="content">
                     <h1>Welcome</h1>
                     {
-                        (this.state.user.sessionData.userType === "cleaner")?
+                        this.state.user.userType === "cleaner"?
                         <div className = "welcome">
                             <p>You are a few steps away from getting your first job as a cleanR.</p>
                             <p>From experience we know that you will have more success finding a good match 
