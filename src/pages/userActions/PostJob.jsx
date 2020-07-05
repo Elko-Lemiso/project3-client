@@ -4,6 +4,7 @@ import {getUser} from '../../utils/auth'
 import {addJob} from '../../utils/postJob'
 import {editJob} from '../../utils/postJob'
 import {editJobImage} from '../../utils/postJob'
+import {geocode} from "../../utils/googleMaps";
 import {Redirect } from 'react-router-dom';
 import './PostJob.scss'
 import './../Form.scss';
@@ -19,18 +20,21 @@ class PostJob extends Component {
     this.handleChangeImages = this.handleChangeImages.bind(this);
     this.uploadJob = this.uploadJob.bind(this);
     this.postJob = this.postJob.bind(this);
-    this.state = {
-      uploadedImages : 0,
-      uploading: false,
-      stage: 1,
-      jobData: {
-        jobId: null,
-        address: {},
-        images:[]
-      },
-      error: null
-    }
+    this.saveAddress = this.saveAddress.bind(this);
   }
+
+  state = {
+    uploadedImages : 0,
+    uploading: false,
+    stage: 1,
+    jobData: {
+      jobId: null,
+      address: {},
+      images:[]
+    },
+    error: null
+  }
+
   postJob(){
     addJob(this.state.jobData)
     .then((response)=>{
@@ -47,6 +51,48 @@ class PostJob extends Component {
         error: error.response.data.message
       })
     })
+  }
+
+  saveAddress(){
+    debugger
+    let addressLine = '';
+    if(this.state.jobData.address.street && this.state.jobData.address.city && this.state.jobData.address.houseNr){
+      addressLine = `${this.state.jobData.address.street} ${this.state.jobData.address.houseNr} ${this.state.jobData.address.city}`;
+      geocode(addressLine)
+      .then((response)=>{
+        console.log(response);
+        let newUserObject = {...this.state.jobData};
+        newUserObject.address['lat'] = response.data.geoLocation.lat;
+        newUserObject.address['long'] = response.data.geoLocation.lng;
+        this.setState({
+          jobData: newUserObject
+        });
+        console.log(this.state.jobData);
+      })
+      .then(()=>{
+        this.jobStructure();
+      })
+    } else if(this.state.jobData.address.street && this.state.jobData.address.city){
+      addressLine = `${this.state.jobData.address.street} ${this.state.jobData.address.city}`;
+      geocode(addressLine)
+      .then((response)=>{
+        console.log(response);
+        let newUserObject = {...this.state.jobData};
+        newUserObject.address['lat'] = response.data.geoLocation.lat;
+        newUserObject.address['long'] = response.data.geoLocation.lng;
+        this.setState({
+          jobData: newUserObject
+        });
+        console.log(this.state.jobData);
+      })
+      .then(()=>{
+        this.jobStructure();
+      })
+    }
+    else {
+      console.log('No valid address to get the geo location codes.');
+      this.jobStructure();
+    }
   }
 
   jobStructure(){
@@ -129,12 +175,12 @@ class PostJob extends Component {
                   <div className="column">
                       <h3>What is the location of the job?</h3>
                     <div id = "col-100" className="column column-100">
-                      <label>Street</label>
+                      <label>*Street</label>
                       <input type="text" name="street" value={this.state.jobData.address.street} onChange={this.handleAddressChange}/>
                     </div>
                     <div className="row">
                       <div className="column column-50">
-                        <label>Nr. </label>
+                        <label>*Nr. </label>
                         <input type="number" name="houseNr" value={this.state.jobData.address.houseNr} onChange={this.handleAddressChange}/>
                       </div>
                       <div className="column column-50">
@@ -144,22 +190,22 @@ class PostJob extends Component {
                     </div>
                     <div className="row">
                       <div className="column column-60">
-                        <label>City</label>
+                        <label>*City</label>
                         <input type="text" name="city" value={this.state.jobData.address.city} onChange={this.handleAddressChange}/>
                       </div>
                       <div className="column column-40">
-                        <label>Zip code</label>
+                        <label>*Zip code</label>
                         <input type="text" name="zipCode" value={this.state.jobData.address.zipCode} onChange={this.handleAddressChange}/>
                       </div>
                     </div>
                   </div>
                   <button onClick={(event)=>{
                       event.preventDefault();
-                      this.jobStructure();
+                      this.saveAddress();
                       this.setState({
                         stage : 3
                       })
-                    }} type="submit" id = "buttonAddress" className="title-blue">Next</button>
+                    }} type="submit" id="buttonAddress" className="title-blue">Next</button>
                 </form>
             </div>
           </div>
@@ -178,7 +224,7 @@ class PostJob extends Component {
                     })
                   }} type="submit" id = "button-calendar"className="title-blue">Next</button>
                 </form>
-                </div>
+              </div>
             }
             {
             this.state.stage === 4 &&
