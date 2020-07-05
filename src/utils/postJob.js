@@ -8,6 +8,7 @@ const axios = Axios.create({
 });
 
 export const addJob = (job)=>{
+  debugger
   return axios({
     method: "POST",
     url: `jobs/postJob`,

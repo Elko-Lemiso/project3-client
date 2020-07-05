@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 class PostJob extends Component {
   constructor(props) {
     super(props)
+    this.user=getUser()
     this.inputRef = React.createRef();
     this.handleChange = this.handleChange.bind(this);
     this.handleAddressChange = this.handleAddressChange.bind(this);
@@ -28,6 +29,7 @@ class PostJob extends Component {
     uploading: false,
     stage: 1,
     jobData: {
+      creator : getUser().id,
       jobId: null,
       address: {},
       images:[]
@@ -36,12 +38,13 @@ class PostJob extends Component {
   }
 
   postJob(){
+    debugger
     addJob(this.state.jobData)
     .then((response)=>{
-
+      debugger
       let newUserObject = {...this.state.jobData};
       newUserObject.jobId = response.data._id;
-
+      newUserObject.creator = this.user.id
       this.setState({
         jobData: newUserObject
       })
