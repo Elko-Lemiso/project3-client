@@ -13,7 +13,7 @@ class JobsFeed extends Component {
   }
   componentDidMount() {
     debugger
-    axios.get(`${process.env.REACT_APP_BASE_URL}jobs/findJobs`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}jobs/findjobs`)
     .then(response => {
         this.setState({jobs: response.data})
     })
@@ -47,7 +47,7 @@ class JobsFeed extends Component {
                     <span className="job-applications">Running applications: 25</span>
                   </div>
 
-                  <button className="title-blue heartbeat"><Link to={`jobdetailpage/${oneJob._id}`}>View job</Link></button>
+                  <button className="title-blue heartbeat"><Link to={`jobsdetailpage/${oneJob._id}`}>View job</Link></button>
                 </div>
 
             </>
