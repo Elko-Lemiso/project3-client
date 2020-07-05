@@ -30,7 +30,6 @@ class JobsFeed extends Component {
             debugger
             return(
               <>
-
                 <div className="jobs-card">
                   <div className="profile-image-box">
                     <img src={"https://res.cloudinary.com/dconurgxl/image/upload/v1593453874/avatar-icon-vector_zhcqk3.jpg"} alt=""/>
@@ -49,7 +48,7 @@ class JobsFeed extends Component {
                     <span className="job-applications">Running applications: 25</span>
                   </div>
 
-                  <button className="title-blue heartbeat"><Link to="/jobsdetailpage">View job</Link></button>
+                  <button className="title-blue heartbeat"><Link to={`jobdetailpage/${oneJob._id}`}>View job</Link></button>
                 </div>
 
             </>
