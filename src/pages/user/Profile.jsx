@@ -21,7 +21,17 @@ class Profile extends Component {
       }
     }
     componentDidMount(){
-      userData(this.state.user.id)
+      debugger
+
+      let userToSearch = "";
+
+      if(this.props.match.params.id){
+        userToSearch = this.props.match.params.id;
+      } else{
+        userToSearch = this.state.user.id;
+      }
+
+      userData(userToSearch)
       .then((response)=>{
         this.setState({
           userData: response.data.user,
@@ -52,10 +62,15 @@ class Profile extends Component {
                 <div className="image-box">
                   <img src={this.state.profilePicture} alt=""/>
                 </div>
+                { 
+                  this.props.match.params.id ? 
+                  <></> :
                   <div className="action">
-                  <Link to="/editprofile"><img src={edit} alt=""/></Link>
-                  <Link to="/logout"><img src={logout} alt=""/></Link>
+                    <Link to="/editprofile"><img src={edit} alt=""/></Link>
+                    <Link to="/logout"><img src={logout} alt=""/></Link>
                   </div>
+                }
+                  
                 <div className="personal-details">
                   <h4 className="username uppercase-font"> {this.state.userData.firstname} {this.state.userData.lastname}</h4>
                   <p className="usertype">{this.state.userData.userType}</p>
@@ -63,7 +78,7 @@ class Profile extends Component {
                     <div className="designation">
                       <p>E-mail address</p>
                       <p>Mobile number</p>
-                      <p>Chamber of Commerce number</p>
+                      <p>Commerce nr.</p>
                     </div>
                     <div className="details">
                       <p>{this.state.userData.email}</p>
@@ -79,16 +94,20 @@ class Profile extends Component {
                   <p className="content-lines">{this.state.userData.bio}</p>
                 </div>
                 <div className="perf-address">
-                  <div className="perf">
-                    <div className="jobs">
-                      <p className="big-numbers uppercase-font">115</p>
-                      <p className="content-lines">#jobs</p>
+                { 
+                    this.props.match.params.id ? 
+                    <></> :
+                    <div className="perf">
+                      <div className="jobs">
+                        <p className="big-numbers uppercase-font">115</p>
+                        <p className="content-lines">#jobs</p>
+                      </div>
+                      <div className="earn">
+                        <p className="big-numbers uppercase-font">2215</p>
+                        <p className="content-lines">euro</p>
+                      </div>
                     </div>
-                    <div className="earn">
-                      <p className="big-numbers uppercase-font">2215</p>
-                      <p className="content-lines">euro</p>
-                    </div>
-                  </div>
+                  }
                   <div className="address">
                   <p className="profile-sub-title uppercase-font">Address details</p>
                     <p className="content-lines">{this.state.userData.address.street} {this.state.userData.address.houseNr} {this.state.userData.address.houseNrAddition}</p>

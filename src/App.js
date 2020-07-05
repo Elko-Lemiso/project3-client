@@ -37,13 +37,14 @@ class App extends Component {
         <Route path='/signup' component={Signup}/>
         <Route path='/login' component={Login}/>
         <Route path='/welcome' component={Welcome}/>
-        <Route path='/profile' component={Profile}/>
+        <Route exact path='/profile' component={Profile}/>
+        <Route path='/profile/:id' component={Profile}/>
         <Route path='/logout' component={Logout}/>
         <Route path='/editprofile' component={EditProfile}/>
         <Route path='/postjob' component={PostJob}/>
         <Route path='/jobsfeed' component={JobsFeed}/>
         <Route path='/jobsdetailpage' component={JobsDetailPage}/>
-        <Route path='/cleaners' component={CleanersFeed}/>
+        <Route exact path='/cleaners' component={CleanersFeed}/>
       </div>
     )
   }

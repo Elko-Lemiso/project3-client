@@ -13,7 +13,7 @@ class CleanersFeed extends Component {
 
   state = {
     user: getUser(),
-    allUserData: [],
+    allCleaners: [],
     error: null  
   }
 
@@ -23,7 +23,7 @@ class CleanersFeed extends Component {
     allCleanersData()
     .then((response)=>{
       this.setState({
-        allUserData: response.data.users,
+        allCleaners: response.data.users,
       })
     })
     .catch((error)=>{
@@ -44,39 +44,56 @@ class CleanersFeed extends Component {
           <Nav/>
           <h1>CLEANERS</h1>
           <div className="cleaners-list">
-  
-            <div className="cleaner">
-              <div className="cleaner-image-box">
-                <img src="" alt=""/>
-              </div>
-              <div className="cleaner-details">
-                <h4>cleanR Name</h4>
-                <div className="rating">
-                  <p>Rating:</p>
-                </div>
-                <p></p>
-                <p>cleaners first message in the chat. Hi, I am very motivated to do the job.</p>
-                <div className="jobs-done">
-                  <p>Jobs finished:</p>
-                  <p></p>
-                </div>
-              </div>
-            </div>
-  
-            <div className="cleaner">
-              <div className="cleaner-image-box">
-                <img src="" alt=""/>
-              </div>
-              <div className="cleaner-details">
-                <h4>cleanR Name</h4>
-                <p>Cleaners first message in the chat. Hi, I am very motivated to do the job.</p>
-              </div>
-            </div>
+            {
+              this.state.allCleaners.map((cleaner, index)=>(
+                <Link key={`${index}-${cleaner._id}`} to={`profile/${cleaner._id}`}>
+                  <div className="cleaner">
+                    <div className="cleaner-image-box">
+                      <img src={cleaner.profilePicture.path} alt=""/>
+                    </div>
+                    <div className="cleaner-details">
+                      <h4>{cleaner.firstname} {cleaner.lastname}</h4>
+                      <table>
+                        <thead>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="key-lines">City:</td>
+                            <td className="content-lines">{cleaner.address.city}</td>
+                          </tr>
+                          <tr>
+                            <td className="key-lines">Bio:</td>
+                            <td className="content-lines">{cleaner.bio}</td>
+                          </tr>
+                          <tr>
+                            <td className="key-lines">Rating:</td>
+                            {cleaner.jobsTaken.length === 0? 
+                            <td className="content-lines">No ratings yet</td> :
+                            <td className="content-lines">Rating: 4 stars, with 7 ratings</td>
+                            }
+                          </tr>
+                          <tr>
+                            <td className="key-lines">#Jobs done:</td>
+                            {cleaner.jobsTaken.length === 0? 
+                            <td className="content-lines">No complete jobs yet</td> :
+                            <td className="content-lines">{cleaner.jobsTaken.length}</td>
+                            }
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                      </table>
+                    </div>    
+                  </div>
+                </Link>  
+              ))
+            }
           </div>
         </div>
       )
     }
   }
+
 }
 
 export default CleanersFeed
