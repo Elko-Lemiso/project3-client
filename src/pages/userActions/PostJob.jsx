@@ -54,7 +54,6 @@ class PostJob extends Component {
   }
 
   saveAddress(){
-    debugger
     let addressLine = '';
     if(this.state.jobData.address.street && this.state.jobData.address.city && this.state.jobData.address.houseNr){
       addressLine = `${this.state.jobData.address.street} ${this.state.jobData.address.houseNr} ${this.state.jobData.address.city}`;
