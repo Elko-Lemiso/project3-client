@@ -43,7 +43,7 @@ class App extends Component {
         <Route path='/editprofile' component={EditProfile}/>
         <Route path='/postjob' component={PostJob}/>
         <Route path='/jobsfeed' component={JobsFeed}/>
-        <Route path='/jobsdetailpage' component={JobsDetailPage}/>
+        <Route path='/jobsdetailpage/:id' component={JobsDetailPage}/>
         <Route exact path='/cleaners' component={CleanersFeed}/>
       </div>
     )
