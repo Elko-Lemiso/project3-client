@@ -94,7 +94,7 @@ class Signup extends Component {
 
   render() {
     return (
-      <div className="modal">
+      <div className="modal .scale-up-center">
         <div id="signup" className="signup big-container">
           <div className="exit-box">
             <p className="exit-btn"><Link to = "/">X</Link></p>

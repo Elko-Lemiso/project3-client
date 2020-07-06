@@ -148,7 +148,7 @@ class PostJob extends Component {
           <Nav/>
         {
         this.state.stage===1 &&
-        <div className="container stage-1">
+        <div className="container .slide-in-right stage-1">
           <div className="edit-profile">
             <form encType="multipart/form-data"  className="form-styling">
               <h1>WHAT DO YOU NEED DONE?</h1>
@@ -171,7 +171,7 @@ class PostJob extends Component {
             }
             {
             this.state.stage === 2 &&
-            <div className="container stage-2">
+            <div className="container .slide-in-right stage-2">
               <div id="edit-profile" className="edit-profile">
                 <form encType="multipart/form-data"  className="form-styling">
                   <div className="column">
@@ -214,7 +214,7 @@ class PostJob extends Component {
             }
             {
               this.state.stage === 3 &&
-              <div id = "stage-3" className="container ">
+              <div id = "stage-3" className="container .slide-in-right ">
                 <form encType="multipart/form-data">
                     <label>When does the cleaner need to be complete?</label>
                     <input type="date" name="dueDate" value={this.state.jobData.dueDate} onChange={this.handleChange}/>
@@ -230,7 +230,7 @@ class PostJob extends Component {
             }
             {
             this.state.stage === 4 &&
-            <div id="stage-4" className="container">
+            <div id="stage-4" className="container .slide-in-right">
               <h6>You have selected {this.state.uploadedImages} images</h6>
                 <form encType="multipart/form-data" className="form-styling">
                   <label className="">Lets see what it looks like</label>

@@ -54,7 +54,7 @@ class Login extends Component {
   
     render() {
       return (
-        <div className="modal">
+        <div className="modal ">
           <div id="login" className="signup big-container">
             <div className="exit-box">
               <p className="exit-btn"><Link to = "/">X</Link></p>
