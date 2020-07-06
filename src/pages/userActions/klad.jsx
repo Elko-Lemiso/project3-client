@@ -3,22 +3,29 @@ import Nav from '../../components/Nav';
 import Maps from '../../components/Maps';
 import {getUser} from '../../utils/auth';
 import {findJob} from '../../utils/job';
+import {jobApplication} from '../../utils/jobApplication';
 import axios from 'axios';
 import './JobsDetailPage.scss';
 
 class JobsDetailPage extends Component {
   constructor(props) {
     super(props)
+    this.sendApplication = this.sendApplication.bind(this);
+    this.toggleApplicationForm = this.toggleApplicationForm.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
+
   state = {
-    applied : true,
     user: getUser(),
     jobData: {
       images: [{}],
       address: null
     },
-    error: null
+    toggleApplicationForm: false,
+    messages: '',
+    error: null,
+    applicationError: null,
   }
 
   
@@ -39,6 +46,26 @@ class JobsDetailPage extends Component {
     })
   }
 
+  toggleApplicationForm(){
+    this.setState({
+      toggleApplicationForm: !this.state.toggleApplicationForm
+    })
+  }
+
+  sendApplication(){
+   this.application();
+   
+   
+  }
+
+  handleChange(event){
+    let newMessage = {...this.state.message};
+    newMessage = event.target.value;
+    this.setState({
+      message: newMessage
+    })
+  }
+
   application(){
     let jobId = this.state.jobData._id
     let userId = this.state.user.id
@@ -46,25 +73,28 @@ class JobsDetailPage extends Component {
       job : jobId,
       user: userId
     }
-    return axios({
-      method: "POST",
-      url: `${process.env.REACT_APP_BASE_URL}jobs/application`,
-      data : application
-    })
+    jobApplication(application)
     .then(response => {
-        this.setState({applied:true})
+      this.setState({
+        applied: true
+      })
+    })
+    .catch((error)=>{
+      this.setState({
+        applicationError: error.message
+      })
     })
   }
 
   assignCleaner(status, id){
 
-    let jobId = this.state.jobData._id
-    let userId = this.state.user.id
+    let jobId = this.state.jobData._id;
+    let userId = this.state.user.id;
     let application = {
       job : jobId,
       user: id,
       status: status
-    }
+    };
     return axios({
       method: "POST",
       url: `${process.env.REACT_APP_BASE_URL}jobs/applicationResponse`,
@@ -98,7 +128,7 @@ class JobsDetailPage extends Component {
                   <div className="job-price">
                     <p><strong>Job price:</strong></p>
                     <p>€ {this.state.jobData.rate}</p>
-                    <span>,</span>
+                    <span>,-</span>
                     <p>an hour.</p>
                   </div>
                 </div>
@@ -107,11 +137,18 @@ class JobsDetailPage extends Component {
                   <span className="job-owner">Posted by {this.state.jobData.creator.firstname}</span>
                   <span className="job-applications">Running applications: {this.state.jobData.applicants.length}</span>
                 </div>
+                <button id="job-details-button" className="title-blue heartbeat" onClick = {this.toggleApplicationForm()}>Apply</button>
                 {
-                  (!this.state.applied)?
-                    this.state.user.userType === "cleaner" && <button id="job-details-button" className="title-blue heartbeat" onClick = {(event)=>{this.application()}}>Apply</button>
+                  this.state.toggleApplicationForm === true?
+                    <form>
+                      <textarea type="text" name="message" onChange={this.handleChange}/>
+                      <button onClick={(event)=>{
+                          event.preventDefault();
+                          this.sendApplication(event);
+                        }} type="submit" className="title-blue">Send</button>
+                    </form>
                   :
-                    <p>{this.state.jobData.creator.firstname} may get back to you</p>
+                    <></>
                 }
                 
               </div>
