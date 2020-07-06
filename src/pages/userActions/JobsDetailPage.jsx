@@ -31,7 +31,7 @@ class JobsDetailPage extends Component {
     })
     .catch((error)=>{
       this.setState({
-        error: error.data.message
+        error: error.message
       })
     })
   }
@@ -74,7 +74,13 @@ class JobsDetailPage extends Component {
             <div className="job-map">
               <h3>Location</h3>
               <div className="maps-box">
-                <Maps lat={this.state.jobData.address.lat} lng={this.state.jobData.address.long}/>
+                <Maps 
+                  lat={this.state.jobData.address.lat} 
+                  lng={this.state.jobData.address.long} 
+                  street={this.state.jobData.address.street} 
+                  city={this.state.jobData.address.city}
+                  houseNr={this.state.jobData.address.houseNr}
+                />
               </div>
             </div>
             <div className="job-applicants">
