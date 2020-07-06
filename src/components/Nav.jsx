@@ -27,7 +27,7 @@ class Nav extends Component {
     render() {
         return (
             <nav id="main-nav">
-                <h2>cleanR</h2>
+                <Link to="/"><h2>cleanR</h2></Link>
                 <ul>
                     <Link id="nav-users" to ="/cleaners"><li><img src={users} alt=""/><span>cleaners</span></li></Link>
                     {

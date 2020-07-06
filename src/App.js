@@ -12,6 +12,7 @@ import JobsFeed from './pages/userActions/JobsFeed.jsx'
 import MyJobsFeed from './pages/userActions/MyJobsFeed.jsx'
 import JobsDetailPage from './pages/userActions/JobsDetailPage';
 import CleanersFeed from './pages/userActions/CleanersFeed'
+import Chat from './pages/userActions/Chat'
 import { Route } from 'react-router-dom';
 import './App.scss';
 
@@ -47,6 +48,7 @@ class App extends Component {
         <Route path='/myjobsfeed' component={MyJobsFeed}/>
         <Route path='/jobsdetailpage/:id' component={JobsDetailPage}/>
         <Route exact path='/cleaners' component={CleanersFeed}/>
+        <Route path='/chat' component={Chat}/>
       </div>
     )
   }

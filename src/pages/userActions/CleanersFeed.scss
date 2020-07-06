@@ -5,6 +5,10 @@
     width: 100px;
   }
 
+  .capitalize{
+    text-transform: capitalize;
+  }
+
   .content-lines{
     color: grey;
     text-align: left;
@@ -36,7 +40,6 @@
         object-fit: cover;
         overflow: hidden;
         border-radius: 50px;
-        background-color: lightblue;
         margin-right: 20px;
 
         img{
