@@ -35,7 +35,7 @@ export class Maps extends Component {
       >
         <Marker
           onClick={this.onMarkerClick}
-          name={'Kenyatta International Convention Centre'}
+          name={`${this.props.street} ${this.props.houseNr}, ${this.props.city}`}
         />
         <InfoWindow
           marker={this.state.activeMarker}
@@ -51,9 +51,6 @@ export class Maps extends Component {
   }
 }
 
-const apikey = process.env.GOOGLE_API_KEY;
-
 export default GoogleApiWrapper({
-  apiKey: apikey
-  // apiKey: `${process.env.GOOGLE_API_KEY}`
+  apiKey: `${process.env.REACT_APP_GOOGLE_API_KEY}`
 })(Maps);

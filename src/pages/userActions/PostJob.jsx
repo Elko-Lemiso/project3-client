@@ -152,11 +152,11 @@ class PostJob extends Component {
           <div className="edit-profile">
             <form encType="multipart/form-data"  className="form-styling">
               <h1>WHAT DO YOU NEED DONE?</h1>
-              <label>Give your job a title</label>
+              <label>Give your job a short title</label>
               <input className="title" type="text" value={this.state.jobData.title} name="title" onChange={this.handleChange}/>
-              <label>Describe what needs doing</label>
+              <label>Describe the job</label>
               <textarea className="bio" type="text" value={this.state.jobData.bio} name="description" onChange={this.handleChange}/>
-              <label>What are you paying?</label>
+              <label>Price per hour in €</label>
               <input type="number" name="rate" value={this.state.jobData.rate} onChange={this.handleChange}/>
               <button onClick={(event)=>{
                 event.preventDefault();
