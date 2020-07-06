@@ -4,14 +4,19 @@ import messages from '../images/messages.svg'
 import profile from '../images/profile.svg'
 import list from '../images/list.svg'
 import users from '../images/users.svg'
+import {getUser} from '../utils/auth'
 import './nav.scss'
 import { Link } from 'react-router-dom';
+
 
 class Nav extends Component {
     constructor(props){
         super(props)
+        this.user = getUser()
         this.buttonRef = React.createRef();
-        
+        this.state = {
+            user : this.user
+        }
     }
 
 
@@ -25,7 +30,13 @@ class Nav extends Component {
                 <h2>cleanR</h2>
                 <ul>
                     <Link id="nav-users" to ="/cleaners"><li><img src={users} alt=""/><span>cleaners</span></li></Link>
-                    <Link id="nav-jobs" to ="/jobsfeed"><li><img src={list} alt=""/><span>jobs</span></li></Link>
+                    {
+                        (this.state.user.userType==="cleaner")? 
+                        <Link id="nav-jobs" to ="/jobsfeed"><li><img src={list} alt=""/><span>jobs</span></li></Link>
+                        :
+                        <Link id="nav-jobs" to ="/myjobsfeed"><li><img src={list} alt=""/><span>My jobs</span></li></Link>
+                    }
+                    
                     <Link ref = {this.buttonRef} id="add-jobs" onClick={() =>{this.handleClick()}} to ="/postjob">
                       <div>
                           <img src={plus} alt=""/>

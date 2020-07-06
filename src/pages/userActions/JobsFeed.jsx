@@ -27,11 +27,12 @@ class JobsFeed extends Component {
         <div className="jobs-container">
         {
           this.state.jobs.map((oneJob, index) =>{
+            debugger
             return(
               <>
                 <div className="jobs-card">
                   <div className="profile-image-box">
-                    <img src={"https://res.cloudinary.com/dconurgxl/image/upload/v1593453874/avatar-icon-vector_zhcqk3.jpg"} alt=""/>
+                    <img src={oneJob.images[0].path} alt=""/>
                   </div>
 
                   <div className="job-title">
