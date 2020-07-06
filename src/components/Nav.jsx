@@ -42,7 +42,7 @@ class Nav extends Component {
                           <img src={plus} alt=""/>
                       </div>
                     </Link>
-                    <Link id="nav-chat" to="/chat"><li><img src={messages} alt=""/><span>chat</span></li></Link>
+                    <Link id="nav-chat" to="/chatsfeed"><li><img src={messages} alt=""/><span>chat</span></li></Link>
                     <Link id="nav-profile" to="/profile"><li><img src={profile} alt=""/><span>profile</span></li></Link>
                 </ul>
             </nav>

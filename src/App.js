@@ -3,16 +3,17 @@ import axios from 'axios';
 import LandingPage from './pages/LandingPage';
 import Signup from './pages/auth/Signup';
 import Login from './pages/auth/Login';
-import Welcome from './pages/user/Welcome'
-import Logout from './pages/auth/Logout'
-import Profile from './pages/user/Profile'
-import EditProfile from './pages/user/EditProfile'
-import PostJob from './pages/userActions/PostJob'
-import JobsFeed from './pages/userActions/JobsFeed.jsx'
-import MyJobsFeed from './pages/userActions/MyJobsFeed.jsx'
+import Welcome from './pages/user/Welcome';
+import Logout from './pages/auth/Logout';
+import Profile from './pages/user/Profile';
+import EditProfile from './pages/user/EditProfile';
+import PostJob from './pages/userActions/PostJob';
+import JobsFeed from './pages/userActions/JobsFeed.jsx';
+import MyJobsFeed from './pages/userActions/MyJobsFeed.jsx';
 import JobsDetailPage from './pages/userActions/JobsDetailPage';
-import CleanersFeed from './pages/userActions/CleanersFeed'
-import Chat from './pages/userActions/Chat'
+import CleanersFeed from './pages/userActions/CleanersFeed';
+import ChatsFeed from './pages/userActions/ChatsFeed';
+import Chat from './pages/userActions/Chat';
 import { Route } from 'react-router-dom';
 import './App.scss';
 
@@ -48,6 +49,7 @@ class App extends Component {
         <Route path='/myjobsfeed' component={MyJobsFeed}/>
         <Route path='/jobsdetailpage/:id' component={JobsDetailPage}/>
         <Route exact path='/cleaners' component={CleanersFeed}/>
+        <Route path='/chatsfeed' component={ChatsFeed}/>
         <Route path='/chat' component={Chat}/>
       </div>
     )

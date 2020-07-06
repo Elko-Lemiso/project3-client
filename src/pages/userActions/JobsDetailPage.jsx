@@ -98,7 +98,7 @@ class JobsDetailPage extends Component {
                   <div className="job-price">
                     <p><strong>Job price:</strong></p>
                     <p>€ {this.state.jobData.rate}</p>
-                    <span>,</span>
+                    <span>,-</span>
                     <p>an hour.</p>
                   </div>
                 </div>

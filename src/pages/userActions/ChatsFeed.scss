@@ -1,4 +1,4 @@
-.big-container, #cleaners-feed{
+.big-container, #chats-feed{
   .key-lines{
     color: black;
     font-weight: 700;
@@ -14,7 +14,7 @@
     text-align: left;
   }
 
-  .cleaners-list{
+  .chats-list{
     display: flex;
     flex-direction: column;
     padding: 20px 20px 20px 20px;
@@ -24,7 +24,7 @@
     max-width: 600px;
 
 
-    .cleaner{
+    .chat{
       display: flex;
       flex-direction: row;
       margin-bottom: 10px;
@@ -32,7 +32,7 @@
       margin-bottom: 20px;
       border-bottom: 1px lightgrey solid;
 
-      .cleaner-image-box{
+      .chat-image-box{
         width: 100px;
         min-width: 100px;
         height: 100px;
@@ -51,7 +51,7 @@
       }
 
       @media (max-width: 550px) {
-        .cleaner-image-box{
+        .chat-image-box{
           display: none;
         }
       }
@@ -60,7 +60,7 @@
         display: flex;
       }
 
-      .cleaner-details{
+      .chat-details{
         margin: 0px 10px;
         text-align: left;
         
@@ -75,8 +75,6 @@
         }
       }
     }
-
   }
-
 }
 
