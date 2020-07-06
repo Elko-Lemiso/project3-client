@@ -3,7 +3,7 @@ import Nav from '../../components/Nav';
 import Maps from '../../components/Maps';
 import {getUser} from '../../utils/auth';
 import {findJob} from '../../utils/job';
-
+import axios from 'axios';
 import './JobsDetailPage.scss';
 
 class JobsDetailPage extends Component {
@@ -12,6 +12,7 @@ class JobsDetailPage extends Component {
   }
 
   state = {
+    applied : true,
     user: getUser(),
     jobData: {
       images: [{}],
@@ -20,19 +21,57 @@ class JobsDetailPage extends Component {
     error: null
   }
 
+  
   componentDidMount(){
     !this.state.user? this.props.history.push("/"):
     findJob(this.props.match.params.id)
     .then((response)=>{
+      debugger
       this.setState({
         jobData: response.data,
       })
-      debugger
+      this.state.jobData.applicants.includes(this.state.user.id) ? this.setState({applied : true}) : this.setState({applied : false})
     })
     .catch((error)=>{
       this.setState({
         error: error.message
       })
+    })
+  }
+
+  application(){
+    let jobId = this.state.jobData._id
+    let userId = this.state.user.id
+    let application = {
+      job : jobId,
+      user: userId
+    }
+    return axios({
+      method: "POST",
+      url: `${process.env.REACT_APP_BASE_URL}jobs/application`,
+      data : application
+    })
+    .then(response => {
+        this.setState({applied:true})
+    })
+  }
+
+  assignCleaner(status, id){
+
+    let jobId = this.state.jobData._id
+    let userId = this.state.user.id
+    let application = {
+      job : jobId,
+      user: id,
+      status: status
+    }
+    return axios({
+      method: "POST",
+      url: `${process.env.REACT_APP_BASE_URL}jobs/applicationResponse`,
+      data : application
+    })
+    .then(response => {
+        console.log(response)
     })
   }
 
@@ -59,16 +98,22 @@ class JobsDetailPage extends Component {
                   <div className="job-price">
                     <p><strong>Job price:</strong></p>
                     <p>€ {this.state.jobData.rate}</p>
-                    <span>,-</span>
+                    <span>,</span>
                     <p>an hour.</p>
                   </div>
                 </div>
                 <p className="job-description">{this.state.jobData.description}</p>
                 <div className="job-footer">
-                  <span className="job-owner">Posted by: Elko</span>
-                  <span className="job-applications">Running applications: 25</span>
+                  <span className="job-owner">Posted by {this.state.jobData.creator.firstname}</span>
+                  <span className="job-applications">Running applications: {this.state.jobData.applicants.length}</span>
                 </div>
-                <button id="job-details-button" className="title-blue heartbeat">Apply</button>
+                {
+                  (!this.state.applied)?
+                    this.state.user.userType === "cleaner" && <button id="job-details-button" className="title-blue heartbeat" onClick = {(event)=>{this.application()}}>Apply</button>
+                  :
+                    <p>{this.state.jobData.creator.firstname} may get back to you</p>
+                }
+                
               </div>
             </div>
             <div className="job-map">
@@ -83,40 +128,38 @@ class JobsDetailPage extends Component {
                 />
               </div>
             </div>
-            <div className="job-applicants">
+            {
+              this.state.user.userType === "client"? 
+
+              <div className="job-applicants">
               <h3>Applicants</h3>
               <div className="applicants-list">
+              {
+                  this.state.jobData.applicants.map((applicant, index) =>{
+                  return(
                 <div className="applicant">
                   <div className="applicant-image-box">
-                    <img src="" alt=""/>
+                    <img src={applicant.profilePicture.path} alt=""/>
                   </div>
                   <div className="applicant-details">
-                    <h4>Applicant Name</h4>
+                    <h4>{applicant.firstname}</h4>
                     <p>Applicants first message in the chat. Hi, I am very motivated to do the job.</p>
                   </div>
                   <div className="applicant-approval">
                     <p>Approve?</p>
-                    <button>Yes</button>
-                    <button>No</button>
+                    <button onClick={(event)=>{this.assignCleaner(true, applicant._id)}}>Yes</button>
+                    <button onClick={(event)=>{this.assignCleaner(false, applicant._id)}}>No</button>
                   </div>
                 </div>
-  
-                <div className="applicant">
-                  <div className="applicant-image-box">
-                    <img src="" alt=""/>
-                  </div>
-                  <div className="applicant-details">
-                    <h4>Applicant Name</h4>
-                    <p>Applicants first message in the chat. Hi, I am very motivated to do the job.</p>
-                  </div>
-                  <div className="applicant-approval">
-                    <p>Approve?</p>
-                    <button>Yes</button>
-                    <button>No</button>
-                  </div>
-                </div>
+                )
+                  })
+                }
               </div>
             </div>
+            :
+            <></>
+            }
+            
           </div>
         </div>
       )
