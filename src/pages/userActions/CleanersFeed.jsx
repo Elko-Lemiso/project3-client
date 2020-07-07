@@ -52,14 +52,14 @@ class CleanersFeed extends Component {
                       <img src={cleaner.profilePicture.path} alt=""/>
                     </div>
                     <div className="cleaner-details">
-                      <h4>{cleaner.firstname} {cleaner.lastname}</h4>
+                      <h4 className="capitalize">{cleaner.firstname} {cleaner.lastname}</h4>
                       <table>
                         <thead>
                         </thead>
                         <tbody>
                           <tr>
-                            <td className="key-lines">City:</td>
-                            <td className="content-lines">{cleaner.address.city}</td>
+                            <td className="key-lines ">City:</td>
+                            <td className="content-lines capitalize">{cleaner.address.city}</td>
                           </tr>
                           <tr>
                             <td className="key-lines">Bio:</td>

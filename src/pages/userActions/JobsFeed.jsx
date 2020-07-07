@@ -11,13 +11,13 @@ class JobsFeed extends Component {
       jobs : []
     }
   }
+
   componentDidMount() {
-    debugger
     axios.get(`${process.env.REACT_APP_BASE_URL}jobs/findjobs`)
     .then(response => {
         this.setState({jobs: response.data})
     })
-}
+  }
 
   render() {
     return (

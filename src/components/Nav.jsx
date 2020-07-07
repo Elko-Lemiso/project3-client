@@ -28,7 +28,7 @@ class Nav extends Component {
     render() {
         return (
             <nav id="main-nav">
-                <h2>cleanR</h2>
+                <Link to="/"><h2>cleanR</h2></Link>
                 <ul>
                     <Link id="nav-users" to ="/cleaners" onClick={(event)=>{ setTimeout(() => { event.preventDefault() }, 1000); event.target.classList.toggle("ping")}}><li><img src={users} alt=""/><span>cleaners</span></li></Link>
                     {
@@ -52,6 +52,7 @@ class Nav extends Component {
                     </Link>
                     }
                     <Link id="nav-chat" to="/chat"><li><img src={messages} alt=""/><span>chat</span></li></Link>
+                    <Link id="nav-chat" to="/chatsfeed"><li><img src={messages} alt=""/><span>chat</span></li></Link>
                     <Link id="nav-profile" to="/profile"><li><img src={profile} alt=""/><span>profile</span></li></Link>
                 </ul>
             </nav>
