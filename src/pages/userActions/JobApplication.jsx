@@ -34,7 +34,8 @@ class JobApplication extends Component {
       message: this.state.message,
       userType: this.props.stateJobDetailPage.user.userType
     }
-
+  
+  
     jobApplication(application)
     .then(response => {
       this.setState({
