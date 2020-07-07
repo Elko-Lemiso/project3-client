@@ -51,7 +51,7 @@ class App extends Component {
         <Route path={['/jobsdetailpage/:id', '/application']} component={JobsDetailPage}/>
         <Route exact path='/cleaners' component={CleanersFeed}/>
         <Route path='/chatsfeed' component={ChatsFeed}/>
-        <Route path='/chat' component={Chat}/>
+        <Route path='/chat/:id' component={Chat}/>
 
       </div>
     )

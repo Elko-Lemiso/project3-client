@@ -7,19 +7,30 @@ const axios = Axios.create({
     // headers: { 'content-type': 'application/x-www-form-urlencoded' }, better in axios function otherwise its not returning to original function
 });
 
-export const postMessage = (message)=>{
+export const getMyConversations = (userId)=>{
   return axios({
-    method: "POST",
-    url: "chats/postmessage",
-    headers: { 'content-type': 'application/x-www-form-urlencoded' },
-    data: qs.stringify(message) // using qs to put the js object into the right format
+    method: "GET",
+    url: "conversations/myconversations",
+    params: {
+      'userId': userId,
+    }
   })
 }
 
-export const getMessages = (message)=>{
+export const getMyConversationMessages = (conversationId)=>{
+  return axios({
+    method: "GET",
+    url: "conversations/myconversationmessages",
+    params: {
+      'conversationId': conversationId,
+    }
+  })
+}
+
+export const postMessage = (message)=>{
   return axios({
     method: "POST",
-    url: "chats/postmessage",
+    url: "conversations/postmessage",
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
     data: qs.stringify(message) // using qs to put the js object into the right format
   })

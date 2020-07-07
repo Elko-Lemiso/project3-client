@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {getUser} from '../../utils/auth';
+import {getMyConversations} from '../../utils/conversations';
 import Nav from '../../components/Nav';
 import { Link , Redirect } from 'react-router-dom';
 import './ChatsFeed.scss';
@@ -12,18 +13,25 @@ class ChatsFeed extends Component {
 
   state = {
     user: getUser(),
-    myChats: []
+    myConversations: []
   }
 
   componentDidMount(){
-    // !this.state.user? this.props.history.push("/"):
-    // // left here, test if data comes in correctly
-    // allCleanersData()
+    !this.state.user? this.props.history.push("/"):
+    getMyConversations(this.state.user.id)
+      .then((conversations)=>{
+        debugger
+        this.setState({
+          myConversations: conversations.data.response
+        })
+        console.log("Success! These are the conversations:",conversations.data.response);
+      })
+      .catch((error)=>{
+        console.log(error, 'Error occured with getting the conversations');
+      })
   }
 
   render() {
-    debugger
-    
     if(!this.state.user){
       return(
         <Redirect to="/" />
@@ -34,30 +42,38 @@ class ChatsFeed extends Component {
           <Nav/>
           <h1>CHATS</h1>
           <div className="chats-list">
-            {/* {
-              this.state.myChats.map((chat, index)=>( */}
-                <Link /*key={`${index}-${chat._id}`}*/ to={`/`}>
+            {
+              this.state.myConversations.map((conversation, index)=>( 
+                <Link key={`${index}-${conversation._id}`} to={`/chat/${conversation._id}`}>
                   <div className="chat">
                     <div className="chat-image-box">
-                      <img src="https://res.cloudinary.com/dconurgxl/image/upload/v1593453874/avatar-icon-vector_zhcqk3.jpg" alt=""/>
+                      { this.state.user.userType === conversation.participants[0].userType ?
+                        <img src={conversation.participants[1].profilePicture.path} alt=""/> :
+                        <img src={conversation.participants[0].profilePicture.path} alt=""/>
+                      }
                     </div>
                     <div className="chat-details">
-                      <h4 className="capitalize">Pietje puk</h4>
+                      {
+                        this.state.user.userType === conversation.participants[0].userType ?
+                        <h4 className="capitalize">{conversation.participants[1].firstname} {conversation.participants[1].lastname}</h4>
+                        :
+                        <h4 className="capitalize">{conversation.participants[0].firstname} {conversation.participants[0].lastname}</h4>
+                      }
                       <table>
                         <thead>
                         </thead>
                         <tbody>
                         <tr>
                             <td className="key-lines ">Job title:</td>
-                            <td className="content-lines">Car wash</td>
+                            <td className="content-lines">{conversation.jobId.title}</td>
                           </tr>
                           <tr>
                             <td className="key-lines ">Last message:</td>
-                            <td className="content-lines">Thank you for accepting my application!</td>
+                            <td className="content-lines">{conversation.messages[0].message}</td>
                           </tr>
                           <tr>
                             <td className="key-lines ">Receipt date:</td>
-                            <td className="content-lines">Mon 6 jul 15:57h</td>
+                            <td className="content-lines">{conversation.messages[0].created_at}</td>
                           </tr>
                         </tbody>
                         <tfoot>
@@ -66,8 +82,8 @@ class ChatsFeed extends Component {
                     </div>    
                   </div>
                 </Link>  
-              {/* ))
-            } */}
+              ))
+            } 
           </div>
         </div>
       )
