@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './../Form.scss';
 import {login} from "../../utils/auth";
-import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 class Login extends Component {
     constructor(props){

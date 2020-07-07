@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './JobApplication.scss';
-import { Link, Redirect } from 'react-router-dom';
 import {jobApplication, jobApplicationMessage} from '../../utils/jobApplication';
 
 class JobApplication extends Component {

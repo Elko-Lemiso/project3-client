@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {logout} from '../../utils/auth'
-import { Link, Route, Redirect } from 'react-router-dom';
 
 class Logout extends Component {
 

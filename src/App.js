@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import LandingPage from './pages/LandingPage';
-import Signup from './pages/auth/Signup';
-import Login from './pages/auth/Login';
 import Welcome from './pages/user/Welcome';
 import Logout from './pages/auth/Logout';
 import Profile from './pages/user/Profile';
@@ -15,7 +13,6 @@ import CleanersFeed from './pages/userActions/CleanersFeed';
 import ChatsFeed from './pages/userActions/ChatsFeed';
 import CleanerJobsFeed from './pages/userActions/CleanerJobsFeed.jsx'
 import Chat from './pages/userActions/Chat';
-import JobApplication from './pages/userActions/JobApplication';
 import { Route } from 'react-router-dom';
 import './App.scss';
 

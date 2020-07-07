@@ -19,7 +19,6 @@ class PostJob extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleAddressChange = this.handleAddressChange.bind(this);
     this.handleChangeImages = this.handleChangeImages.bind(this);
-    this.uploadJob = this.uploadJob.bind(this);
     this.postJob = this.postJob.bind(this);
     this.saveAddress = this.saveAddress.bind(this);
   }
@@ -102,10 +101,6 @@ class PostJob extends Component {
     .then((response)=>{
       console.log(response)
     })
-  }
-  
-  uploadJob(event){
-    var jobPicture = new FormData(this.formRef.current);
   }
 
   handleChange(event){

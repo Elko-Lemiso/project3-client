@@ -42,17 +42,17 @@ class Chat extends Component {
       userType: this.state.user.userType
     }
 
-    // postMessage(this.state.postMessage, this.state.myConversation.id)
-    // .then((response)=>{
-    //   this.setState({
-    //     messages: [...this.state.messages, response]
-    //   })
-    // })
-    // .catch((error)=>{
-    //   this.setState({
-    //     error: error.response.data.message
-    //   })
-    // });
+    postMessage(messageData)
+    .then((response)=>{
+      this.setState({
+        messages: [...this.state.messages, response]
+      })
+    })
+    .catch((error)=>{
+      this.setState({
+        error: error.response.data.message
+      })
+    });
   }
 
   handleChange(event){

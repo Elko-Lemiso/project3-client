@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './../Form.scss';
 import {signup} from "../../utils/auth";
 import {geocode} from "../../utils/googleMaps";
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Signup extends Component {
   constructor(props){

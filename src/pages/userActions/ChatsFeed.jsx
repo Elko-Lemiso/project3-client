@@ -6,11 +6,6 @@ import { Link , Redirect } from 'react-router-dom';
 import './ChatsFeed.scss';
 
 class ChatsFeed extends Component {
-  constructor(props) {
-    super(props)
-    
-  }
-
   state = {
     user: getUser(),
     myConversations: []

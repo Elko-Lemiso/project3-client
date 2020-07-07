@@ -3,17 +3,12 @@ import Nav from '../../components/Nav';
 import Maps from '../../components/Maps';
 import {getUser} from '../../utils/auth';
 import {findJob} from '../../utils/job';
-import axios from 'axios';
 import './JobsDetailPage.scss';
 import JobApplication from '../userActions/JobApplication'
 import { Link, Route } from 'react-router-dom';
-import {assignTheCleaner, jobApplication} from '../../utils/jobApplication';
+import {assignTheCleaner} from '../../utils/jobApplication';
 
 class JobsDetailPage extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   state = {
     applied: null,
     user: getUser(),

@@ -6,11 +6,6 @@ import { Link , Redirect } from 'react-router-dom';
 import './CleanersFeed.scss';
 
 class CleanersFeed extends Component {
-  constructor(props) {
-    super(props)
-    
-  }
-
   state = {
     user: getUser(),
     allCleaners: [],
