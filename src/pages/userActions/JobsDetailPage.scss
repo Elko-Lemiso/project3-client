@@ -154,6 +154,22 @@
           display: flex;
           flex-direction: column;
           align-items: center;
+          width: 100%;
+          .current-cleaner{
+            justify-content: space-around;
+            align-content: center;
+            display: flex;
+            flex-direction: row ;
+            width: 100%;
+            height: 4rem;
+            border-radius:30px;
+            img{
+              overflow: -moz-hidden-unscrollable;
+              border-radius:100px;
+              width: 3rem;
+              height: 3rem;
+            }
+          }
         }
   
         #job-details-button{

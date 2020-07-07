@@ -46,6 +46,12 @@ class JobsDetailPage extends Component {
       status: status
     }
     assignTheCleaner(application)
+    findJob(this.props.match.params.id)
+    .then((response)=>{
+      this.setState({
+        jobData: response.data,
+      })
+    })
     .then(response => {
         console.log(response);
     })
@@ -86,11 +92,22 @@ class JobsDetailPage extends Component {
                 <p className="job-description">{this.state.jobData.description}</p>
                 <div className="job-footer">
                   <span className="job-owner">Posted by {this.state.jobData.creator.firstname}</span>
-                  <span className="job-applications">Running applications: {this.state.jobData.applicants.length}</span>
-                </div>  
-                <Link to="/application"  ><button id="job-details-button" className="title-blue heartbeat">Apply</button></Link>
+                  {
+                    this.state.user.userType === "client" && this.state.jobData.cleanerId !== null ? 
+                    <div className="current-cleaner">
+                      <img src={this.state.jobData.cleanerId.profilePicture.path} alt=""/>
+                      <h5>{this.state.jobData.cleanerId.firstname} is working on this.</h5>
+                    </div> 
+                    : 
+                    <span className="job-applications">Running applications: {this.state.jobData.applicants.length}</span>
+                  }
+                </div>
+                {
+                  this.state.user.userType === "cleaner" && <Link to="/application"><button id="job-details-button" className="title-blue heartbeat">Apply</button></Link>
+                }  
               </div>
             </div>
+
             <div className="job-map  shadow-drop-2-bottom">
               <h3>Location</h3>
               <div className="maps-box">
@@ -104,36 +121,39 @@ class JobsDetailPage extends Component {
               </div>
             </div>
             {
-              this.state.user.userType === "client"? 
+              this.state.user.userType === "client" && (this.state.jobData.applicants.length>0) &&
 
-              <div className="job-applicants">
-              <h3>Applicants</h3>
-              <div className="applicants-list">
-              {
-                  this.state.jobData.applicants.map((applicant, index) =>{
-                  return(
-                <div key={`${index} - ${applicant.firstname}`}className="applicant">
-                  <div className="applicant-image-box">
-                    <img src={applicant.profilePicture.path} alt=""/>
-                  </div>
-                  <div className="applicant-details">
-                    <h4>{applicant.firstname}</h4>
-                    <p>Applicants first message in the chat. Hi, I am very motivated to do the job.</p>
-                  </div>
-                  <div className="applicant-approval">
-                    <p>Approve?</p>
-                    <button onClick={(event)=>{this.assignCleaner(true, applicant._id)}}>Yes</button>
-                    <button onClick={(event)=>{this.assignCleaner(false, applicant._id)}}>No</button>
+                  <div className="job-applicants shadow-drop-2-bottom">
+                    <h3>Applicants</h3>
+                    <div className="applicants-list">
+
+                  {
+                    this.state.jobData.applicants.length>0?
+                      this.state.jobData.applicants.map((applicant, index) =>{
+                      return(
+                        <div key={`${index} - ${applicant.firstname}`}className="applicant">
+
+                          <div className="applicant-image-box">
+                            <img src={applicant.profilePicture.path} alt=""/>
+                          </div>
+                          <div className="applicant-details">
+                            <h4>{applicant.firstname}</h4>
+                            <p>Applicants first message in the chat. Hi, I am very motivated to do the job.</p>
+                          </div>
+                          <div className="applicant-approval">
+                            <p>Approve?</p>
+                            <button onClick={(event)=>{this.assignCleaner(true, applicant._id)}}>Yes</button>
+                            <button onClick={(event)=>{this.assignCleaner(false, applicant._id)}}>No</button>
+                          </div>
+                        </div>
+                    )})
+                      :
+                      <h6>You have no applicants yet</h6>
+                    }
                   </div>
                 </div>
-                )
-                  })
-                }
-              </div>
-            </div>
-            :
-            <></>
             }
+
             
           </div>
           <Route 
