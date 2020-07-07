@@ -92,8 +92,10 @@ class JobsDetailPage extends Component {
                 <div className="job-footer">
                   <span className="job-owner">Posted by {this.state.jobData.creator.firstname}</span>
                   <span className="job-applications">Running applications: {this.state.jobData.applicants.length}</span>
-                </div>  
-                <Link to="/application"  ><button id="job-details-button" className="title-blue heartbeat">Apply</button></Link>
+                </div>
+                {
+                  this.state.user.userType === "cleaner" && <Link to="/application"><button id="job-details-button" className="title-blue heartbeat">Apply</button></Link>
+                }  
               </div>
             </div>
             <div className="job-map  shadow-drop-2-bottom">
@@ -114,10 +116,13 @@ class JobsDetailPage extends Component {
               <div className="job-applicants">
               <h3>Applicants</h3>
               <div className="applicants-list">
+
               {
+                this.state.jobData.applicants.length>0?
                   this.state.jobData.applicants.map((applicant, index) =>{
                   return(
                 <div key={`${index} - ${applicant.firstname}`}className="applicant">
+
                   <div className="applicant-image-box">
                     <img src={applicant.profilePicture.path} alt=""/>
                   </div>
@@ -130,9 +135,13 @@ class JobsDetailPage extends Component {
                     <button onClick={(event)=>{this.assignCleaner(true, applicant._id)}}>Yes</button>
                     <button onClick={(event)=>{this.assignCleaner(false, applicant._id)}}>No</button>
                   </div>
+
                 </div>
-                )
+
+                    )
                   })
+                  :
+                  <h6>You have no applicants yet</h6>
                 }
               </div>
             </div>

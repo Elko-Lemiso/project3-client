@@ -37,7 +37,7 @@ class MyJobsFeed extends Component {
             debugger
             return(
               <>
-                <div className="jobs-card">
+                <div className="jobs-card  shadow-drop-2-bottom">
                   <div className="profile-image-box">
                     <img src={oneJob.images[0].path} alt=""/>
                   </div>
