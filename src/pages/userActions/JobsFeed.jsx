@@ -30,7 +30,7 @@ class JobsFeed extends Component {
             debugger
             return(
               <>
-                <div className="jobs-card">
+                <div className="jobs-card  shadow-drop-2-bottom">
                   <div className="profile-image-box">
                     <img src={oneJob.images[0].path} alt=""/>
                   </div>
@@ -45,10 +45,10 @@ class JobsFeed extends Component {
 
                   <div className="job-footer">
                     <span className="job-owner">Posted by: Elko</span>
-                    <span className="job-applications">Running applications: 25</span>
+                    <span className="job-applications">Running applications: {oneJob.applicants.length}</span>
                   </div>
 
-                  <button className="title-blue heartbeat"><Link to={`jobsdetailpage/${oneJob._id}`}>View job</Link></button>
+                  <Link to={`jobsdetailpage/${oneJob._id}`}><button className="title-blue heartbeat">View job</button></Link>
                 </div>
 
             </>

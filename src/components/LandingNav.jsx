@@ -35,7 +35,7 @@ class LandingNav extends Component {
         <>
           <nav id="landing-nav">
               <h2>cleanR</h2>
-              <ul>
+              <ul  >
               <Link className ="link" to="/auth/signup" ><li>Sign Up</li></Link>
               <Link className ="link" to="/auth/login" ><li>Login</li></Link>
               </ul>

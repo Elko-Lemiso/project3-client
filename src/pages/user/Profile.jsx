@@ -56,7 +56,7 @@ class Profile extends Component {
           <Nav/>
           <h1>PROFILE PAGE</h1>
           <div className="profile-container">
-            <div className="profile-card">
+            <div className="profile-card  shadow-drop-2-bottom">
               <div className="top-section">
 
                 <div className="image-box">

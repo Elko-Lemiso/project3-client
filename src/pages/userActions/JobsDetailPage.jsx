@@ -87,7 +87,7 @@ class JobsDetailPage extends Component {
           <Nav/>
           <h1>JOB DETAIL PAGE</h1>
           <div className="jobs-container">
-            <div className="jobs-card">
+            <div className="jobs-card  shadow-drop-2-bottom">
               <div className="profile-image-box">
                 <img src={`${this.state.jobData.images[0].path}`} alt=""/>
               </div>
@@ -116,7 +116,7 @@ class JobsDetailPage extends Component {
                 
               </div>
             </div>
-            <div className="job-map">
+            <div className="job-map  shadow-drop-2-bottom">
               <h3>Location</h3>
               <div className="maps-box">
                 <Maps 

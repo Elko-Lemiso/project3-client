@@ -151,19 +151,77 @@ button{
     }
   }
 
-  .scale-up-center {
-    -webkit-animation: scale-up-center 0.4s cubic-bezier(0.550, 0.055, 0.675, 0.190) both;
-            animation: scale-up-center 0.4s cubic-bezier(0.550, 0.055, 0.675, 0.190) both;
+  .shadow-drop-2-bottom {
+    -webkit-animation: shadow-drop-2-bottom 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: shadow-drop-2-bottom 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   }
-
-  @keyframes scale-up-center {
+  @-webkit-keyframes shadow-drop-2-bottom {
     0% {
-      -webkit-transform: scale(0.5);
-              transform: scale(0.5);
+      -webkit-transform: translateZ(0) translateY(0);
+              transform: translateZ(0) translateY(0);
+      -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+              box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
     }
     100% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
+      -webkit-transform: translateZ(50px) translateY(-12px);
+              transform: translateZ(50px) translateY(-12px);
+      -webkit-box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.35);
+              box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.35);
     }
   }
+  @keyframes shadow-drop-2-bottom {
+    0% {
+      -webkit-transform: translateZ(0) translateY(0);
+              transform: translateZ(0) translateY(0);
+      -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+              box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    100% {
+      -webkit-transform: translateZ(50px) translateY(-12px);
+              transform: translateZ(50px) translateY(-12px);
+      -webkit-box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.35);
+              box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  .ping {
+    -webkit-animation: ping 0.8s ease-in-out both;
+            animation: ping 0.8s ease-in-out both;
+  }
+
+ @-webkit-keyframes ping {
+  0% {
+    -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+    opacity: 0.8;
+  }
+  80% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(2.2);
+            transform: scale(2.2);
+    opacity: 0;
+  }
+}
+@keyframes ping {
+  0% {
+    -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+    opacity: 0.8;
+  }
+  80% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(2.2);
+            transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
   

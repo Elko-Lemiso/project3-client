@@ -24,6 +24,15 @@
         margin: 0;
         border: 0;
       }
+      #cleanHouse{
+        height: 3.5rem;
+        margin-bottom: 0rem;
+        img{
+            margin-bottom: 1rem;
+            width: 7rem;
+        }
+    }
+
     }
 
     h2{
@@ -151,3 +160,26 @@
               transform: rotate(45deg);
     }
   }
+
+  .ping {
+	-webkit-animation: ping 0.8s ease-in-out both;
+	        animation: ping 0.8s ease-in-out both;
+}
+  @keyframes ping {
+    0% {
+      -webkit-transform: scale(0.2);
+              transform: scale(0.2);
+      opacity: 0.8;
+    }
+    80% {
+      -webkit-transform: scale(1.2);
+              transform: scale(1.2);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(2.2);
+              transform: scale(2.2);
+      opacity: 1;
+    }
+  }
+  

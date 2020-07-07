@@ -54,14 +54,14 @@ class Login extends Component {
   
     render() {
       return (
-        <div className="modal ">
-          <div id="login" className="signup big-container">
+        <div className="modal" >
+          <div id="login" className="signup big-container  scale-up-center shadow-drop-2-bottom">
             <div className="exit-box">
               <p className="exit-btn"><Link to = "/">X</Link></p>
               
             </div>
             <h1>LOGIN</h1>
-            <form className="form-styling">
+            <form className="form-styling" >
               <label>Email address</label>
               <input type="text" name="email" onChange={this.handleChange}/>
               <label>Password</label>
