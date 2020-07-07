@@ -31,7 +31,17 @@ class ChatsFeed extends Component {
       return(
         <Redirect to="/" />
       )
-    } else{
+    } else if(this.state.myConversations.length === 0){
+      return(
+        <div className="big-container" id="chats-feed">
+          <Nav/>
+          <h1>CHATS</h1>
+          <div className="chats-list">
+            <span>No conversations yet.. go and get your first job!</span>
+          </div>
+        </div>
+      )
+    }else{
       return (
         <div className="big-container" id="chats-feed">
           <Nav/>

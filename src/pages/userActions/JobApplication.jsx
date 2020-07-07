@@ -18,7 +18,6 @@ class JobApplication extends Component {
   }
 
   application(){
-    debugger
     let jobId = this.props.stateJobDetailPage.jobData._id;
     let userId = this.props.stateJobDetailPage.user.id;
     let application = {

@@ -12,9 +12,8 @@ class Chat extends Component {
 
   state = {
     user: getUser(),
-    message: null,
+    message: '',
     myConversation: null
-
   }
 
   componentDidMount(){
@@ -24,7 +23,7 @@ class Chat extends Component {
       this.setState({
         myConversation: conversation.data.response
       })
-      console.log("Success! These are the conversations:",conversation.data.response);
+      console.log("Success! These are the conversations:", conversation.data.response);
     })
     .catch((error)=>{
       console.log(error, 'Error occured with getting the conversations');
@@ -32,26 +31,25 @@ class Chat extends Component {
 }
 
   sendMessage(){
-    debugger
-
     const messageData = {
       message: this.state.message,
       from: this.state.user.id,
       jobId: this.state.myConversation.jobId._id,
-      converstationId: this.state.myConversation._id,
+      conversationId: this.state.myConversation._id,
       userType: this.state.user.userType
     }
 
     postMessage(messageData)
-    .then((response)=>{
+    .then((conversation)=>{
+      const newConversationData = {...this.state.myConversation};
+      newConversationData.messages = conversation.data.conversation.messages
       this.setState({
-        messages: [...this.state.messages, response]
+        myConversation: newConversationData,
+        message: ''
       })
     })
     .catch((error)=>{
-      this.setState({
-        error: error.response.data.message
-      })
+      console.log(error, "Error occured with posting a message!")
     });
   }
 
@@ -81,8 +79,12 @@ class Chat extends Component {
                 </div>
                 <div className="personal-details">
                   <h4>{this.state.myConversation.participants[1].firstname} {this.state.myConversation.participants[1].lastname}</h4>
+                  <div className="topic">
+                  <p className="bold">Topic:</p>
+                    <p>{this.state.myConversation.jobId.title}</p>
+                  </div>
                 </div>
-                <p>Topic: {this.state.myConversation.jobId.title}</p>
+                
               </div> :
               <div className="profile-details">
                 <div className="profile-image-box">
@@ -90,8 +92,11 @@ class Chat extends Component {
                 </div>
                 <div className="personal-details">
                   <h4>{this.state.myConversation.participants[0].firstname} {this.state.myConversation.participants[0].lastname}</h4>
+                  <div className="topic">
+                    <p className="bold">Topic:</p>
+                    <p>{this.state.myConversation.jobId.title}</p>
+                  </div>
                 </div>
-                <p>Topic: {this.state.myConversation.jobId.title}</p>
               </div>
             }
             {
@@ -115,7 +120,7 @@ class Chat extends Component {
   
             <div className="text-input">
               <form>
-                <textarea type="text" name="message" onChange={this.handleChange}/>
+                <textarea type="text" name="message" value={this.state.message} onChange={this.handleChange}/>
                 <button onClick={(event)=>{
                     event.preventDefault();
                     this.sendMessage(event);
