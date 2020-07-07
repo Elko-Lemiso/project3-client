@@ -30,7 +30,7 @@ class Nav extends Component {
             <nav id="main-nav">
                 <Link to="/"><h2>cleanR</h2></Link>
                 <ul>
-                    <Link id="nav-users" to ="/cleaners" onClick={(event)=>{ setTimeout(() => { event.preventDefault() }, 1000); event.target.classList.toggle("ping")}}><li><img src={users} alt=""/><span>cleaners</span></li></Link>
+                    <Link id="nav-users" to ="/cleaners"><li><img src={users} alt=""/><span>cleaners</span></li></Link>
                     {
                         (this.state.user.userType==="cleaner")? 
                         <Link id="nav-jobs" to ="/jobsfeed"><li><img src={list} alt=""/><span>jobs</span></li></Link>

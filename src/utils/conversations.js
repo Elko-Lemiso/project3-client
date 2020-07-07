@@ -27,11 +27,11 @@ export const getMyConversationMessages = (conversationId)=>{
   })
 }
 
-export const postMessage = (message)=>{
+export const postMessage = (messageData)=>{
   return axios({
     method: "POST",
     url: "conversations/postmessage",
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
-    data: qs.stringify(message) // using qs to put the js object into the right format
+    data: qs.stringify(messageData)
   })
 }

@@ -31,12 +31,22 @@ class ChatsFeed extends Component {
       return(
         <Redirect to="/" />
       )
-    } else{
-      return (
+    } else if(this.state.myConversations.length === 0){
+      return(
         <div className="big-container" id="chats-feed">
           <Nav/>
           <h1>CHATS</h1>
           <div className="chats-list">
+            <span className="no-conversation">No conversations yet.. go and get your first job!</span>
+          </div>
+        </div>
+      )
+    }else{
+      return (
+        <div className="big-container" id="chats-feed">
+          <Nav/>
+          <h1>CHATS</h1>
+          <div className="shadow-drop-2-bottom chats-list">
             {
               this.state.myConversations.map((conversation, index)=>( 
                 <Link key={`${index}-${conversation._id}`} to={`/chat/${conversation._id}`}>
