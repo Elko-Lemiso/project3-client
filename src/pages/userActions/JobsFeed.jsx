@@ -48,7 +48,7 @@ class JobsFeed extends Component {
                     <span className="job-applications">Running applications: 25</span>
                   </div>
 
-                  <button className="title-blue heartbeat"><Link to={`jobsdetailpage/${oneJob._id}`}>View job</Link></button>
+                  <Link to={`jobsdetailpage/${oneJob._id}`}><button className="title-blue heartbeat">View job</button></Link>
                 </div>
 
             </>

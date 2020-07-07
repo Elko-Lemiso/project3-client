@@ -5,6 +5,9 @@ import {getUser} from '../../utils/auth';
 import {findJob} from '../../utils/job';
 import axios from 'axios';
 import './JobsDetailPage.scss';
+import JobApplication from '../userActions/JobApplication'
+import { Link, Route } from 'react-router-dom';
+import {assignTheCleaner} from '../../utils/jobApplication';
 
 class JobsDetailPage extends Component {
   constructor(props) {
@@ -12,7 +15,7 @@ class JobsDetailPage extends Component {
   }
 
   state = {
-    applied : true,
+    applied: null,
     user: getUser(),
     jobData: {
       images: [{}],
@@ -26,7 +29,6 @@ class JobsDetailPage extends Component {
     !this.state.user? this.props.history.push("/"):
     findJob(this.props.match.params.id)
     .then((response)=>{
-      debugger
       this.setState({
         jobData: response.data,
       })
@@ -39,43 +41,27 @@ class JobsDetailPage extends Component {
     })
   }
 
-  application(){
-    let jobId = this.state.jobData._id
-    let userId = this.state.user.id
-    let application = {
-      job : jobId,
-      user: userId
-    }
-    return axios({
-      method: "POST",
-      url: `${process.env.REACT_APP_BASE_URL}jobs/application`,
-      data : application
-    })
-    .then(response => {
-        this.setState({applied:true})
-    })
-  }
-
   assignCleaner(status, id){
+    debugger
 
     let jobId = this.state.jobData._id
-    let userId = this.state.user.id
+
     let application = {
-      job : jobId,
+      job: jobId,
       user: id,
       status: status
     }
-    return axios({
-      method: "POST",
-      url: `${process.env.REACT_APP_BASE_URL}jobs/applicationResponse`,
-      data : application
-    })
+    assignTheCleaner(application)
     .then(response => {
-        console.log(response)
+        console.log(response);
+    })
+    .catch((error)=>{
+      console.log('Error occured with assigning the Cleaner', error);
     })
   }
 
   render() {
+    debugger
     if(this.state.jobData.address === null){
       return(
       <h1>Loading..</h1>
@@ -106,14 +92,8 @@ class JobsDetailPage extends Component {
                 <div className="job-footer">
                   <span className="job-owner">Posted by {this.state.jobData.creator.firstname}</span>
                   <span className="job-applications">Running applications: {this.state.jobData.applicants.length}</span>
-                </div>
-                {
-                  (!this.state.applied)?
-                    this.state.user.userType === "cleaner" && <button id="job-details-button" className="title-blue heartbeat" onClick = {(event)=>{this.application()}}>Apply</button>
-                  :
-                    <p>{this.state.jobData.creator.firstname} may get back to you</p>
-                }
-                
+                </div>  
+                <Link to="/application"  ><button id="job-details-button" className="title-blue heartbeat">Apply</button></Link>
               </div>
             </div>
             <div className="job-map">
@@ -137,7 +117,7 @@ class JobsDetailPage extends Component {
               {
                   this.state.jobData.applicants.map((applicant, index) =>{
                   return(
-                <div className="applicant">
+                <div key={`${index} - ${applicant.firstname}`}className="applicant">
                   <div className="applicant-image-box">
                     <img src={applicant.profilePicture.path} alt=""/>
                   </div>
@@ -161,6 +141,10 @@ class JobsDetailPage extends Component {
             }
             
           </div>
+          <Route 
+          path="/application" 
+          render={(props) =><JobApplication {...props} stateJobDetailPage={this.state} /> }
+          />
         </div>
       )
     }

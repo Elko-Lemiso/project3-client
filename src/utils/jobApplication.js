@@ -8,10 +8,30 @@ const axios = Axios.create({
 });
 
 export const jobApplication = (application)=>{
+  debugger
   return axios({
     method: "POST",
     url: `jobs/application`,
-    headers: { 'content-type': 'application/x-www-form-urlencoded' },
     data : application
   })
 }
+
+export const jobApplicationMessage = (startConversation)=>{
+  debugger
+  return axios({
+    method: "POST",
+    url: `conversations/startconversation`,
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    data: qs.stringify(startConversation)
+  })
+}
+
+export const assignTheCleaner = (application)=> {
+  debugger
+  return axios({
+    method: "POST",
+    url: `jobs/applicationResponse`,
+    data: application
+  })
+}
+

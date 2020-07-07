@@ -14,6 +14,7 @@ import JobsDetailPage from './pages/userActions/JobsDetailPage';
 import CleanersFeed from './pages/userActions/CleanersFeed';
 import ChatsFeed from './pages/userActions/ChatsFeed';
 import Chat from './pages/userActions/Chat';
+import JobApplication from './pages/userActions/JobApplication';
 import { Route } from 'react-router-dom';
 import './App.scss';
 
@@ -37,8 +38,6 @@ class App extends Component {
     return (
       <div className="App">
         <Route exact path={['/', '/auth/login', '/auth/signup']} component={LandingPage}/>
-        <Route path='/signup' component={Signup}/>
-        <Route path='/login' component={Login}/>
         <Route path='/welcome' component={Welcome}/>
         <Route exact path='/profile' component={Profile}/>
         <Route path='/profile/:id' component={Profile}/>
@@ -47,10 +46,11 @@ class App extends Component {
         <Route path='/postjob' component={PostJob}/>
         <Route path='/jobsfeed' component={JobsFeed}/>
         <Route path='/myjobsfeed' component={MyJobsFeed}/>
-        <Route path='/jobsdetailpage/:id' component={JobsDetailPage}/>
+        <Route path={['/jobsdetailpage/:id', '/application']} component={JobsDetailPage}/>
         <Route exact path='/cleaners' component={CleanersFeed}/>
         <Route path='/chatsfeed' component={ChatsFeed}/>
         <Route path='/chat' component={Chat}/>
+
       </div>
     )
   }

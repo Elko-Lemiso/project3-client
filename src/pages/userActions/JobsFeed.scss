@@ -68,11 +68,16 @@
         align-items: center;
       }
 
-      button{
-        padding: 10px 20px;
-        margin: 20px 0px -40px;
-        box-shadow: 1px 1px 1px 10px rgb(255, 255, 255);
+      a{
+        margin-bottom: -25px;
+        
+        button{
+          padding: 10px 20px;
+          margin: 20px 0px -40px;
+          box-shadow: 1px 1px 1px 10px rgb(255, 255, 255);
+        }
       }
+      
     }
 
     @media (max-width: 800px) {
