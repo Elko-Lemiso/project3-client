@@ -52,7 +52,7 @@ class MyJobsFeed extends Component {
 
                   <div className="job-footer">
                     <span className="job-owner">Posted by: Elko</span>
-                    <span className="job-applications">Running applications: 25</span>
+                    <span className="job-applications">Running applications:{oneJob.applicants.length}</span>
                   </div>
 
                   <Link to={`jobsdetailpage/${oneJob._id}`}><button className="title-blue heartbeat">View job</button></Link>

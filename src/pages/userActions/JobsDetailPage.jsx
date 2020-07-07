@@ -14,12 +14,12 @@ class JobsDetailPage extends Component {
     user: getUser(),
     jobData: {
       images: [{}],
-      address: null
+      address: null,
+      cleanerId: null,
     },
     error: null
   }
 
-  
   componentDidMount(){
     !this.state.user? this.props.history.push("/"):
     findJob(this.props.match.params.id)
@@ -38,27 +38,26 @@ class JobsDetailPage extends Component {
 
  
   assignCleaner(status, id){
+    debugger
     let jobId = this.state.jobData._id
-
     let application = {
       job: jobId,
       user: id,
       status: status
     }
     assignTheCleaner(application)
-    findJob(this.props.match.params.id)
-    .then((response)=>{
+    .then(response=>{
+      debugger
+      let jobdata = {...this.state.jobData}
+      jobdata.applicants=response.applicants
+      jobdata.cleanerId=response.cleanerId
       this.setState({
-        jobData: response.data,
+        jobData: jobdata
       })
-    })
-    .then(response => {
-        console.log(response);
     })
     .catch((error)=>{
       console.log('Error occured with assigning the Cleaner', error);
     })
-    
   }
 
   render() {
@@ -76,7 +75,7 @@ class JobsDetailPage extends Component {
           <div className="jobs-container">
             <div className="jobs-card  shadow-drop-2-bottom">
               <div className="profile-image-box">
-                <img src={`${this.state.jobData.images[0].path}`} alt=""/>
+                <img src={this.state.jobData.images[0].path} alt=""/>
               </div>
               <div className="jobs-content">
                 <div className="job-title">
@@ -93,7 +92,7 @@ class JobsDetailPage extends Component {
                 <div className="job-footer">
                   <span className="job-owner">Posted by {this.state.jobData.creator.firstname}</span>
                   {
-                    this.state.user.userType === "client" && this.state.jobData.cleanerId !== null ? 
+                    this.state.user.userType === "client" && this.state.jobData.cleanerId !== null && this.state.jobData.cleanerId.profilePicture !== undefined ? 
                     <div className="current-cleaner">
                       <img src={this.state.jobData.cleanerId.profilePicture.path} alt=""/>
                       <h5>{this.state.jobData.cleanerId.firstname} is working on this.</h5>
@@ -121,8 +120,7 @@ class JobsDetailPage extends Component {
               </div>
             </div>
             {
-              this.state.user.userType === "client" && (this.state.jobData.applicants.length>0) &&
-
+              this.state.user.userType === "client" && (this.state.jobData.cleanerId===null) &&
                   <div className="job-applicants shadow-drop-2-bottom">
                     <h3>Applicants</h3>
                     <div className="applicants-list">
@@ -134,10 +132,10 @@ class JobsDetailPage extends Component {
                         <div key={`${index} - ${applicant.firstname}`}className="applicant">
 
                           <div className="applicant-image-box">
-                            <img src={applicant.profilePicture.path} alt=""/>
+                            <img  key={index}  src={applicant.profilePicture.path} alt=""/>
                           </div>
                           <div className="applicant-details">
-                            <h4>{applicant.firstname}</h4>
+                            <h4  key={index} >{applicant.firstname}</h4>
                             <p>Applicants first message in the chat. Hi, I am very motivated to do the job.</p>
                           </div>
                           <div className="applicant-approval">
