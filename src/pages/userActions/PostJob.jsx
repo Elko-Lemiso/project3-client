@@ -37,10 +37,8 @@ class PostJob extends Component {
   }
 
   postJob(){
-    debugger
     addJob(this.state.jobData)
     .then((response)=>{
-      debugger
       let newUserObject = {...this.state.jobData};
       newUserObject.jobId = response.data._id;
       newUserObject.creator = this.user.id
@@ -118,7 +116,6 @@ class PostJob extends Component {
     })
   }
   handleChangeImages(event){
-    debugger
     let formData = new FormData();
     formData.append("images", event.target.files[0])
     formData.append("jobId", this.state.jobData.jobId)
@@ -127,8 +124,6 @@ class PostJob extends Component {
     })
     editJobImage(formData)
     .then((response)=>{
-      debugger
-      console.log()
       this.setState({
         uploadedImages: this.state.uploadedImages + 1,
         uploading: false

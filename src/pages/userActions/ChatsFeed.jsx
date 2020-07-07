@@ -15,7 +15,6 @@ class ChatsFeed extends Component {
     !this.state.user? this.props.history.push("/"):
     getMyConversations(this.state.user.id)
       .then((conversations)=>{
-        debugger
         this.setState({
           myConversations: conversations.data.response
         })

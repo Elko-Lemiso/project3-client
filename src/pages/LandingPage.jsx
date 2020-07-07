@@ -1,40 +1,42 @@
 import React, { Component } from 'react';
 import clean1 from "./../images/clean.gif"
 import LandingNav from '../components/LandingNav';
-// import '../components/nav.scss'
 import './LandingPage.scss'
 
 class LandingPage extends Component {
   render() {
     return (
-      <div className = "landing">
-          <LandingNav/>
-          <section className = "header">
+      <div id="landing-background" className="big-container">
+        <LandingNav/>
+        <div id="landing">
+          <section className="header">
               <div className="image">
                   <img src={clean1} alt=""/>
               </div>
-              <div className = "info">
+              <div className="info">
                   <h1>Clean or Relax</h1>
                   <p>Find reliable professionals for all your cleaning jobs in and around the house.</p>
               </div>
           </section>
           
-          <section className = "section1">
+          <section className="section1">
               <div>
-                  <h1>Why Choose cleanR?</h1>
-                  <p>We understand your home is important to you. Thats why we focus on the quality of the clean, with our uniquely tailored algorithm to find you the best cleaners available in your area.</p>
-                  <p>We can promise:</p>
+                  <h1>WHY CHOOSE CLEANR?</h1>
+                  <p>We understand your home is important to you. Thats why we focus on the quality. With our uniquely tailored algorithm we are able to find you the best cleaners available in your area.</p>
+                  
                   <ol>
+                  <p>We can promise:</p>
                       <li>Quick responses from potential cleaners</li>
                       <li>A full review of the cleaners portfolio</li>
                       <li>A bless to the mess</li>
                   </ol>
               </div>
               <div>
-                  <h1>Looking for work, be a cleanR</h1>
-                  <p>Are you a student, looking for work? We know work can sometimes be hard to find, and we here at cleanR beleive in working for ourselves, join us and make a few extra coins. Who knows what might happen.</p>
-                  <p>We can deliver:</p>
+                  <h1>BECOME A CLEANR</h1>
+                  <p>Are you a student or unemployed, looking for work? We know that work can sometimes be hard to find, at cleanR we believe in working for ourselves. Join us and start making money this week.</p>
+                  
                   <ol>
+                  <p>We can deliver:</p>
                       <li>Quick and easy money, just a tap away</li>
                       <li>Reviewed clients by other cleaners</li>
                       <li>A job every day should you need one</li>
@@ -42,7 +44,7 @@ class LandingPage extends Component {
               </div>
           </section>
                           
-          <section className = "section-row">
+          <section className="section-row">
               <h1>How it works</h1> 
               <div className="row">
                   <div>
@@ -51,7 +53,7 @@ class LandingPage extends Component {
                   </div>
                   <div>
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="50px" height="50px"><linearGradient id="swqI2SlaZWgv8qXkhwPKWa" x1="32" x2="32" y1="7.5" y2="56.752" gradientUnits="userSpaceOnUse" spreadMethod="reflect"><stop offset="0" stopColor="#1a6dff"/><stop offset="1" stopColor="#c822ff"/></linearGradient><path fill="url(#swqI2SlaZWgv8qXkhwPKWa)" d="M32,56c-1.077,0-2.046-0.555-2.591-1.484l-3.694-6.314c-0.759-1.299-2.099-2.185-3.675-2.432 c-9.479-1.482-16.37-9.85-16.027-19.462C6.371,16.213,15.083,8,25.432,8h13.137c10.349,0,19.061,8.213,19.419,18.308 c0.343,9.611-6.549,17.979-16.028,19.462c-1.575,0.247-2.915,1.133-3.674,2.432l-3.694,6.313C34.046,55.445,33.077,56,32,56z M25.432,10c-9.285,0-17.1,7.348-17.421,16.378C7.705,34.98,13.869,42.467,22.35,43.793c2.173,0.341,4.028,1.579,5.092,3.398 l3.694,6.313C31.397,53.952,31.827,54,32,54s0.603-0.048,0.864-0.496l3.694-6.313c1.063-1.819,2.919-3.058,5.091-3.398 c8.481-1.327,14.646-8.813,14.34-17.415C55.668,17.348,47.854,10,38.568,10H25.432z"/><linearGradient id="swqI2SlaZWgv8qXkhwPKWb" x1="25" x2="25" y1="21.5" y2="28.5" gradientUnits="userSpaceOnUse" spreadMethod="reflect"><stop offset="0" stopColor="#6dc7ff"/><stop offset="1" stopColor="#e6abff"/></linearGradient><path fill="url(#swqI2SlaZWgv8qXkhwPKWb)" d="M25 21.998A3 3 0 1 0 25 27.998A3 3 0 1 0 25 21.998Z"/><linearGradient id="swqI2SlaZWgv8qXkhwPKWc" x1="39" x2="39" y1="21.5" y2="28.5" gradientUnits="userSpaceOnUse" spreadMethod="reflect"><stop offset="0" stopColor="#6dc7ff"/><stop offset="1" stopColor="#e6abff"/></linearGradient><path fill="url(#swqI2SlaZWgv8qXkhwPKWc)" d="M39 21.998A3 3 0 1 0 39 27.998A3 3 0 1 0 39 21.998Z"/><linearGradient id="swqI2SlaZWgv8qXkhwPKWd" x1="32" x2="32" y1="29.625" y2="37.375" gradientUnits="userSpaceOnUse" spreadMethod="reflect"><stop offset="0" stopColor="#6dc7ff"/><stop offset="1" stopColor="#e6abff"/></linearGradient><path fill="url(#swqI2SlaZWgv8qXkhwPKWd)" d="M36,30h-8c-0.552,0-1,0.446-1,0.998v1c0,2.761,2.239,5,5,5s5-2.239,5-5v-1 C37,30.446,36.552,30,36,30z"/><linearGradient id="swqI2SlaZWgv8qXkhwPKWe" x1="32" x2="32" y1="7.5" y2="56.752" gradientUnits="userSpaceOnUse" spreadMethod="reflect"><stop offset="0" stopColor="#1a6dff"/><stop offset="1" stopColor="#c822ff"/></linearGradient><path fill="url(#swqI2SlaZWgv8qXkhwPKWe)" d="M26 12H38V14H26z"/></svg>
-                      <h3>Let them know what needs doing</h3>
+                      <h3>Post your job</h3>
                       
                   </div>
                   <div>
@@ -63,12 +65,12 @@ class LandingPage extends Component {
           <div>
             <img src="" alt=""/>
           </div>
-          <section className = "section-row">
+          <section className="section-row">
           <h1 id = "heading">What sets cleanR apart</h1>
               <div className="row">
                   <div>
                       <h2>Personal</h2>
-                      <p>Upfront conversations with the applicants for the job, giiving the client and the cleanR the liberty to choose.</p>
+                      <p>Upfront conversations with the applicants for the job. Giving the client and the cleanR the liberty to choose.</p>
                   </div>
                   <div>
                       <h2>Reliable</h2>
@@ -76,10 +78,11 @@ class LandingPage extends Component {
                   </div>
                   <div>
                       <h2>Fair rates</h2>
-                      <p>You get to determine what a job is worth doing, but don't make it too low, you might just end up doing the dishes</p>
+                      <p>You get to determine what a job is worth doing, but don't make it too low, you might just end up doing the dishes.</p>
                   </div>
               </div>
           </section>
+          </div>
           <footer></footer>
       </div>
     );

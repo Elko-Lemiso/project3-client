@@ -38,7 +38,6 @@ class JobsDetailPage extends Component {
 
  
   assignCleaner(status, id){
-    debugger
     let jobId = this.state.jobData._id
     let application = {
       job: jobId,
@@ -47,7 +46,6 @@ class JobsDetailPage extends Component {
     }
     assignTheCleaner(application)
     .then(response=>{
-      debugger
       let jobdata = {...this.state.jobData}
       jobdata.applicants=response.applicants
       jobdata.cleanerId=response.cleanerId
@@ -61,7 +59,6 @@ class JobsDetailPage extends Component {
   }
 
   render() {
-    debugger
     if(this.state.jobData.address === null){
       return(
       <h1>Loading..</h1>
