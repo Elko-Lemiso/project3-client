@@ -7,7 +7,7 @@ import axios from 'axios';
 import './JobsDetailPage.scss';
 import JobApplication from '../userActions/JobApplication'
 import { Link, Route } from 'react-router-dom';
-import {assignTheCleaner} from '../../utils/jobApplication';
+import {assignTheCleaner, jobApplication} from '../../utils/jobApplication';
 
 class JobsDetailPage extends Component {
   constructor(props) {
@@ -41,9 +41,8 @@ class JobsDetailPage extends Component {
     })
   }
 
+ 
   assignCleaner(status, id){
-    debugger
-
     let jobId = this.state.jobData._id
 
     let application = {
@@ -58,6 +57,7 @@ class JobsDetailPage extends Component {
     .catch((error)=>{
       console.log('Error occured with assigning the Cleaner', error);
     })
+    
   }
 
   render() {
@@ -84,7 +84,7 @@ class JobsDetailPage extends Component {
                   <div className="job-price">
                     <p><strong>Job price:</strong></p>
                     <p>€ {this.state.jobData.rate}</p>
-                    <span>,</span>
+                    <span>,-</span>
                     <p>an hour.</p>
                   </div>
                 </div>

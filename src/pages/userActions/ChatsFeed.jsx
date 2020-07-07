@@ -22,6 +22,8 @@ class ChatsFeed extends Component {
   }
 
   render() {
+    debugger
+    
     if(!this.state.user){
       return(
         <Redirect to="/" />
