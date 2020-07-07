@@ -37,7 +37,7 @@ class ChatsFeed extends Component {
           <Nav/>
           <h1>CHATS</h1>
           <div className="chats-list">
-            <span>No conversations yet.. go and get your first job!</span>
+            <span className="no-conversation">No conversations yet.. go and get your first job!</span>
           </div>
         </div>
       )
@@ -46,7 +46,7 @@ class ChatsFeed extends Component {
         <div className="big-container" id="chats-feed">
           <Nav/>
           <h1>CHATS</h1>
-          <div className="chats-list">
+          <div className="shadow-drop-2-bottom chats-list">
             {
               this.state.myConversations.map((conversation, index)=>( 
                 <Link key={`${index}-${conversation._id}`} to={`/chat/${conversation._id}`}>

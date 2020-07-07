@@ -70,7 +70,7 @@ class Chat extends Component {
       return (
         <div id="chat" className="big-container">
           <Nav/>
-          <div className="chat-container">
+          <div className="shadow-drop-2-bottom chat-container">
             
             { this.state.user.userType === this.state.myConversation.participants[0].userType ? 
               <div className="profile-details">
