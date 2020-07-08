@@ -31,10 +31,7 @@ class ChatsFeed extends Component {
     return formatted_date;
   }
 
-  
-
   render() {
-    debugger
     if(!this.state.user){
       return(
         <Redirect to="/" />

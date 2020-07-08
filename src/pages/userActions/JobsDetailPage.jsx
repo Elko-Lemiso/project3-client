@@ -28,7 +28,6 @@ class JobsDetailPage extends Component {
       this.setState({
         jobData: response.data,
       })
-      debugger
       this.state.jobData.applicants.includes(this.state.user.id) ? this.setState({applied : true}) : this.setState({applied : false})
     })
     .catch((error)=>{
@@ -63,7 +62,9 @@ class JobsDetailPage extends Component {
   render() {
     if(this.state.jobData.address === null){
       return(
-      <h1>Loading..</h1>
+        <div className="big-container">
+          <div className="loading"></div>
+        </div> 
       )
     }
     else{

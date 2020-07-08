@@ -70,14 +70,15 @@ class Chat extends Component {
   render() {
     if(this.state.myConversation === null){
       return (
-      <h1>Loading..</h1>
+        <div className="big-container">
+          <div className="loading"></div>
+        </div> 
       )
     } else{
       return (
         <div id="chat" className="big-container">
           <Nav/>
           <div className="shadow-drop-2-bottom chat-container">
-            
             { this.state.user.userType === this.state.myConversation.participants[0].userType ? 
               <div className="profile-details">
                 <div className="profile-image-box">
