@@ -44,7 +44,7 @@ class CleanersFeed extends Component {
       newList = currentList.filter(item => {
         const city = item.address.city.toLowerCase();
         const firstname = item.firstname.toLowerCase();
-        const lastname = item.firstname.toLowerCase();
+        const lastname = item.lastname.toLowerCase();
 
         const filter = event.target.value.toLowerCase();
         return (
