@@ -27,6 +27,7 @@ class JobsDetailPage extends Component {
       this.setState({
         jobData: response.data,
       })
+      debugger
       this.state.jobData.applicants.includes(this.state.user.id) ? this.setState({applied : true}) : this.setState({applied : false})
     })
     .catch((error)=>{
@@ -46,12 +47,16 @@ class JobsDetailPage extends Component {
     }
     assignTheCleaner(application)
     .then(response=>{
+<<<<<<< HEAD
+      this.props.history.push(`/chatsfeed`);
+=======
       let jobdata = {...this.state.jobData}
       jobdata.applicants=response.applicants
       jobdata.cleanerId=response.cleanerId
       this.setState({
         jobData: jobdata
       })
+>>>>>>> a1b39db09eea71e6805f024e4e08fcf4479e902a
     })
     .catch((error)=>{
       console.log('Error occured with assigning the Cleaner', error);
@@ -99,8 +104,13 @@ class JobsDetailPage extends Component {
                   }
                 </div>
                 {
-                  this.state.user.userType === "cleaner" && <Link to="/application"><button id="job-details-button" className="title-blue heartbeat">Apply</button></Link>
-                }  
+                  (this.state.user.userType === "cleaner") && (this.state.jobData.cleanerId === null) && (this.state.applied === false)&&
+                  <Link to="/application"><button id="job-details-button" className="title-blue heartbeat">Apply</button></Link>
+                } 
+                {
+                  (this.state.jobData.creator._id === this.state.user.id) || (this.state.jobData.cleanerId === this.state.user)?
+                  <Link to="/application"><button id="job-details-button" className="red heartbeat">Complete</button></Link> :<></>
+                }
               </div>
             </div>
 
