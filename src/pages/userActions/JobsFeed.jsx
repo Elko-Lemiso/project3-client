@@ -7,31 +7,58 @@ import './JobsFeed.scss';
 class JobsFeed extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      jobs : []
-    }
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  state = {
+    jobs: [],
+    filtered: []
   }
 
   componentDidMount() {
     axios.get(`${process.env.REACT_APP_BASE_URL}jobs/findjobs`)
     .then(response => {
-        this.setState({jobs: response.data})
+        this.setState({
+          jobs: response.data,
+          filtered: response.data
+        })
     })
   }
 
+  handleChange(event) {
+    let currentList = [];
+    let newList = [];
+
+    if (event.target.value !== "") {
+      currentList = [...this.state.filtered];
+      newList = currentList.filter(item => {
+        const city = item.address.city.toLowerCase();
+        const jobTitle = item.title.toLowerCase();
+        const filter = event.target.value.toLowerCase();
+        return (city.includes(filter) || jobTitle.includes(filter));
+      });
+    } else {
+      newList = [...this.state.jobs];
+    }
+
+    this.setState({
+      filtered: newList
+    });
+  }
+
   render() {
-    debugger
     return (
       <div className="big-container" id="jobs-feed">
         <Nav/>
         <h1>JOBS</h1>
+        <input type="text" className="input" onChange={this.handleChange} placeholder="Search by city or title.." />
         <div className="jobs-container">
         { this.state.jobs.length === 0?
           <div className="jobs-card">
             <span className="no-conversation">No jobs yet..</span>
           </div>
           :
-          this.state.jobs.map((oneJob, index) =>{
+          this.state.filtered.map((oneJob, index) =>{
             return(
                 <div key={`${index} - ${oneJob.title}`} className="jobs-card  shadow-drop-2-bottom">
                   <div className="profile-image-box">
