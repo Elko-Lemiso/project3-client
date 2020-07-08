@@ -101,3 +101,46 @@
   }
 }
 
+.completed{
+  color: black;
+  .profile-image-box{
+    filter: grayscale(100);
+  }
+  .status{
+    position: absolute;
+    background-color: rgb(246, 136, 136);
+    left: 14px;
+    top: 14px;
+    border-radius: 100px;
+    width: 1rem;
+    height: 1rem;
+  }
+}
+.inProgress{
+  color: black;
+  .status{
+    position: absolute;
+    background-color: rgb(255, 182, 86);
+    left: 14px;
+    top: 14px;
+    border-radius: 100px;
+    width: 1rem;
+    height: 1rem;
+  }
+}
+.pending{
+  color: black;
+  .status{
+    position: absolute;
+    background-color: rgb(113, 192, 238);
+    left: 14px;
+    top: 14px;
+    border-radius: 100px;
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.capitalize{
+  text-transform: capitalize;
+}
