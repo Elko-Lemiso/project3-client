@@ -6,9 +6,15 @@ import { Link , Redirect } from 'react-router-dom';
 import './CleanersFeed.scss';
 
 class CleanersFeed extends Component {
+  constructor(props) {
+    super(props)
+    this.handleChange = this.handleChange.bind(this);
+  }
+
   state = {
     user: getUser(),
     allCleaners: [],
+    filtered: [],
     error: null  
   }
 
@@ -19,6 +25,7 @@ class CleanersFeed extends Component {
     .then((response)=>{
       this.setState({
         allCleaners: response.data.users,
+        filtered: response.data.users,
       })
     })
     .catch((error)=>{
@@ -26,6 +33,33 @@ class CleanersFeed extends Component {
         error: error.data.message
       })
     })
+  }
+
+  handleChange(event) {
+    let currentList = [];
+    let newList = [];
+
+    if (event.target.value !== "") {
+      currentList = [...this.state.filtered];
+      newList = currentList.filter(item => {
+        const city = item.address.city.toLowerCase();
+        const firstname = item.firstname.toLowerCase();
+        const lastname = item.firstname.toLowerCase();
+
+        const filter = event.target.value.toLowerCase();
+        return (
+          city.includes(filter) || 
+          firstname.includes(filter) ||
+          lastname.includes(filter)
+          );
+      });
+    } else {
+      newList = [...this.state.allCleaners];
+    }
+
+    this.setState({
+      filtered: newList
+    });
   }
 
   render() {
@@ -38,9 +72,10 @@ class CleanersFeed extends Component {
         <div className="big-container" id="cleaners-feed">
           <Nav/>
           <h1>CLEANERS</h1>
+          <input type="text" className="input" onChange={this.handleChange} placeholder="Search by city or name.." />
           <div className="cleaners-list shadow-drop-2-bottom">
             {
-              this.state.allCleaners.map((cleaner, index)=>(
+              this.state.filtered.map((cleaner, index)=>(
                 <Link key={`${index}-${cleaner._id}`} to={`profile/${cleaner._id}`}>
                   <div className="cleaner">
                     <div className="cleaner-image-box">
