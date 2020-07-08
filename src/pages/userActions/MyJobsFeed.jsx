@@ -64,6 +64,7 @@ class MyJobsFeed extends Component {
                 <p className="job-description">{oneJob.description}</p>
 
                 <div className="job-footer">
+<<<<<<< HEAD
                   {
                     oneJob.status==="pending"?
                     <h6 className="job-applications">Running applications: {oneJob.applicants.length}</h6>
@@ -72,6 +73,9 @@ class MyJobsFeed extends Component {
                     
                   }
                   
+=======
+                  <span className="job-applications">Running applications: {oneJob.applicants.length}</span>
+>>>>>>> 925b47dafc6d5803432a491bdf585d766193cf6c
                 </div>
                 <div className="status"></div>
                 <Link to={`jobsdetailpage/${oneJob._id}`}><button className="title-blue heartbeat">View job</button></Link>

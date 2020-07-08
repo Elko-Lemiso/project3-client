@@ -60,15 +60,15 @@ class CleanersFeed extends Component {
                             <td className="key-lines">Bio:</td>
                             <td className="content-lines">{cleaner.bio}</td>
                           </tr>
-                          <tr>
+                          {/* <tr>
                             <td className="key-lines">Rating:</td>
                             {cleaner.jobsTaken.length === 0? 
                             <td className="content-lines">No ratings yet</td> :
                             <td className="content-lines">Rating: 4 stars, with 7 ratings</td>
                             }
-                          </tr>
+                          </tr> */}
                           <tr>
-                            <td className="key-lines">#Jobs done:</td>
+                            <td className="key-lines">#Jobs taken:</td>
                             {cleaner.jobsTaken.length === 0? 
                             <td className="content-lines">No complete jobs yet</td> :
                             <td className="content-lines">{cleaner.jobsTaken.length}</td>
