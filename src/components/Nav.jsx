@@ -20,11 +20,7 @@ class Nav extends Component {
         }
     }
 
-
-    handleClick(){
-        const plus = this.buttonRef.current
-        plus.classList.toggle('rotate-center')
-    }
+    
     render() {
         return (
             <nav id="main-nav">
@@ -39,13 +35,13 @@ class Nav extends Component {
                     }   
                     {
                     (this.state.user.userType==="client")?                     
-                    <Link ref = {this.buttonRef} id="add-jobs" onClick={() =>{this.handleClick()}} to ="/postjob">
+                    <Link ref = {this.buttonRef} id="add-jobs" to ="/postjob">
                       <div>
                           <img src={plus} alt=""/>
                       </div>
                     </Link>
                     :
-                    <Link ref = {this.buttonRef} id="add-jobs" onClick={() =>{this.handleClick()}} to ="/cleanerjobsfeed">
+                    <Link ref = {this.buttonRef} id="add-jobs" to ="/cleanerjobsfeed">
                       <div id="cleanHouse">
                           <img src={cleanHouse} alt=""/>
                       </div>
