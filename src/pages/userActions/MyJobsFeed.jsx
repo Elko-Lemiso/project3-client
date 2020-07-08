@@ -14,13 +14,11 @@ class MyJobsFeed extends Component {
     }
   }
   componentDidMount() {
-      debugger
     return axios({
         method: "GET",
         url: `${process.env.REACT_APP_BASE_URL}jobs/findMyJobs/${this.state.userId}`,
       })
     .then(response => {
-        debugger
         console.log(response);
         this.setState({jobs: response.data.jobsUploaded})
     })
@@ -34,7 +32,6 @@ class MyJobsFeed extends Component {
         <div className="jobs-container">
         {
           this.state.jobs.map((oneJob, index) =>{
-            debugger
             return(
               <>
                 <div className="jobs-card  shadow-drop-2-bottom">

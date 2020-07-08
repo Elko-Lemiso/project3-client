@@ -21,8 +21,6 @@ class Profile extends Component {
       }
     }
     componentDidMount(){
-      debugger
-
       let userToSearch = "";
 
       if(this.props.match.params.id){

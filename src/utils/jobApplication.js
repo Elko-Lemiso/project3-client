@@ -8,7 +8,6 @@ const axios = Axios.create({
 });
 
 export const jobApplication = (application)=>{
-  debugger
   return axios({
     method: "POST",
     url: `jobs/application`,
@@ -17,7 +16,6 @@ export const jobApplication = (application)=>{
 }
 
 export const jobApplicationMessage = (startConversation)=>{
-  debugger
   return axios({
     method: "POST",
     url: `conversations/startconversation`,
@@ -27,7 +25,6 @@ export const jobApplicationMessage = (startConversation)=>{
 }
 
 export const assignTheCleaner = (application)=> {
-  debugger
   return axios({
     method: "POST",
     url: `jobs/applicationResponse`,

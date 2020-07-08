@@ -47,7 +47,16 @@ class JobsDetailPage extends Component {
     }
     assignTheCleaner(application)
     .then(response=>{
+<<<<<<< HEAD
       this.props.history.push(`/chatsfeed`);
+=======
+      let jobdata = {...this.state.jobData}
+      jobdata.applicants=response.applicants
+      jobdata.cleanerId=response.cleanerId
+      this.setState({
+        jobData: jobdata
+      })
+>>>>>>> a1b39db09eea71e6805f024e4e08fcf4479e902a
     })
     .catch((error)=>{
       console.log('Error occured with assigning the Cleaner', error);
