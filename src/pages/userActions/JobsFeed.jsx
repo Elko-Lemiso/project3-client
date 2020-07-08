@@ -33,6 +33,9 @@ class JobsFeed extends Component {
           :
           this.state.jobs.map((oneJob, index) =>{
             return(
+              <>
+              {
+                oneJob.cleanerId || oneJob.images.path===null?<></>:
                 <div key={`${index} - ${oneJob.title}`} className="jobs-card  shadow-drop-2-bottom">
                   <div className="profile-image-box">
                     <img src={oneJob.images[0].path} alt=""/>
@@ -63,7 +66,8 @@ class JobsFeed extends Component {
 
                   <Link to={`jobsdetailpage/${oneJob._id}`}><button className="title-blue heartbeat">View job</button></Link>
                 </div>
-            )
+          }
+              </>)
           })
         }
         </div>

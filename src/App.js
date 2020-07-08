@@ -15,6 +15,7 @@ import CleanerJobsFeed from './pages/userActions/CleanerJobsFeed.jsx'
 import Chat from './pages/userActions/Chat';
 import { Route } from 'react-router-dom';
 import './App.scss';
+import {getUser} from './utils/auth'
 
 
 class App extends Component {
