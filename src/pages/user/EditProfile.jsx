@@ -27,6 +27,7 @@ class EditProfile extends Component {
       userType: 'client'
     },
     profilePicture: undefined,
+    buttonStatus: 'upload',
     error: null
   }
 
@@ -102,7 +103,8 @@ class EditProfile extends Component {
     var profilePicture = new FormData(this.formRef.current);
     updateProfilePictureRequest(profilePicture, this.state.user.id)
     .then((response)=>{
-      this.props.history.push("/profile");
+      // this.props.history.push("/profile");
+      console.log(response);
     })
     .catch((error)=>{
       this.setState({
@@ -135,7 +137,14 @@ class EditProfile extends Component {
     })
   }
 
+  toggleButtonStatus(){
+    this.setState({
+      buttonStatus: "done"
+    })
+  }
+
   render() {
+    debugger
     if(!this.state.user && !this.state.userData){
       return(
         <Redirect to="/" />
@@ -153,7 +162,9 @@ class EditProfile extends Component {
               <button onClick={(event)=>{
                   event.preventDefault();
                   this.updateProfilePicture(event);
-                }} type="submit" className="title-blue">Upload picture</button>
+                  this.toggleButtonStatus();
+
+              }} type="submit" id={this.state.buttonStatus} className="title-blue capitalize">{this.state.buttonStatus}</button>
             </form>
 
             <p>Update your other details down here.</p>

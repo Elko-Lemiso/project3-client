@@ -26,6 +26,14 @@ body{
   background-color: #4BC3EB;
 }
 
+.loading{
+  width: 100px;
+  height: 100px;
+  background-image: url("https://res.cloudinary.com/dconurgxl/image/upload/v1594211045/cleanR/loading-gif_fvtvvs.gif");
+  background-repeat:no-repeat;
+  background-size: contain; 
+}
+
 .title-blue{
  background-color: #3498DB;
  color: white;
