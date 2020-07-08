@@ -61,6 +61,12 @@ class Chat extends Component {
     })
   }
 
+  formatDate(date){
+    let current_datetime = new Date(date)
+    let formatted_date = current_datetime.getHours() + ":" + current_datetime.getMinutes() + ":" + current_datetime.getSeconds() + " " + current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate();
+    return formatted_date;
+  }
+
   render() {
     if(this.state.myConversation === null){
       return (
@@ -109,7 +115,7 @@ class Chat extends Component {
                       <h5>{this.state.myConversation.participants[1].firstname} {this.state.myConversation.participants[1].lastname}:</h5>
                     }
                       <p>{message.message}</p>
-                      <span>{message.created_at}</span>
+                      <span>{this.formatDate(message.created_at)}</span>
                       <span className="capitalize">{message.userType}</span>
                     </div>
                   </div>

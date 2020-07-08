@@ -25,6 +25,12 @@ class ChatsFeed extends Component {
       })
   }
 
+  formatDate(date){
+    let current_datetime = new Date(date)
+    let formatted_date = current_datetime.getHours() + ":" + current_datetime.getMinutes() + ":" + current_datetime.getSeconds() + " " + current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate();
+    return formatted_date;
+  }
+
   render() {
     debugger
     if(!this.state.user){
@@ -78,7 +84,7 @@ class ChatsFeed extends Component {
                           </tr>
                           <tr>
                             <td className="key-lines ">Date:</td>
-                            <td className="content-lines">{conversation.messages[0].created_at}</td>
+                            <td className="content-lines">{this.formatDate(conversation.messages[0].created_at)}</td>
                           </tr>
                         </tbody>
                         <tfoot>
