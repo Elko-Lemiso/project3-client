@@ -7,6 +7,7 @@ import './JobsDetailPage.scss';
 import JobApplication from '../userActions/JobApplication'
 import { Link, Route } from 'react-router-dom';
 import {assignTheCleaner} from '../../utils/jobApplication';
+import {jobComplete} from '../../utils/job';
 
 class JobsDetailPage extends Component {
   state = {
@@ -36,7 +37,12 @@ class JobsDetailPage extends Component {
       })
     })
   }
-
+  jobFinished(event){
+    jobComplete(this.state.jobData._id)
+    .then((job)=>{
+      this.props.history.push(`/myjobsfeed`);
+    })
+  }
  
   assignCleaner(status, id){
     let jobId = this.state.jobData._id
@@ -47,16 +53,7 @@ class JobsDetailPage extends Component {
     }
     assignTheCleaner(application)
     .then(response=>{
-<<<<<<< HEAD
       this.props.history.push(`/chatsfeed`);
-=======
-      let jobdata = {...this.state.jobData}
-      jobdata.applicants=response.applicants
-      jobdata.cleanerId=response.cleanerId
-      this.setState({
-        jobData: jobdata
-      })
->>>>>>> a1b39db09eea71e6805f024e4e08fcf4479e902a
     })
     .catch((error)=>{
       console.log('Error occured with assigning the Cleaner', error);
@@ -94,6 +91,9 @@ class JobsDetailPage extends Component {
                 <div className="job-footer">
                   <span className="job-owner">Posted by {this.state.jobData.creator.firstname}</span>
                   {
+                      this.state.jobData.status==="inProgress"?<h4>In Progress</h4> : <h4>{this.state.jobData.status}</h4>
+                  }
+                  {
                     this.state.user.userType === "client" && this.state.jobData.cleanerId !== null && this.state.jobData.cleanerId.profilePicture !== undefined ? 
                     <div className="current-cleaner">
                       <img src={this.state.jobData.cleanerId.profilePicture.path} alt=""/>
@@ -108,22 +108,9 @@ class JobsDetailPage extends Component {
                   <Link to="/application"><button id="job-details-button" className="title-blue heartbeat">Apply</button></Link>
                 } 
                 {
-                  (this.state.jobData.creator._id === this.state.user.id) || (this.state.jobData.cleanerId === this.state.user)?
-                  <Link to="/application"><button id="job-details-button" className="red heartbeat">Complete</button></Link> :<></>
+                  (this.state.jobData.creator._id === this.state.user.id) && (this.state.jobData.cleanerId!== null)?
+                  <button id="job-finished-button" onClick={(event)=>{this.jobFinished(event)}} className="title-blue heartbeat">Complete</button>:<></>
                 }
-              </div>
-            </div>
-
-            <div className="job-map  shadow-drop-2-bottom">
-              <h3>Location</h3>
-              <div className="maps-box">
-                <Maps 
-                  lat={this.state.jobData.address.lat} 
-                  lng={this.state.jobData.address.long} 
-                  street={this.state.jobData.address.street} 
-                  city={this.state.jobData.address.city}
-                  houseNr={this.state.jobData.address.houseNr}
-                />
               </div>
             </div>
             {
@@ -131,7 +118,6 @@ class JobsDetailPage extends Component {
                   <div className="job-applicants shadow-drop-2-bottom">
                     <h3>Applicants</h3>
                     <div className="applicants-list">
-
                   {
                     this.state.jobData.applicants.length>0?
                       this.state.jobData.applicants.map((applicant, index) =>{
@@ -158,8 +144,18 @@ class JobsDetailPage extends Component {
                   </div>
                 </div>
             }
-
-            
+            <div className="job-map  shadow-drop-2-bottom">
+              <h3>Location</h3>
+              <div className="maps-box">
+                <Maps 
+                  lat={this.state.jobData.address.lat} 
+                  lng={this.state.jobData.address.long} 
+                  street={this.state.jobData.address.street} 
+                  city={this.state.jobData.address.city}
+                  houseNr={this.state.jobData.address.houseNr}
+                />
+              </div>
+            </div>
           </div>
           <Route 
           path="/application" 

@@ -12,3 +12,10 @@ export const findJob = (job)=>{
     url: `jobs/findjob/${job}`,
   })
 }
+
+export const jobComplete = (jobId)=>{
+  return axios({
+    method: "GET",
+    url: `jobs/jobComplete/${jobId}`
+  })
+}
