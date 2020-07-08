@@ -155,6 +155,11 @@
           flex-direction: column;
           align-items: center;
           width: 100%;
+
+          h4{
+            text-transform: capitalize;
+          }
+
           .current-cleaner{
             justify-content: space-around;
             align-content: center;
@@ -162,7 +167,8 @@
             flex-direction: row ;
             width: 100%;
             height: 4rem;
-            border-radius:30px;
+            border-radius: 30px;
+
             img{
               overflow: -moz-hidden-unscrollable;
               border-radius:100px;
