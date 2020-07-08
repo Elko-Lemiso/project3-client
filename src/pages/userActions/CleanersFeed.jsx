@@ -23,7 +23,7 @@ class CleanersFeed extends Component {
     })
     .catch((error)=>{
       this.setState({
-        error: error.response.data.message
+        error: error.data.message
       })
     })
   }
@@ -38,7 +38,7 @@ class CleanersFeed extends Component {
         <div className="big-container" id="cleaners-feed">
           <Nav/>
           <h1>CLEANERS</h1>
-          <div className="cleaners-list  shadow-drop-2-bottom">
+          <div className="cleaners-list shadow-drop-2-bottom">
             {
               this.state.allCleaners.map((cleaner, index)=>(
                 <Link key={`${index}-${cleaner._id}`} to={`profile/${cleaner._id}`}>

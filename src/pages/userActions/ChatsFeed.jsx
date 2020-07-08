@@ -26,6 +26,7 @@ class ChatsFeed extends Component {
   }
 
   render() {
+    debugger
     if(!this.state.user){
       return(
         <Redirect to="/" />
@@ -40,7 +41,7 @@ class ChatsFeed extends Component {
           </div>
         </div>
       )
-    }else{
+    } else{
       return (
         <div className="big-container" id="chats-feed">
           <Nav/>
@@ -67,16 +68,16 @@ class ChatsFeed extends Component {
                         <thead>
                         </thead>
                         <tbody>
-                        <tr>
+                          <tr>
                             <td className="key-lines ">Job title:</td>
                             <td className="content-lines">{conversation.jobId.title}</td>
                           </tr>
                           <tr>
-                            <td className="key-lines ">Last message:</td>
+                            <td className="key-lines ">First message:</td>
                             <td className="content-lines">{conversation.messages[0].message}</td>
                           </tr>
                           <tr>
-                            <td className="key-lines ">Receipt date:</td>
+                            <td className="key-lines ">Date:</td>
                             <td className="content-lines">{conversation.messages[0].created_at}</td>
                           </tr>
                         </tbody>

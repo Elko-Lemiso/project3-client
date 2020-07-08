@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {getUser} from '../../utils/auth';
 import Nav from '../../components/Nav';
-import logout from '../../images/logout.svg'
-import edit from '../../images/pencil.svg'
+import logout from '../../images/logout.svg';
+import edit from '../../images/pencil.svg';
 import {Redirect , Link} from 'react-router-dom';
-import './Profile.scss';
 import {userData} from '../../utils/user';
+import './Profile.scss';
 
 class Profile extends Component {
     constructor(props){
@@ -92,7 +92,7 @@ class Profile extends Component {
                   <p className="content-lines">{this.state.userData.bio}</p>
                 </div>
                 <div className="perf-address">
-                { 
+                {/* { 
                     this.props.match.params.id ? 
                     <></> :
                     <div className="perf">
@@ -105,7 +105,7 @@ class Profile extends Component {
                         <p className="content-lines">euro</p>
                       </div>
                     </div>
-                  }
+                  } */}
                   <div className="address">
                   <p className="profile-sub-title uppercase-font">Address details</p>
                     <p className="content-lines">{this.state.userData.address.street} {this.state.userData.address.houseNr} {this.state.userData.address.houseNrAddition}</p>
