@@ -61,8 +61,8 @@ class CleanerJobsFeed extends Component {
                     <p className="job-description">{oneJob.description}</p>
 
                   <div className="job-footer">
-                    <span className="job-owner">Posted by: {oneJob.creator.firstname} {oneJob.creator.lastname}</span>
-                    <span className="job-applications">Running applications: {oneJob.applicants.length}</span>
+                    {/* <span className="job-owner">Posted by: {oneJob.creator.firstname} {oneJob.creator.lastname}</span>
+                    <span className="job-applications">Running applications: {oneJob.applicants.length}</span> */}
                   </div>
 
                   <button className="title-blue heartbeat"><Link to={`jobsdetailpage/${oneJob._id}`}>View job</Link></button>
