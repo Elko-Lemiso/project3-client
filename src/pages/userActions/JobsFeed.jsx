@@ -20,37 +20,49 @@ class JobsFeed extends Component {
   }
 
   render() {
+    debugger
     return (
       <div className="big-container" id="jobs-feed">
         <Nav/>
         <h1>JOBS</h1>
         <div className="jobs-container">
-        {
+        { this.state.jobs.length === 0?
+          <div className="jobs-card">
+            <span className="no-conversation">No jobs yet..</span>
+          </div>
+          :
           this.state.jobs.map((oneJob, index) =>{
             return(
-              <>
-                <div className="jobs-card  shadow-drop-2-bottom">
+                <div key={`${index} - ${oneJob.title}`} className="jobs-card  shadow-drop-2-bottom">
                   <div className="profile-image-box">
                     <img src={oneJob.images[0].path} alt=""/>
                   </div>
 
                   <div className="job-title">
                     <h3 className="job-tagline">{oneJob.title}</h3>
+                    <div className="city">
+                      <p className="bold">City:</p>
+                      <p className="job-city">{oneJob.address.city}</p>
+                    </div>
                     <div className="hl"></div>
-                    <p className="job-price"><strong>Job price:</strong><pre> € </pre>{oneJob.rate}<span>,-</span><pre> </pre>an hour.</p>
+                    <div className="job-price">
+                      <p className="bold">Job price:</p>
+                      <p> € </p>
+                      <p>{oneJob.rate}</p>
+                      <span>,-</span>
+                      <p>an hour.</p>
+                    </div>
                   </div>
 
-                    <p className="job-description">{oneJob.description}</p>
+                  <p className="job-description">{oneJob.description}</p>
 
                   <div className="job-footer">
-                    <span className="job-owner">Posted by: Elko</span>
+                    <span className="job-owner">Posted by: {oneJob.creator.firstname} {oneJob.creator.lastname}</span>
                     <span className="job-applications">Running applications: {oneJob.applicants.length}</span>
                   </div>
 
                   <Link to={`jobsdetailpage/${oneJob._id}`}><button className="title-blue heartbeat">View job</button></Link>
                 </div>
-
-            </>
             )
           })
         }

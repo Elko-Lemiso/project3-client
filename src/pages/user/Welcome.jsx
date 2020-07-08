@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import {getUser} from '../../utils/auth'
-import './Welcome.scss'
+import {getUser} from '../../utils/auth';
+import './Welcome.scss';
 
 class Welcome extends Component {
     constructor(props){
@@ -19,7 +19,7 @@ class Welcome extends Component {
             <Redirect to="/auth/login" />:
             <div className="white big-container welcome-container slide-in-right">
                 <div className="content">
-                    <h1>Welcome</h1>
+                    <h1>WELCOME</h1>
                     {
                         this.state.user.userType === "cleaner"?
                         <div className = "welcome">

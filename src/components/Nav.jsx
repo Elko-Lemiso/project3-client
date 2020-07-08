@@ -45,7 +45,7 @@ class Nav extends Component {
                       </div>
                     </Link>
                     :
-                    <Link ref = {this.buttonRef} id="add-jobs" onClick={() =>{this.handleClick()}} to ="/cleanerJobsFeed">
+                    <Link ref = {this.buttonRef} id="add-jobs" onClick={() =>{this.handleClick()}} to ="/cleanerjobsfeed">
                       <div id="cleanHouse">
                           <img src={cleanHouse} alt=""/>
                       </div>
