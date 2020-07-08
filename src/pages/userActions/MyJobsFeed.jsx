@@ -29,6 +29,9 @@ class MyJobsFeed extends Component {
       <div className="big-container" id="jobs-feed">
         <Nav/>
         <h1>JOBS</h1>
+        <div>
+
+        </div>
         <div className="jobs-container">
         { this.state.jobs.length === 0?
           <div className="jobs-card">
@@ -37,7 +40,7 @@ class MyJobsFeed extends Component {
           :
           this.state.jobs.map((oneJob, index) =>{
             return(
-              <div key={`${index} - ${oneJob.title}`} className="jobs-card  shadow-drop-2-bottom">
+              <div key={`${index} - ${oneJob.title}`} className={`jobs-card  shadow-drop-2-bottom ${oneJob.status}`}>
                 <div className="profile-image-box">
                   <img src={oneJob.images[0].path} alt=""/>
                 </div>
@@ -61,9 +64,16 @@ class MyJobsFeed extends Component {
                 <p className="job-description">{oneJob.description}</p>
 
                 <div className="job-footer">
-                  <span className="job-applications">Running applications: {oneJob.applicants.length}</span>
+                  {
+                    oneJob.status==="pending"?
+                    <h6 className="job-applications">Running applications: {oneJob.applicants.length}</h6>
+                    :
+                    oneJob.status==="inProgress"? <h6 className="job-applications capitalize ">In Progress</h6> : <h6 className="job-applications capitalize">{oneJob.status}</h6>
+                    
+                  }
+                  
                 </div>
-
+                <div className="status"></div>
                 <Link to={`jobsdetailpage/${oneJob._id}`}><button className="title-blue heartbeat">View job</button></Link>
               </div>
             )
