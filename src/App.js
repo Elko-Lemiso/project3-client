@@ -34,7 +34,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route path={['/', '/auth/login', '/auth/signup']} component={LandingPage}/>
+        <Route exact path={['/', '/auth/login', '/auth/signup']} component={LandingPage}/>
         <Route path='/welcome' component={Welcome}/>
         <Route exact path='/profile' component={Profile}/>
         <Route path='/profile/:id' component={Profile}/>
