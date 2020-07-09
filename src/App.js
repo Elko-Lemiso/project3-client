@@ -34,7 +34,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route exact path={['/', '/auth/login', '/auth/signup']} component={LandingPage}/>
+        <Route path={['/', '/auth/login', '/auth/signup']} component={LandingPage}/>
         <Route path='/welcome' component={Welcome}/>
         <Route exact path='/profile' component={Profile}/>
         <Route path='/profile/:id' component={Profile}/>
@@ -45,7 +45,7 @@ class App extends Component {
         <Route path='/myjobsfeed' component={MyJobsFeed}/>
         <Route path='/cleanerjobsfeed' component={CleanerJobsFeed}/>
         <Route path={['/jobsdetailpage/:id', '/application']} component={JobsDetailPage}/>
-        <Route exact path='/cleaners' component={CleanersFeed}/>
+        <Route path='/cleaners' component={CleanersFeed}/>
         <Route path='/chatsfeed' component={ChatsFeed}/>
         <Route path='/chat/:id' component={Chat}/>
 
