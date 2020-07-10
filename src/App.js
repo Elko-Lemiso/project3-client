@@ -13,7 +13,7 @@ import CleanersFeed from './pages/userActions/CleanersFeed';
 import ChatsFeed from './pages/userActions/ChatsFeed';
 import CleanerJobsFeed from './pages/userActions/CleanerJobsFeed.jsx'
 import Chat from './pages/userActions/Chat';
-import { Route, Switch } from 'react-router-dom'; 
+import { Route } from 'react-router-dom'; 
 import './App.scss';
 
 class App extends Component {
@@ -34,7 +34,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Switch>
           <Route exact path={['/', '/auth/login', '/auth/signup']} component={LandingPage}/>
           <Route path='/welcome' component={Welcome}/>
           <Route exact path='/profile' component={Profile}/>
@@ -49,7 +48,6 @@ class App extends Component {
           <Route path='/cleaners' component={CleanersFeed}/>
           <Route path='/chatsfeed' component={ChatsFeed}/>
           <Route path='/chat/:id' component={Chat}/>
-        </Switch>
       </div>
     )
   }
