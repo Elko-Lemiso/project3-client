@@ -112,8 +112,8 @@ class Chat extends Component {
                   <div className={message.userType}>
                     <div className="message-line">{
                       this.state.user.userType === message.userType ?
-                      <h5>You:</h5> :
-                      <h5>{this.state.myConversation.participants[1].firstname} {this.state.myConversation.participants[1].lastname}:</h5>
+                      <h5>You ({message.userType}):</h5> :
+                      <h5>Other:</h5>
                     }
                       <p>{message.message}</p>
                       <span>{this.formatDate(message.created_at)}</span>
