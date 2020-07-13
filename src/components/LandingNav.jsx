@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Login from '../pages/auth/Login';
-import Signup from '../pages/auth/Signup';
+import Login from '../pages/user/Login';
+import Signup from '../pages/user/Signup';
 import { Link, Route } from 'react-router-dom';
 import '../pages/LandingPage.scss'
 

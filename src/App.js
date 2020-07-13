@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import LandingPage from './pages/LandingPage';
-import Welcome from './pages/user/Welcome';
-import Logout from './pages/auth/Logout';
+import Welcome from './pages/Welcome';
+import Logout from './pages/user/Logout';
 import Profile from './pages/user/Profile';
 import EditProfile from './pages/user/EditProfile';
 import PostJob from './pages/userActions/PostJob';

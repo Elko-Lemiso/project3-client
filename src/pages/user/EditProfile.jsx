@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {getUser} from '../../utils/auth';
 import {userData} from '../../utils/user';
-import {geocode} from "../../utils/googleMaps";
+import {geocode} from '../../utils/googleMaps';
 import {updateUserDataRequest} from '../../utils/user';
 import {updateProfilePictureRequest} from '../../utils/user';
-import {Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Nav from '../../components/Nav';
 import './../Form.scss';
 
@@ -144,7 +144,6 @@ class EditProfile extends Component {
   }
 
   render() {
-    debugger
     if(!this.state.user && !this.state.userData){
       return(
         <Redirect to="/" />
@@ -226,16 +225,6 @@ class EditProfile extends Component {
                   <input className="boolean" checked={this.state.userData.userType === "cleaner"} type="radio" name="userType" value="cleaner" onChange={this.handleChange}/>
                 </div>
               </div>
-              {/* <div className="row">
-                <div className="column column-60">
-                  <label>Email address</label>
-                  <input type="text" name="email" value={this.state.userData.email} onChange={this.handleChange}/>
-                </div>
-                <div className="column column-40">
-                  <label>Password</label>
-                  <input type="password" name="password" onChange={this.handleChange}/>
-                </div>
-              </div> */}
               <input type="number" hidden name="lat" value={this.state.userData.address.lat} onChange={this.handleAddressChange}/>
               <input type="number" hidden name="long" value={this.state.userData.address.long} onChange={this.handleAddressChange}/>
               <button onClick={(event)=>{
